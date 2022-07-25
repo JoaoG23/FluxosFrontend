@@ -1,23 +1,23 @@
 /* Color Theme Swatches in Hex */
-.Teals-1-hex { color: #0FC2C0; }
-.Teals-2-hex { color: #0CABA8; }
-.Teals-3-hex { color: #008F8C; }
-.Teals-4-hex { color: #015958; }
-.Teals-5-hex { color: #023535; }
+.Crevasse-1-hex { color: #B4BEC9; }
+.Crevasse-2-hex { color: #159A9C; }
+.Crevasse-3-hex { color: #002333; }
+.Crevasse-4-hex { color: #DEEFE7; }
+.Crevasse-5-hex { color: #FFFFFF; }
 
 /* Color Theme Swatches in RGBA */
-.Teals-1-rgba { color: rgba(15, 194, 192, 1); }
-.Teals-2-rgba { color: rgba(12, 171, 168, 1); }
-.Teals-3-rgba { color: rgba(0, 143, 140, 1); }
-.Teals-4-rgba { color: rgba(1, 89, 88, 1); }
-.Teals-5-rgba { color: rgba(2, 53, 53, 1); }
+.Crevasse-1-rgba { color: rgba(179, 189, 200, 1); }
+.Crevasse-2-rgba { color: rgba(20, 154, 156, 1); }
+.Crevasse-3-rgba { color: rgba(0, 35, 51, 1); }
+.Crevasse-4-rgba { color: rgba(221, 239, 230, 1); }
+.Crevasse-5-rgba { color: rgba(255, 255, 255, 1); }
 
 /* Color Theme Swatches in HSLA */
-.Teals-1-hsla { color: hsla(179, 85, 40, 1); }
-.Teals-2-hsla { color: hsla(178, 86, 35, 1); }
-.Teals-3-hsla { color: hsla(178, 100, 28, 1); }
-.Teals-4-hsla { color: hsla(179, 97, 17, 1); }
-.Teals-5-hsla { color: hsla(180, 92, 10, 1); }
+.Crevasse-1-hsla { color: hsla(211, 16, 74, 1); }
+.Crevasse-2-hsla { color: hsla(180, 76, 34, 1); }
+.Crevasse-3-hsla { color: hsla(198, 100, 10, 1); }
+.Crevasse-4-hsla { color: hsla(151, 34, 90, 1); }
+.Crevasse-5-hsla { color: hsla(0, 0, 100, 1); }
 
 
 body {
