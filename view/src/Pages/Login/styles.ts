@@ -9,15 +9,38 @@ import styled from "styled-components";
 
 // /* Color Theme Swatches in RGBA */
 
-export const CSSVariables = styled.div`
-  --color: #159A9C;
-`;
-
 
 export const Form = styled.div`
 
---bg-navbar: #159A9C;
-    background-color:var(--bg-navbar);
-    width: 30vw;
+    display: flex;
+    flex-direction: column;
+    color:var(--white-background);
+    background-color:var(--green-blue-background);
+
+    width: 14em;
     max-width: 30vw;
+    height: 30vh;
+    padding: 20px;
+    gap: 10px;
+
+    text-align: center;
+    font-weight: 700;
+
+    border-radius: 15px;
+    box-shadow: 4px 4px 10px var(--green-blue-shadow);
+
+@media only screen and (max-width: 600px) {
+    width: 300px;
+    max-width: 300px;
+}
 `;
+
+export const Container = styled.main`
+    background-color: var(--green-light-background);
+
+    height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+`
