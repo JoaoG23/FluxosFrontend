@@ -1,7 +1,12 @@
-import { InputSt } from "./styles";
-function Input() {
+import React from "react";
+import { InputStyle } from "./styles";
+
+interface Iinput {
+  descricaoPlaceholder: string;
+}
+const Input = (props:Iinput) => {
   return (
-      <InputSt type='text'></InputSt>
+      <InputStyle placeholder={props.descricaoPlaceholder} type='text' ></InputStyle>
   );
 }
 

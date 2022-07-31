@@ -1,12 +1,20 @@
-import { Form,Container } from './styles'; 
+import { Form,Container, HiperLink, Title } from './styles'; 
 import Input from '../../Components/Input';
-function Login() {
+import PrimaryButton from '../../Components/Buttons/ButtonDark';
+import ContainerBottons from '../../Components/ContainerButtons';
+import SecondaryButton from '../../Components/Buttons/PrimaryButton';
+const Login = () => {
   return (
     <Container>
       <Form>
-        <h3>Login</h3>
-        <Input/>
-        <Input/>
+        <Title>Login</Title>
+        <Input descricaoPlaceholder={'Login'}/>
+        <Input descricaoPlaceholder={'Senha'}/>
+        <ContainerBottons>
+          <PrimaryButton>Logar</PrimaryButton>
+          <SecondaryButton>Registrar</SecondaryButton>
+        </ContainerBottons>
+          <HiperLink href='./senhaesquecida'>Esqueci minha senha </HiperLink>
         </Form>
     </Container>
   );

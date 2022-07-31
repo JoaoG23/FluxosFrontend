@@ -1,46 +1,47 @@
 import styled from "styled-components";
 
-/* Color Theme Swatches in Hex */
-// .Crevasse-1-hex { color: #B4BEC9; }
-// .Crevasse-2-hex { color: #159A9C; }
-// .Crevasse-3-hex { color: #002333; }
-// .Crevasse-4-hex { color: #DEEFE7; }
-// .Crevasse-5-hex { color: #FFFFFF; }
 
-// /* Color Theme Swatches in RGBA */
+export const Form = styled.form`
+  display: flex;
+  flex-direction: column;
 
+  justify-content: center;
 
-export const Form = styled.div`
+  width: 17em;
+  max-width: 17em;
+  height: 50vh;
+  padding: 20px;
+  gap: 10px;
 
-    display: flex;
-    flex-direction: column;
-    color:var(--white-background);
-    background-color:var(--green-blue-background);
+  background-color: ${(props) => props.theme.color.primary};
 
-    width: 14em;
-    max-width: 30vw;
-    height: 30vh;
-    padding: 20px;
-    gap: 10px;
+  text-align: center;
+  font-weight: 700;
 
-    text-align: center;
-    font-weight: 700;
+  border-radius: 15px;
+  box-shadow: 2px 2px 4px ${(props) => props.theme.color.primary};
 
-    border-radius: 15px;
-    box-shadow: 4px 4px 10px var(--green-blue-shadow);
-
-@media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 600px) {
     width: 300px;
     max-width: 300px;
-}
+  }
 `;
 
 export const Container = styled.main`
-    background-color: var(--green-light-background);
+  height: 100vh;
 
-    height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+`;
 
-    display: flex;
-    align-items: center;
-    justify-content: center;
+
+export const HiperLink = styled.a`
+    color:${props => props.theme.color.light};
+    text-decoration:none;
+    font-weight: 300;
+`
+
+export const Title = styled.h1`
+color:${props => props.theme.color.light};
 `

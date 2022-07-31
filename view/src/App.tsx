@@ -1,12 +1,16 @@
-import React from 'react';
-import Login from './Pages/Login';
-import GlobalStyle from './global';
+import React from "react";
+import Login from "./Pages/Login";
+import GlobalStyle from "./themes/global";
+import { ThemeProvider } from "styled-components";
+
+import light from "./themes/light";
 
 function App() {
-  return (<>
-  <GlobalStyle />
-    <Login></Login>
-  </>
+  return (
+    <ThemeProvider theme={light}>
+      <GlobalStyle />
+      <Login></Login>
+    </ThemeProvider>
   );
 }
 

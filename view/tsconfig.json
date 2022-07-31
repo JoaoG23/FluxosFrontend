@@ -22,5 +22,8 @@
   },
   "include": [
     "src"
+  ],
+  "files": [
+    "src/themes/styled.d.ts"
   ]
 }
