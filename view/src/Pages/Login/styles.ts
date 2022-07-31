@@ -19,7 +19,7 @@ export const Form = styled.form`
   font-weight: 700;
 
   border-radius: 15px;
-  box-shadow: 2px 2px 4px ${(props) => props.theme.color.primary};
+  box-shadow: 3px 3px 5px ${(props) => props.theme.color.secondary};
 
   @media only screen and (max-width: 600px) {
     width: 300px;

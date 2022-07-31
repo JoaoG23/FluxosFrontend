@@ -1,13 +1,11 @@
 import { DarkButtonStyle } from "../styles";
 
 type Propriedades = {
-    children: string;
-  };
+  children: string;
+};
 
-
-const DarkButton = (props:Propriedades ) => {
-
-    return(<DarkButtonStyle>{props.children}</DarkButtonStyle>)
-}
+const DarkButton = (props: Propriedades) => {
+  return <DarkButtonStyle>{props.children}</DarkButtonStyle>;
+};
 
 export default DarkButton;
