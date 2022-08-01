@@ -10,7 +10,7 @@ export const DarkButtonStyle = styled.button`
     padding: 7px;
     width:50%;
     :hover{
-        transition: 1s;
+        transition: 0.4s ease-in;
         background-color:${props => props.theme.color.background};
         color:${props => props.theme.color.dark};
     }
@@ -20,7 +20,7 @@ export const SecondaryButtonStyle = styled(DarkButtonStyle)`
     background:${props => props.theme.color.background};
     color:${props => props.theme.color.dark};
     :hover{
-        transition: 1s;
+        transition: 0.5s ease-in;
         background-color:${props => props.theme.color.dark};
         color:${props => props.theme.color.background};
     }

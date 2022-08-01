@@ -1,11 +1,12 @@
 import { DarkButtonStyle } from "../styles";
 
 type Propriedades = {
-  children: string;
+  children?: string;
+  onClick:any;
 };
 
 const DarkButton = (props: Propriedades) => {
-  return <DarkButtonStyle>{props.children}</DarkButtonStyle>;
+  return <DarkButtonStyle onClick={props.onClick}>{props.children}</DarkButtonStyle>;
 };
 
 export default DarkButton;
