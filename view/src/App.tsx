@@ -9,7 +9,7 @@ function App() {
   return (
     <ThemeProvider theme={light}>
       <GlobalStyle />
-      <Login></Login>
+      {/* <Login></Login> */}
     </ThemeProvider>
   );
 }

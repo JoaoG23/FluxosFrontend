@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Form, Container, HiperLink, Title } from "./styles";
 import Input from "../../Components/Inputs/PrimaryInput";
 import PrimaryButton from "../../Components/Buttons/ButtonDark";
@@ -5,22 +6,22 @@ import ContainerBottons from "../../Components/ContainerButtons";
 import SecondaryButton from "../../Components/Buttons/PrimaryButton";
 import Modal from "../../Components/Modal";
 
-import { useState } from "react";
+import getDataInput from "../../services/getDataInput";
+
+
+import requestAjax from "../../services/RequestAjax";
+import { endpoint } from "../../configs/endPoint";
+
+// Tipagens 
+import { ResponseJ, DadosUsuario } from './types';
+import { IHandleValueElementHTML } from "./interfaces";
+
 const Login: React.FC = () => {
-  type ResponseJ = {
-    situacao?: boolean;
-    msg?: string;
-    tokenUser?: string;
-  };
-
-  type DadosUsuario = {
-    usuario: string;
-    senha: string;
-  };
-
   const [error, setError] = useState(null);
   const [isLoaded, setIsLoaded] = useState(false);
   const [show, setShow] = useState(false);
+  const [data, setData] = useState<ResponseJ>({});
+
 
   // Modal States
   const showModal = (): void => {
@@ -35,19 +36,8 @@ const Login: React.FC = () => {
   const [senha, setSenha] = useState("");
   const [login, setLogin] = useState("");
 
-  const getSenhaInput = (event: any) => {
-    let text = event.target.value;
-    console.info(text);
-    setSenha(text);
-  };
-  const getLoginInput = (event: any) => {
-    let text = event.target.value;
-    console.info(text);
-    setLogin(text);
-  };
-
-  const [dados, setDados] = useState<ResponseJ>({});
-  let url = `http://localhost:2001/login`;
+  let url = `${endpoint}/login`;
+  
   let dadosInput: DadosUsuario = {
     usuario: login,
     senha: senha,
@@ -59,27 +49,22 @@ const Login: React.FC = () => {
     headers: { "Content-Type": "application/json" },
     body: dadosString,
   };
-  
-  function logar(e: any) {
-    e.preventDefault();
-    // console.log("Seus dados buscado : " + senha + " " + login);
 
-    fetch(url, options)
-      .then((response) => response.json())
-      .then(
-        (data) => {
-          setDados(data);
-          setIsLoaded(true);
-          showModal();
-          showOutModal();
-        },
-        (error) => {
-          setIsLoaded(true);
-          setError(error);
-        }
-      )
-      .catch((error) => console.log(error));
-  }
+  const logar = async(e: IHandleValueElementHTML) => {
+    e.preventDefault();
+
+    const myFetch = await requestAjax(url, options);
+
+    if(!myFetch){
+
+      setError(myFetch);
+    }
+    console.info(myFetch);
+    setData(myFetch);
+    showModal();
+    showOutModal();
+  } 
+
   return (
     <Container>
       <Form>
@@ -87,28 +72,28 @@ const Login: React.FC = () => {
         <Input
           type="text"
           descricaoPlaceholder={"Login"}
-          // onChange={(e: any) => setLogin(e.target.value)} // Commentado para fins estudantis
-          onChange={getLoginInput}
-        />
+          onChange={(e:any) => {getDataInput(e,setLogin)}}
+          />
         <Input
           type="password"
           descricaoPlaceholder={"Senha"}
-          onChange={getSenhaInput}
-        // onChange={(e: any) => setSenha(e.target.value)} // Commentado para fins estudantis
+          onChange={(e:any) => {getDataInput(e,setSenha)}}
         />
         <ContainerBottons>
           <PrimaryButton
             onClick={logar}
           >
-            Logar
+            Logar {}
           </PrimaryButton>
           <SecondaryButton>Registrar</SecondaryButton>
         </ContainerBottons>
         <HiperLink href="./senhaesquecida">Esqueci a minha senha</HiperLink>
       </Form>
-      <Modal prefix={show ? "flex" : ""}>{dados.msg}</Modal>
+      
+      <Modal prefix={show ? "flex" : ""}>{data.msg}</Modal>
     </Container>
   );
+  
 };
 
 export default Login;
