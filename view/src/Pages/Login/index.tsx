@@ -83,7 +83,7 @@ const Login: React.FC = () => {
           <PrimaryButton
             onClick={logar}
           >
-            Logar {}
+            Logar 
           </PrimaryButton>
           <SecondaryButton>Registrar</SecondaryButton>
         </ContainerBottons>
