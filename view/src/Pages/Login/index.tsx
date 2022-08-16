@@ -10,7 +10,7 @@ import getDataInput from "../../services/getDataInput";
 
 
 import requestAjax from "../../services/RequestAjax";
-import { endpoint } from "../../configs/endPoint";
+// import { endpoint } from "../../configs/endPoint";
 
 // Tipagens 
 import { ResponseJ, DadosUsuario } from './types';
@@ -36,7 +36,7 @@ const Login: React.FC = () => {
   const [senha, setSenha] = useState("");
   const [login, setLogin] = useState("");
 
-  let url = `${endpoint}/login`;
+  let url = `hrmldaaq /login`;
   
   let dadosInput: DadosUsuario = {
     usuario: login,

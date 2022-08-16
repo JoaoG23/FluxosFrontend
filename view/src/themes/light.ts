@@ -7,7 +7,6 @@ export default {
     dark: "#002333",
     shadow: "#000000a4",
     fifth: "#B4BEC9",
-
     light: "#FFFFFF",
   },
 };

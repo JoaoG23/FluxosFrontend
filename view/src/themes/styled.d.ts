@@ -10,7 +10,6 @@ declare module 'styled-components' {
           dark: string;
           shadow:string;
           fifth:string;
-      
           light: string;
         },
     }

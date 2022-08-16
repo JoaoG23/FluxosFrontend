@@ -1,30 +1,35 @@
 import styled from "styled-components";
 
-
-export const HeaderStyle = styled.div`
-
+export const StyleDefault = styled.header`
+    /* width: 100vw; */
+    background-color:${props => props.theme.color.primary};
+    height: 3.5em;
     display: flex;
     justify-content: space-between;
-    padding: 0.3em;
-  background-color: ${(props) => props.theme.color.primary};
-  /* box-shadow: 3px 3px 5px ${(props) => props.theme.color.secondary}; */
-
-  div{
-    display: flex;
     align-items: center;
-    gap: 0.5em;
-  }
+    padding-left: 1vw;
+    padding-right: 1vw;
+    box-shadow: 1px 1px 10px var(--sombra);
 
-  @media only screen and (max-width: 760px) {
-
-    h4{
-        display: none;
+    text-align: center;
+    color:${props => props.theme.color.light};
+    
+    section{
+        gap:10px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
     }
-  }
-  @media only screen and (max-width: 300px) {
-    /* width: 300px;
-    max-width: 300px; */
-  }
+    
+    @media screen and (max-width:600px) {
+        
+        padding: 0vw;
+        width: 98vw;
+    }
+    
+    `
+export const BoxImg = styled.div`
+    padding: 1vw;
+    border-radius: 1em;
+    background-color:${props => props.theme.color.light};
 `;
-
-
