@@ -6,6 +6,7 @@ export default {
     background: "#DEEFE7",
     dark: "#002333",
     shadow: "#000000a4",
+    shadowlight:"#ffffff2f",
     fifth: "#B4BEC9",
     light: "#FFFFFF",
   },

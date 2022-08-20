@@ -1,4 +1,4 @@
-import { StyleDefault ,BoxImg} from "./styles";
+import { StyleDefault ,BoxImg } from "./styles";
 import React from "react";
 import { Link } from "react-router-dom";
 

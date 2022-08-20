@@ -28,7 +28,8 @@ export const Item = styled.li`
     :hover{
         transition: 0.5s ease-in-out;
         border-radius: 0.5em;
-        background-color: ${props => props.theme.color.light};
-        /* opacity: 0.1; */
+        color: ${props => props.theme.color.secondary};
+        background-color: ${props => props.theme.color.shadowlight};
+        /* opacity: 0.3; */
     }
 `
