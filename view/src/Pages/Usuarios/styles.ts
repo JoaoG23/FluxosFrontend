@@ -27,31 +27,9 @@ export const ContainerStyle = styled.main`
   }
 `;
 
-export const HeaderStyle = styled.div`
+export const GroupBtnStyle = styled.div`
   display: flex;
-  justify-content: space-between;
-  width: 100%;
-  height: 5vh;
+  gap: 3px;
+`
 
-  @media screen and (max-width: 769px) {
-  }
-`;
 
-export const TableStyle = styled.table`
-  display: block;
-
-  width: auto;
-  overflow-x: scroll;
-
-  border-top-right-radius: 1em;
-  border-top-left-radius: 1em;
-  border-style:border-collapse;
-  th {
-    color: ${(props) => props.theme.color.light};
-    background-color: ${(props) => props.theme.color.dark};
-    padding: 0.5em;
-  }
-  tr:nth-child(odd){
-    background-color:${(props) => props.theme.color.fifth} ;
-  }
-`;

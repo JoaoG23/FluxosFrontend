@@ -1,7 +1,7 @@
 import { DarkButtonStyle } from "../styles";
 
 type Propriedades = {
-  children?: string;
+  children?: string | JSX.Element | JSX.Element[];
   onClick?:any;
 };
 

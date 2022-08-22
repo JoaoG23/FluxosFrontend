@@ -26,6 +26,16 @@ export const SecondaryButtonStyle = styled(DarkButtonStyle)`
     }
 `;
 
+export const PrimaryButtonStyle = styled(DarkButtonStyle)`
+    background:${props => props.theme.color.primary};
+    color:${props => props.theme.color.light};
+    :hover{
+        transition: 0.5s ease-in;
+        background-color:${props => props.theme.color.dark};
+        color:${props => props.theme.color.background};
+    }
+`;
+
 
 
 
