@@ -2,10 +2,10 @@ import React from "react";
 import { SecondaryInputStyle } from "../styles";
 
 interface Iinput {
-  descricaoPlaceholder: string;
+  descricaoPlaceholder?: string;
   type: string;
 }
-const Input = (props: Iinput) => {
+const InputSecondary = (props: Iinput) => {
   return (
     <SecondaryInputStyle
       placeholder={props.descricaoPlaceholder}
@@ -14,4 +14,4 @@ const Input = (props: Iinput) => {
   );
 };
 
-export default Input;
+export default InputSecondary;

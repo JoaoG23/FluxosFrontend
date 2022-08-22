@@ -8,6 +8,8 @@ export const SidebarStyle = styled.header`
     gap: 1em;
     padding: 0.5em;
 
+    box-shadow: 1px 1px 2px ${props => props.theme.color.dark};
+
     background-color:${props => props.theme.color.dark};
     height: 100vh;
 

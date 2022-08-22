@@ -8,23 +8,9 @@ export const PrimaryInputStyle = styled.input`
   border-bottom: 3px solid ${(props) => props.theme.color.fifth};
   border-right: 3px solid ${(props) => props.theme.color.fifth};
 
-  background-color: ${(props) => props.theme.color.light};
-  :focus {
-    /* animation: evidente 3s ease-in 0s  forwards alternate; */
-  }
+  box-shadow: 1px 1px 3px ${(props) => props.theme.color.shadow};
 
-  /* @keyframes evidente {
-    from {
-      padding:5px;
-      background-color: whitesmoke;
-      color: #000;
-    }
-    to {
-      padding: 10px;
-      background-color: #b4bec9;
-      color: #159a9c;
-    }
-  } */
+  background-color: ${(props) => props.theme.color.light};
 `;
 
 export const SecondaryInputStyle = styled(PrimaryInputStyle)`

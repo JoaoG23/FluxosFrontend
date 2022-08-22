@@ -2,11 +2,11 @@ import React from "react";
 import { PrimaryInputStyle } from "../styles";
 
 interface Iinput {
-  descricaoPlaceholder: string;
+  descricaoPlaceholder?: string;
   type: string;
-  onChange:any;
+  onChange?:any;
 }
-const Input = (props: Iinput) => {
+const InputPrimary = (props: Iinput) => {
   return (
     <PrimaryInputStyle
       onChange={props.onChange}
@@ -16,4 +16,4 @@ const Input = (props: Iinput) => {
   );
 };
 
-export default Input;
+export default InputPrimary;
