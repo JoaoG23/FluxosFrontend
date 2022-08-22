@@ -1,7 +1,8 @@
 import styled from "styled-components";
 
 export const StyleDefault = styled.header`
-    /* width: 10vw; */
+    width: 20vw;
+    position: fixed;
     display:flex;
     flex-direction: column;
     gap: 1em;
@@ -13,7 +14,7 @@ export const StyleDefault = styled.header`
     @media screen and (max-width:600px) {
         
         padding: 0vw;
-        width: 98vw;
+        width: 100vw;
     }
     
     `
@@ -26,10 +27,8 @@ export const Item = styled.li`
     padding: 0.6em;
     color:${props => props.theme.color.light};
     :hover{
-        transition: 0.5s ease-in-out;
+        transition: 0.2s ease-in-out;
         border-radius: 0.5em;
-        color: ${props => props.theme.color.secondary};
-        background-color: ${props => props.theme.color.shadowlight};
-        /* opacity: 0.3; */
+        background-color: #88c2b933;
     }
 `

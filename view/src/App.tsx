@@ -4,6 +4,7 @@ import GlobalStyle from "./themes/global";
 import { ThemeProvider } from "styled-components";
 import Header from "./Components/Header";
 import { Main, Body } from "./styles";
+import Dashboard from "./Pages/Dashboard";
 
 import light from "./themes/light";
 import Sidebar from "./Components/Sidebar";
@@ -15,7 +16,9 @@ function App() {
         <GlobalStyle />
         <Sidebar></Sidebar>
         <Header></Header>
-        <Body></Body>
+        <Body>
+          <Dashboard></Dashboard>
+        </Body>
         {/* <Login></Login> */}
       </Main>
     </ThemeProvider>

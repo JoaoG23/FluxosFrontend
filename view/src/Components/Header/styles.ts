@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const StyleDefault = styled.header`
-    /* width: 100vw; */
+    width: 80vw;
     background-color:${props => props.theme.color.primary};
     height: 3.5em;
     display: flex;
+    left: 20vw;
+    position: relative;
+    
     justify-content: space-between;
     align-items: center;
     padding-left: 1vw;
@@ -23,13 +26,14 @@ export const StyleDefault = styled.header`
     
     @media screen and (max-width:600px) {
         
+        left: 0vw;
         padding: 0vw;
-        width: 98vw;
+        width: 100vw;
     }
     
     `
 export const BoxImg = styled.div`
-    padding: 1vw;
-    border-radius: 1em;
+    padding: 7px;
+    border-radius: 10px;
     background-color:${props => props.theme.color.light};
 `;

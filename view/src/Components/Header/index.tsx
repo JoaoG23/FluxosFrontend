@@ -1,6 +1,5 @@
 import { StyleDefault ,BoxImg } from "./styles";
 import React from "react";
-import { Link } from "react-router-dom";
 
 const Header: React.FC = () => {
   // Lembrar de POOO
