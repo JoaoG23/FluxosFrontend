@@ -1,10 +1,14 @@
 import React from "react";
-import Login from "./Pages/Login";
 import GlobalStyle from "./themes/global";
 import { ThemeProvider } from "styled-components";
 import Header from "./Components/Header";
+
 import { Main, Body } from "./styles";
+
+import Login from "./Pages/Login";
 import Dashboard from "./Pages/Dashboard";
+import Fluxo from "./Pages/Fluxo";
+import Usuarios from "./Pages/Usuarios";
 
 import light from "./themes/light";
 import Sidebar from "./Components/Sidebar";
@@ -17,7 +21,10 @@ function App() {
         <Sidebar></Sidebar>
         <Header></Header>
         <Body>
-          <Dashboard></Dashboard>
+          <Usuarios></Usuarios>
+          {/* <Dashboard></Dashboard> */}
+          {/* <Fluxo></Fluxo> */}
+
         </Body>
         {/* <Login></Login> */}
       </Main>

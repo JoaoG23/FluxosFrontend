@@ -2,7 +2,7 @@ import { DarkButtonStyle } from "../styles";
 
 type Propriedades = {
   children?: string;
-  onClick:any;
+  onClick?:any;
 };
 
 const DarkButton = (props: Propriedades) => {

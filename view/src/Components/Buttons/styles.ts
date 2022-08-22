@@ -8,7 +8,7 @@ export const DarkButtonStyle = styled.button`
     font-weight: bold;
     border-radius: 8px;
     padding: 7px;
-    width:50%;
+    width:auto;
     :hover{
         transition: 0.4s ease-in;
         background-color:${props => props.theme.color.background};

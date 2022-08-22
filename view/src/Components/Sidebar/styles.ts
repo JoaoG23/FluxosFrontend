@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const StyleDefault = styled.header`
+export const SidebarStyle = styled.header`
     width: 20vw;
     position: fixed;
     display:flex;
@@ -11,13 +11,21 @@ export const StyleDefault = styled.header`
     background-color:${props => props.theme.color.dark};
     height: 100vh;
 
-    @media screen and (max-width:600px) {
+    @media screen and (max-width:769px) {
+
+        display: none;
         
         padding: 0vw;
         width: 100vw;
     }
     
     `
+
+export const BoxImg = styled.div`
+    padding: 7px;
+    border-radius: 10px;
+    background-color:${props => props.theme.color.light};
+`;
 
 export const Logo = styled.img`
     width: 100px;

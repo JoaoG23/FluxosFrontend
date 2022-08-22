@@ -1,11 +1,11 @@
-import { StyleDefault, Logo,Item } from "./styles";
+import { SidebarStyle, Logo,Item } from "./styles";
 import React from "react";
 import listaItensMenu from "./data/listaMenu";
 
 const Sidebar: React.FC = () => {
   // Lembrar de POOO
   return (
-    <StyleDefault>
+    <SidebarStyle>
       <div>
         <Logo src="./assets/logomarca.png" alt="logo"></Logo>
       </div>
@@ -14,7 +14,7 @@ const Sidebar: React.FC = () => {
           <Item key={item.id}>{item.descricao}</Item>
         ))}
       </ul>
-    </StyleDefault>
+    </SidebarStyle>
   );
 };
 

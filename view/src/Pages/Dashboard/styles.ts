@@ -11,10 +11,17 @@ export const HeaderStyle = styled.div`
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
   gap: 1em;
+
+  @media screen and (max-width:769px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const BodyStyle = styled(HeaderStyle)`
   grid-template-columns: 1fr 1fr;
+  @media screen and (max-width:769px) {
+    grid-template-columns: auto;
+  }
 `;
 
 export const ChatsContainerStyle = styled(HeaderStyle)`

@@ -3,7 +3,7 @@ import { Form, Container, HiperLink, Title } from "./styles";
 import Input from "../../Components/Inputs/PrimaryInput";
 import PrimaryButton from "../../Components/Buttons/ButtonDark";
 import ContainerBottons from "../../Components/ContainerButtons";
-import SecondaryButton from "../../Components/Buttons/PrimaryButton";
+import SecondaryButton from "../../Components/Buttons/SecondaryButton";
 import Modal from "../../Components/Modal";
 
 import getDataInput from "../../services/getDataInput";
