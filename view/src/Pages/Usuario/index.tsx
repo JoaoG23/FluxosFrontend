@@ -6,7 +6,7 @@ const Usuario = () => {
   return (
     <ContainerStyle>
       <h3>Usuário</h3>
-      <>
+      
         <PerfilStyle src="./assets/perfil.svg"></PerfilStyle>
         <ContainerInputStyle>
           <label>Nome</label>
@@ -28,7 +28,7 @@ const Usuario = () => {
           <label>E-mail</label>
           <InputSecondary type="text"></InputSecondary>
         </ContainerInputStyle>
-      </>
+
 
       <div>
         <DarkButton>

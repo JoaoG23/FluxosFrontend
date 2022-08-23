@@ -6,22 +6,23 @@ export const Form = styled.div`
   flex-direction: column;
 
   justify-content: center;
+  color:${(props) => props.theme.color.light};
 
-  width: 17em;
-  max-width: 17em;
+  width: 50vw;
+  max-width: 50vw;
+
+  font-size: small;
   height: 50vh;
   padding: 20px;
-  gap: 10px;
+  gap: 0.3em;
 
-  background-color: ${(props) => props.theme.color.primary};
+  background-color: ${(props) => props.theme.color.dark};
 
-  text-align: center;
-  font-weight: 700;
 
-  border-radius: 15px;
-  box-shadow: 3px 3px 5px ${(props) => props.theme.color.secondary};
+  border-radius: 0.2em;
+  box-shadow: 3px 3px 5px ${(props) => props.theme.color.shadow};
 
-  @media only screen and (max-width: 600px) {
+  @media only screen and (max-width: 769px) {
     width: 300px;
     max-width: 300px;
   }
@@ -31,7 +32,7 @@ export const Container = styled.main`
   height: 100vh;
   width: 100vw;
   
-  background-color:${props => props.theme.color.dark} ;
+  background-color:${props => props.theme.color.primary} ;
   position: fixed;
   display: flex;
   top: 0;

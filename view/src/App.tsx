@@ -10,6 +10,7 @@ import Dashboard from "./Pages/Dashboard";
 import Fluxo from "./Pages/Fluxo";
 import Usuarios from "./Pages/Usuarios";
 import Usuario from "./Pages/Usuario";
+import Registrar from "./Pages/Registrar";
 
 import light from "./themes/light";
 import Sidebar from "./Components/Sidebar";
@@ -21,14 +22,15 @@ function App() {
         <GlobalStyle />
         <Sidebar></Sidebar>
         <Header></Header>
-        <Body>
+        {/* <Body> */}
           {/* <Usuarios></Usuarios> */}
-          <Usuario></Usuario>
+          {/* <Usuario></Usuario> */}
           {/* <Dashboard></Dashboard> */}
           {/* <Fluxo></Fluxo> */}
 
-        </Body>
+        {/* </Body> */}
         {/* <Login></Login> */}
+        <Registrar></Registrar>
       </Main>
     </ThemeProvider>
   );

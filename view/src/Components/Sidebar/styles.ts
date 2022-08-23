@@ -39,6 +39,6 @@ export const Item = styled.li`
     :hover{
         transition: 0.2s ease-in-out;
         border-radius: 0.5em;
-        background-color: #88c2b933;
+        background-color: #ffffff50;
     }
 `

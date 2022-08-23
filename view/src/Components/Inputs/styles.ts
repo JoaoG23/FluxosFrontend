@@ -8,9 +8,10 @@ export const PrimaryInputStyle = styled.input`
   border-bottom: 3px solid ${(props) => props.theme.color.fifth};
   border-right: 3px solid ${(props) => props.theme.color.fifth};
 
-  box-shadow: 1px 1px 3px ${(props) => props.theme.color.shadow};
+  box-shadow: 1px 1px 3px ${(props) => props.theme.color.shadowlight};
 
   background-color: ${(props) => props.theme.color.light};
+
 `;
 
 export const SecondaryInputStyle = styled(PrimaryInputStyle)`

@@ -7,7 +7,7 @@ export const ContainerStyle = styled.main`
   gap: 10px;
   font-size: 0.8rem;
   margin: 2em;
-  width: 20vw;
+  width: 23vw;
 
   border-radius: 1em;
   height: 60vh;
@@ -20,7 +20,15 @@ export const ContainerStyle = styled.main`
     gap: 10px;
   }
 
+  @media screen and (max-width: 1290px) {
+
+    justify-content: center;
+    width: 40vw;
+    margin-top: 1em;
+  }
   @media screen and (max-width: 769px) {
+
+    justify-content: center;
     width: 90vw;
     margin-top: 1em;
   }
