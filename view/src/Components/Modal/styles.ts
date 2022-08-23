@@ -47,6 +47,9 @@ export const ModalStyle = styled.div`
 
   border: none;
   border-radius: 25px;
-
   box-shadow: 3px 3px 10px ${(props) => props.theme.color.secondary};
+
+  @media screen and (max-width:769px) {
+    width:90vw;
+  }
 `;

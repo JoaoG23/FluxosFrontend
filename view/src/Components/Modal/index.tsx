@@ -12,7 +12,6 @@ const Modal :React.FC<Iinfo> = ({
 }) => (
         <ModalBackgroundStyle>
             <ModalStyle>
-                {/* <img alt="iconsinfo" src="./assets/infoicon.svg"></img> */}
                 {children}
             </ModalStyle>
         </ModalBackgroundStyle>

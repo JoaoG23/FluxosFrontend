@@ -21,6 +21,7 @@ export const Form = styled.div`
   border-radius: 15px;
   box-shadow: 3px 3px 5px ${(props) => props.theme.color.secondary};
 
+  animation: entradaSuave 1s alternate forwards;
   @media only screen and (max-width: 600px) {
     width: 300px;
     max-width: 300px;
@@ -30,11 +31,14 @@ export const Form = styled.div`
 export const Container = styled.main`
   height: 100vh;
   width: 100vw;
+
+
   
   background-color:${props => props.theme.color.dark} ;
   position: fixed;
   display: flex;
   top: 0;
+  z-index: 0;
   align-items: center;
   justify-content: center;
 `;

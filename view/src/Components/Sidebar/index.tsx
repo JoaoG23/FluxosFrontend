@@ -1,6 +1,7 @@
-import { SidebarStyle, Logo,Item } from "./styles";
 import React from "react";
+import { Link } from "react-router-dom";
 import listaItensMenu from "./data/listaMenu";
+import { SidebarStyle, Logo,Item } from "./styles";
 
 const Sidebar: React.FC = () => {
   // Lembrar de POOO
@@ -11,7 +12,7 @@ const Sidebar: React.FC = () => {
       </div>
       <ul>
         {listaItensMenu.map((item) => (
-          <Item key={item.id}>{item.descricao}</Item>
+          <Item key={item.id}><Link to={item.path}>{item.descricao}</Link></Item>
         ))}
       </ul>
     </SidebarStyle>

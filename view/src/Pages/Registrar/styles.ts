@@ -15,6 +15,7 @@ export const Form = styled.div`
   height: 50vh;
   padding: 20px;
   gap: 0.3em;
+  animation: entradaSuave 1s alternate forwards;
 
   background-color: ${(props) => props.theme.color.dark};
 
@@ -30,12 +31,12 @@ export const Form = styled.div`
 
 export const Container = styled.main`
   height: 100vh;
-  width: 100vw;
-  
+  width: 100vw;  
   background-color:${props => props.theme.color.primary} ;
   position: fixed;
   display: flex;
   top: 0;
+  
   align-items: center;
   justify-content: center;
 `;

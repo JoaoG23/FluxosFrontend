@@ -10,14 +10,16 @@ export const ContainerStyle = styled.main`
   width: 75vw;
   border-radius: 1em;
   height: 70vh;
+
+  animation: entradaSuave 0.5s ease-out;
   background-color: ${(props) => props.theme.color.light};
-  box-shadow: ${(props) => props.theme.color.shadow};
+  box-shadow:1px 1px 4px ${(props) => props.theme.color.shadow};
 
   @media screen and (max-width: 769px) {
     width: 90vw;
     margin-top: 1em;
   }
-
+/* 
   @keyframes entradaSuave {
     0% {
       transform: translateY(100vh);
@@ -27,7 +29,7 @@ export const ContainerStyle = styled.main`
       transform: translateY(0vh);
       opacity: 1;
     }
-  }
+  } */
 `;
 
 export const HeaderStyle = styled.div`
@@ -36,6 +38,7 @@ export const HeaderStyle = styled.div`
   width: 100%;
   height: 5vh;
 
+  animation: entradaSuave 0.3s ease-out;
   @media screen and (max-width: 769px) {
   }
 `;
@@ -49,7 +52,9 @@ export const TableStyle = styled.table`
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
   border-style:border-collapse;
+  animation: entradaSuave 0.5s ease-out;
   th {
+    animation: entradaSuave 0.5s ease-out;
     color: ${(props) => props.theme.color.light};
     background-color: ${(props) => props.theme.color.dark};
     padding: 0.5em;

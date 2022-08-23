@@ -1,4 +1,7 @@
 import { useState } from "react";
+import { useNavigate } from 'react-router-dom';
+
+
 import { Form, Container, HiperLink, Title } from "./styles";
 import Input from "../../Components/Inputs/PrimaryInput";
 import PrimaryButton from "../../Components/Buttons/ButtonDark";
@@ -65,6 +68,12 @@ const Login: React.FC = () => {
     showOutModal();
   } 
 
+  const navigate = useNavigate();
+
+  const navigateToHome = () => {
+    navigate('/dash');
+  };
+
   return (
     <Container>
       <Form>
@@ -81,7 +90,7 @@ const Login: React.FC = () => {
         />
         <ContainerBottons>
           <PrimaryButton
-            onClick={logar}
+            onClick={navigateToHome}
           >
             Logar 
           </PrimaryButton>

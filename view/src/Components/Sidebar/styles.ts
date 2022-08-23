@@ -15,6 +15,11 @@ export const SidebarStyle = styled.header`
     background-color:${props => props.theme.color.dark};
     height: 100vh;
 
+    a{
+        text-decoration:none;
+        color:${props => props.theme.color.light};
+    }
+
     @media screen and (max-width:769px) {
 
         display: none;
@@ -37,10 +42,13 @@ export const Logo = styled.img`
 export const Item = styled.li`
     list-style: none;
     padding: 0.6em;
+
+    animation: entradaSuave 0.5s forwards;
+
     color:${props => props.theme.color.light};
     :hover{
         transition: 0.2s ease-in-out;
         border-radius: 0.5em;
-        background-color: #ffffff50;
+        background-color: #ffffff32;
     }
 `

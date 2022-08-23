@@ -25,7 +25,7 @@ export const BodyStyle = styled(HeaderStyle)`
 `;
 
 export const ChatsContainerStyle = styled(HeaderStyle)`
-  box-shadow: ${(props) => props.theme.color.shadow};
+  box-shadow:1px 1px 4px ${(props) => props.theme.color.shadow};
   border-radius: 1em;
   gap: 1em;
 
