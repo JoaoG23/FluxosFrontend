@@ -6,6 +6,8 @@ export const SidebarStyle = styled.header`
     display:flex;
     flex-direction: column;
     gap: 1em;
+    
+    z-index: -1;
     padding: 0.5em;
 
     box-shadow: 1px 1px 2px ${props => props.theme.color.dark};

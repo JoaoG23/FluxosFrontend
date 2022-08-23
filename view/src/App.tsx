@@ -22,15 +22,15 @@ function App() {
         <GlobalStyle />
         <Sidebar></Sidebar>
         <Header></Header>
-        {/* <Body> */}
+        <Body>
           {/* <Usuarios></Usuarios> */}
           {/* <Usuario></Usuario> */}
           {/* <Dashboard></Dashboard> */}
-          {/* <Fluxo></Fluxo> */}
+          <Fluxo></Fluxo>
 
-        {/* </Body> */}
+        </Body>
         {/* <Login></Login> */}
-        <Registrar></Registrar>
+        {/* <Registrar></Registrar> */}
       </Main>
     </ThemeProvider>
   );

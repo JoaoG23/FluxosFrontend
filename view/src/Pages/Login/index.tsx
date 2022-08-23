@@ -90,7 +90,7 @@ const Login: React.FC = () => {
         <HiperLink href="./senhaesquecida">Esqueci a minha senha</HiperLink>
       </Form>
       
-      <Modal prefix={show ? "flex" : ""}>{data.msg}</Modal>
+      {/* <Modal prefix={show ? "flex" : ""}>{data.msg}</Modal> */}
     </Container>
   );
   

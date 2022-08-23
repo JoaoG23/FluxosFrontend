@@ -2,13 +2,11 @@ import styled from "styled-components";
 
 export const PrimaryInputStyle = styled.input`
   border: none;
-  padding: 5px;
-  border-radius: 7px;
+  padding: 4px;
+  border-radius: 8px;
   font-weight: bold;
-  border-bottom: 3px solid ${(props) => props.theme.color.fifth};
-  border-right: 3px solid ${(props) => props.theme.color.fifth};
 
-  box-shadow: 1px 1px 3px ${(props) => props.theme.color.shadowlight};
+  box-shadow: 1px 1px 3px ${(props) => props.theme.color.shadow};
 
   background-color: ${(props) => props.theme.color.light};
 
