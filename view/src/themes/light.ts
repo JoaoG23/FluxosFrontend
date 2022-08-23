@@ -7,7 +7,7 @@ export default {
     dark: "#002333",
     shadow: "#063c2f5e",
     shadowlight:"#ffffff3e",
-    fifth: "#B4BEC9",
+    fifth: "#e1eaf3",
     light: "#FFFFFF",
   },
 };

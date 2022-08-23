@@ -4,6 +4,7 @@ export const ContainerStyle = styled.main`
   padding: 10px;
   display: grid;
   gap: 10px;
+  /* width: 90vw; */
 
 `;
 

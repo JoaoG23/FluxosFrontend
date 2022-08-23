@@ -6,12 +6,12 @@ export const ContainerStyle = styled.main`
   align-content:flex-start;
   gap: 10px;
   font-size: 0.8rem;
-  margin: 2em;
+  margin:0.5em;
   width: 75vw;
   height: 80vh;
 
   @media screen and (max-width: 769px) {
-    width: 90vw;
+    width: 80vw;
     margin-top: 1em;
   }
 

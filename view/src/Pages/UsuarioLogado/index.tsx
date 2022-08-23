@@ -2,10 +2,10 @@ import DarkButton from "../../Components/Buttons/ButtonDark";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import InputSecondary from "../../Components/Inputs/SecondaryInput";
 import { ContainerStyle, PerfilStyle, ContainerInputStyle } from "./styles";
-const Usuario = () => {
+const UsuarioLogado = () => {
   return (
     <ContainerStyle>
-      <h3>Usuário</h3>
+      <h3>Nome do Usuario</h3>
       
         <PerfilStyle src="./assets/perfil.svg"></PerfilStyle>
         <ContainerInputStyle>
@@ -42,4 +42,4 @@ const Usuario = () => {
   );
 };
 
-export default Usuario;
+export default UsuarioLogado;

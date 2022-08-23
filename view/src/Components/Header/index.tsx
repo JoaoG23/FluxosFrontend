@@ -1,35 +1,41 @@
 import {
-  ContainerLeftStyle,
+  ContainerRightStyle,
   MenuMobileStyle,
   HeaderStyle,
   BoxImg,
 } from "./styles";
 import React from "react";
+import { Link, useNavigate } from "react-router-dom";
+import ButtonDefault from "../Buttons/ButtonDefault";
 
 const Header: React.FC = () => {
+
+  const navigate = useNavigate();
+
+  const toUser = () => {
+    navigate('/admin/logado');
+  };
+  const toBack = () => {
+    navigate(-1);
+  };
+
   return (
     <HeaderStyle>
-      <ContainerLeftStyle>
+      <ContainerRightStyle>
         <MenuMobileStyle src="./assets/menusanduiche.svg"alt="voltar"></MenuMobileStyle>
-        <section>
+        <ButtonDefault onClick={toUser}>
           <BoxImg>
             <img src="./assets/perfil.svg" alt="perfil"></img>
           </BoxImg>
           <p>Usuário</p>
-        </section>
-      </ContainerLeftStyle>
-      <ContainerLeftStyle>
-        <div>
-          <img src="./assets/voltarsetabranca.svg" alt="voltar"></img>
-          <p>Sair</p>
-        </div>
-      </ContainerLeftStyle>
-      {/* <section>
-        <p>Usuário</p>
-        <BoxImg>
-          <img src="./assets/perfil.svg" alt="perfil"></img>
-        </BoxImg>
-      </section> */}
+        </ButtonDefault>
+      </ContainerRightStyle>
+      <ContainerRightStyle>
+        <ButtonDefault  onClick={toBack}>
+            <img src="./assets/voltarsetabranca.svg" alt="voltar"></img>
+          <p>Voltar</p>
+        </ButtonDefault>
+      </ContainerRightStyle>
     </HeaderStyle>
   );
 };

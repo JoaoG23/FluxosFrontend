@@ -1,17 +1,9 @@
 import { useState } from "react";
-import { Form, Container, HiperLink, Title } from "./styles";
+import { Link } from "react-router-dom";
+import { Form, Container } from "./styles";
 import Input from "../../Components/Inputs/PrimaryInput";
-// import ContainerBottons from "../../Components/ContainerButtons";
 import SecondaryButton from "../../Components/Buttons/SecondaryButton";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-import Modal from "../../Components/Modal";
-
-import getDataInput from "../../services/getDataInput";
-
-import requestAjax from "../../services/RequestAjax";
-import DarkButton from "../../Components/Buttons/ButtonDark";
-// import { endpoint } from "../../configs/endPoint";
-
 // Tipagens
 
 const Registrar: React.FC = () => {
@@ -28,7 +20,7 @@ const Registrar: React.FC = () => {
         <label>Digite a senha novamente</label>
         <Input type="text"></Input>
         <PrimaryButton>Registrar</PrimaryButton>
-          <SecondaryButton><a href="/index">Voltar</a></SecondaryButton>
+          <SecondaryButton><Link to={'/'}>Voltar</Link></SecondaryButton>
       </Form>
     </Container>
   );

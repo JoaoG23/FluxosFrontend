@@ -18,6 +18,7 @@ import requestAjax from "../../services/RequestAjax";
 // Tipagens 
 import { ResponseJ, DadosUsuario } from './types';
 import { IHandleValueElementHTML } from "./interfaces";
+import { Link } from "react-router-dom";
 
 const Login: React.FC = () => {
   const [error, setError] = useState(null);
@@ -71,7 +72,7 @@ const Login: React.FC = () => {
   const navigate = useNavigate();
 
   const navigateToHome = () => {
-    navigate('/dash');
+    navigate('/admin/dash');
   };
 
   return (
@@ -94,7 +95,7 @@ const Login: React.FC = () => {
           >
             Logar 
           </PrimaryButton>
-          <SecondaryButton>Registrar</SecondaryButton>
+          <SecondaryButton ><Link to={'/registrar'}>Registrar</Link></SecondaryButton>
         </ContainerBottons>
         <HiperLink href="./senhaesquecida">Esqueci a minha senha</HiperLink>
       </Form>

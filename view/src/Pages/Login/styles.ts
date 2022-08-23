@@ -21,6 +21,16 @@ export const Form = styled.div`
   border-radius: 15px;
   box-shadow: 3px 3px 5px ${(props) => props.theme.color.secondary};
 
+  a{
+    text-decoration: none;
+    color:${(props) => props.theme.color.dark};
+  }
+  
+  a:hover{
+    text-decoration: none;
+    color:${(props) => props.theme.color.light};
+  }
+
   animation: entradaSuave 1s alternate forwards;
   @media only screen and (max-width: 600px) {
     width: 300px;

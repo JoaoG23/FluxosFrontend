@@ -1,7 +1,6 @@
 import styled from "styled-components";
 
 export const ModalBackgroundStyle = styled.div`
-  /* display: ${props => (props.prefix ? 'flex':'none')}; */
   display: flex;
   position: fixed;
   z-index: 1;

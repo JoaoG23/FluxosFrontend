@@ -6,23 +6,33 @@ export const HeaderStyle = styled.header`
     height: 3.5em;
     display: flex;
     left: 20vw;
-    position: relative;
+    position: fixed;
     z-index: -1;
     
     justify-content: space-between;
     align-items: center;
     padding-left: 1vw;
     padding-right: 1vw;
-    box-shadow: 1px 1px 10px var(--sombra);
-
+    box-shadow: 1px 1px 3px ${props => props.theme.color.shadow};
+    
     text-align: center;
     color:${props => props.theme.color.light};
+
     
     section{
         gap:10px;
         display: flex;
         justify-content: space-between;
         align-items: center;
+        
+        text-decoration:none;
+        color:${props => props.theme.color.light} ;
+    }
+
+    section:hover{
+        border-radius: 4px;
+        background-color:${props => props.theme.color.dark} ;
+        color:${props => props.theme.color.light} ;
     }
     
     @media screen and (max-width:769px) {
@@ -32,14 +42,14 @@ export const HeaderStyle = styled.header`
         padding: 0vw;
         width: 100vw;
     }
-
+    
     
     `
 export const BoxImg = styled.div`
     padding: 7px;
     border-radius: 10px;
     background-color:${props => props.theme.color.light};
-`;
+    `;
 
 export const MenuMobileStyle = styled.img`
     display: none;
@@ -48,7 +58,7 @@ export const MenuMobileStyle = styled.img`
     }
 `;
 
-export const ContainerLeftStyle = styled.div`
+export const ContainerRightStyle = styled.div`
  display: flex;
  /* gap: 0.6em; */
-`;
+ `;
