@@ -4,7 +4,6 @@ export const ContainerStyle = styled.main`
   padding: 10px;
   display: grid;
   gap: 10px;
-  /* width: 90vw; */
 
 `;
 
@@ -35,15 +34,4 @@ export const ChatsContainerStyle = styled(HeaderStyle)`
   background-color: ${(props) => props.theme.color.light};
 
   animation: entradaSuave 0.5s forwards;
-
-  @keyframes entradaSuave {
-    0% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0vh);
-      opacity: 1;
-    }
-  }
 `;

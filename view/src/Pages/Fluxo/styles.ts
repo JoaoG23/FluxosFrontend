@@ -51,15 +51,22 @@ export const TableStyle = styled.table`
 
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
-  border-style:border-collapse;
   animation: entradaSuave 0.5s ease-out;
+  border-collapse: collapse;
   th {
+    border: none;
     animation: entradaSuave 0.5s ease-out;
     color: ${(props) => props.theme.color.light};
     background-color: ${(props) => props.theme.color.dark};
     padding: 0.5em;
   }
   tr:nth-child(odd){
+    border-radius: 10px;
     background-color:${(props) => props.theme.color.fifth} ;
+  }
+
+  td{
+    padding: 4px;
+    text-align: center;
   }
 `;

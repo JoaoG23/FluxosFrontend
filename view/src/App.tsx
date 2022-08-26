@@ -14,23 +14,27 @@ import light from "./themes/light";
 
 // import Login from "./Pages/Login";
 // import Registrar from "./Pages/Registrar";
+import store from "./Redux/store";
+import { Provider } from "react-redux";
 
 function App() {
   return (
-    <ThemeProvider theme={light}>
-      <>
-        <GlobalStyle />
-        <Router>
-          <Sidebar></Sidebar>
-          <Header></Header>
-          <Body>
-            <AdminRouters/>
-            <ComumRouters/>
-          </Body>
-            <InicialRouters/>
-        </Router>
-      </>
-    </ThemeProvider>
+    <Provider store={store}>
+      <ThemeProvider theme={light}>
+        <>
+          <GlobalStyle />
+          <Router>
+            <Sidebar></Sidebar>
+            <Header></Header>
+            <Body>
+              <AdminRouters />
+              <ComumRouters />
+            </Body>
+            <InicialRouters />
+          </Router>
+        </>
+      </ThemeProvider>
+    </Provider>
   );
 }
 

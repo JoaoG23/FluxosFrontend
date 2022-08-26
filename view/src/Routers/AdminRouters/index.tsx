@@ -6,12 +6,14 @@ import UsuarioLogado from "../../Pages/UsuarioLogado";
 import Login from "../../Pages/Login";
 import AdicionarUsuario from "../../Pages/AdicionarUsuario";
 import EditarUsuario from "../../Pages/EditarUsuario";
+import Configuracoes from "../../Pages/Configuracao";
 
 
 const AdminRouters = () => {
   return (
     <Routes>
       <Route path="/admin/dash" element={<Dashboard />}></Route>
+      <Route path="/admin/configuracao" element={<Configuracoes />}></Route>
       <Route path="/admin/fluxo" element={<Fluxo />}></Route>
       <Route path="/admin/usuarios/:id" element={<EditarUsuario />}></Route>
       <Route path="/admin/usuarios" element={<Usuarios />}></Route>
