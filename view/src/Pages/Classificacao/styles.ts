@@ -16,26 +16,15 @@ export const ContainerStyle = styled.main`
   }
 
   @media screen and (max-width: 769px) {
-    width: 80vw;
+    width: 90vw;
     margin-top: 1em;
+
+    grid-template-columns: auto ;
   }
 
-  @keyframes entradaSuave {
-    0% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0vh);
-      opacity: 1;
-    }
-  }
+
 `;
 
-export const GroupBtnStyle = styled.div`
-  display: flex;
-  gap: 3px;
-`
 
 
 

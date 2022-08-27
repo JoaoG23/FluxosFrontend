@@ -12,7 +12,8 @@ export const CardStyle = styled.div`
   align-items: center;
   padding: 1em;
   background-color: ${(props) => props.theme.color.light};
-  animation: entradaSuave 0.5s forwards;
+  animation: entradaSuave 0.6s ease-out;
+
 
   @keyframes entradaSuave {
     0% {

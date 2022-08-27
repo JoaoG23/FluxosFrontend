@@ -1,3 +1,4 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 
 const initState = {
   saldoAtual: [],
@@ -6,7 +7,7 @@ const initState = {
 };
 
 
-export default function dashReducer(state = initState, action:any) {
+export default function dashReducer(state = initState, action:PayloadAction) {
   const { type, payload } = action;
   switch (type) {
     case "SET_SALDO_ATUAL":

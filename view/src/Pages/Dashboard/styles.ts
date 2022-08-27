@@ -4,6 +4,7 @@ export const ContainerStyle = styled.main`
   padding: 10px;
   display: grid;
   gap: 10px;
+  animation: entradaSuave 0.8s;
 
 `;
 
@@ -33,5 +34,4 @@ export const ChatsContainerStyle = styled(HeaderStyle)`
   padding: 1em;
   background-color: ${(props) => props.theme.color.light};
 
-  animation: entradaSuave 0.5s forwards;
 `;

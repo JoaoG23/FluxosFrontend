@@ -2,11 +2,11 @@ import { Link, useNavigate } from "react-router-dom";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import Card from "../../Components/Card";
-import { listaConfiguracao } from "./data/listaConfiguracao";
-import { Configuracao } from "./types/Configuracao";
+import { listaClassificacao } from "./data/listaClassificacao";
+import { Classificao } from "./types/Configuracao";
 
 import { ContainerStyle } from "./styles";
-const Configuracoes = () => {
+const Classificacao = () => {
   // const navigate = useNavigate();
 
   // const toEdit = (id: number | string) => {
@@ -15,10 +15,10 @@ const Configuracoes = () => {
 
   return (
     <ContainerStyle>
-      {listaConfiguracao.map((configuracao: Configuracao) => (
+      {listaClassificacao.map((configuracao: Classificao) => (
         <Link to={configuracao.path}>
           <Card>
-            <p key={configuracao.id}>{configuracao.descricao}</p>
+            <h3 key={configuracao.id}>{configuracao.descricao}</h3>
             <img src={configuracao.img} alt={configuracao.descricao}></img>
           </Card>
         </Link>
@@ -27,4 +27,4 @@ const Configuracoes = () => {
   );
 };
 
-export default Configuracoes;
+export default Classificacao;

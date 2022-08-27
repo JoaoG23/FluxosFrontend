@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import { HeaderStyle, ContainerStyle, TableStyle } from "./styles";
 import Modal from "../../Components/Modal";
@@ -12,10 +12,6 @@ import urlBase from "../../services/UrlBase";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 import { setIsCarregado } from "../../Redux/actions/carregadorActions";
 
-import {
-  setMostrarModal,
-  setEsconderModal,
-} from "../../Redux/actions/modalActions";
 
 import { DadosItem } from "./types";
 
@@ -26,12 +22,11 @@ const Fluxo = () => {
     (store: InformacoesItemsStore) => store?.fluxo?.items
   );
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
-  const modal = useSelector((store: any) => store?.modal);
 
   useEffect(() => {
     const loadItemsFluxo = async () => {
       const todosItems = await urlBase.get("/admin/fluxo");
-
+      
       dispatch(setIsCarregado());
       dispatch(setTodosItemsFluxoCaixa(todosItems.data));
     };
@@ -52,17 +47,13 @@ const Fluxo = () => {
   };
 
   // --------- Modal ----
-  function mostrarModalAdd() {
-    dispatch(setMostrarModal());
-  }
-
-  function esconderModalAdd() {
-    dispatch(setEsconderModal());
-  }
+  const [showModaladd, setShowModaladd] = useState(false);
+  const mostrarModalAdd = () => setShowModaladd(true);
+  const esconderModalAdd =() => setShowModaladd(false);
 
   return (
     <ContainerStyle>
-      {modal && (
+      {showModaladd && (
         <Modal>
           <h2>Adicione um Item</h2>
           

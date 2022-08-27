@@ -16,16 +16,6 @@ export const Form = styled.div`
   gap: 0.5em;
   animation: entradaSuave 1s alternate forwards;
 
-  @keyframes entradaSuave {
-    0% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0vh);
-      opacity: 1;
-    }
-  }
 
   background-color: ${(props) => props.theme.color.dark};
 

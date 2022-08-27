@@ -39,16 +39,6 @@ export const ContainerStyle = styled.main`
     }
   }
 
-  @keyframes entradaSuave {
-    0% {
-      transform: translateX(100vw);
-      opacity: 0;
-    }
-    100% {
-      transform: translateX(0vw);
-      opacity: 1;
-    }
-  }
 `;
 
 export const PerfilStyle = styled.img`

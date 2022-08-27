@@ -11,7 +11,7 @@ export const ContainerStyle = styled.main`
   border-radius: 1em;
   height: 70vh;
 
-  animation: entradaSuave 0.5s ease-out;
+  animation: entradaSuave 0.8s ease-out;
   background-color: ${(props) => props.theme.color.light};
   box-shadow:1px 1px 4px ${(props) => props.theme.color.shadow};
 
@@ -19,17 +19,6 @@ export const ContainerStyle = styled.main`
     width: 90vw;
     margin-top: 1em;
   }
-/* 
-  @keyframes entradaSuave {
-    0% {
-      transform: translateY(100vh);
-      opacity: 0;
-    }
-    100% {
-      transform: translateY(0vh);
-      opacity: 1;
-    }
-  } */
 `;
 
 export const HeaderStyle = styled.div`
@@ -38,9 +27,6 @@ export const HeaderStyle = styled.div`
   width: 100%;
   height: 5vh;
 
-  animation: entradaSuave 0.3s ease-out;
-  @media screen and (max-width: 769px) {
-  }
 `;
 
 export const TableStyle = styled.table`
@@ -51,11 +37,9 @@ export const TableStyle = styled.table`
 
   border-top-right-radius: 1em;
   border-top-left-radius: 1em;
-  animation: entradaSuave 0.5s ease-out;
   border-collapse: collapse;
   th {
     border: none;
-    animation: entradaSuave 0.5s ease-out;
     color: ${(props) => props.theme.color.light};
     background-color: ${(props) => props.theme.color.dark};
     padding: 0.5em;

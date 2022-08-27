@@ -5,6 +5,7 @@ export const Body = styled.div`
   position: absolute;
   display: flex;
   z-index: -2;
+  overflow-x: hidden;
   
   top:15vh;
   width: 80vw;
