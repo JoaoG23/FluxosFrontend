@@ -10,27 +10,22 @@ import urlBase from "../../services/UrlBase";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 import { setIsCarregado } from "../../Redux/actions/carregadorActions";
 
-import { setAllElementos } from "../../Redux/actions/elementosActions";
-
-import {
-  InfoElementos,
-  ElementosDados,
-} from "../../Redux/types/elementosTypes";
+import { setAllTipos } from "../../Redux/actions/tiposActions";
+import { TiposDados, InfoTipos } from "../../Redux/types/tiposTypes";
 import Card from "../../Components/Card";
 
-const Elementos = () => {
+const Tipos = () => {
   const dispatch = useDispatch();
-  const elementos = useSelector(
-    (store: InfoElementos) => store?.elementos?.elemento
-  );
+  const tipos = useSelector((store: InfoTipos) => store?.tipos?.tipo);
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
   useEffect(() => {
     const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/elementos");
+      const todosItems = await urlBase.get("/admin/tipos");
       dispatch(setIsCarregado());
-      dispatch(setAllElementos(todosItems.data));
+      console.info(todosItems.data);
+      dispatch(setAllTipos(todosItems.data));
     };
     getAll();
   }, [dispatch]);
@@ -55,16 +50,16 @@ const Elementos = () => {
 
   return (
     <ContainerStyle>
-      {elementos?.map((elemento: ElementosDados) => (
-        <Card key={elemento.idelementos}>
-          <h4>{elemento.idelementos}</h4>
-          <h4>{elemento.descricao_elementos}</h4>
+      {tipos?.map((tipo: TiposDados) => (
+        <Card key={tipo.id_tipos}>
+          <p>{tipo.id_tipos}</p>
+          <p>{tipo.descricao_tipos}</p>
           <div>
             <DarkButton>
-              <img src="./assets/remover.svg"></img>
+              <img src="./assets/remover.svg" alt="remover"></img>
             </DarkButton>
             <PrimaryButton>
-              <img src="./assets/editar.svg"></img>
+              <img src="./assets/editar.svg" alt="editar"></img>
             </PrimaryButton>
           </div>
         </Card>
@@ -85,4 +80,4 @@ const Elementos = () => {
   );
 };
 
-export default Elementos;
+export default Tipos;

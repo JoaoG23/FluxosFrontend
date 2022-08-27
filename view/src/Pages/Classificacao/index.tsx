@@ -18,7 +18,7 @@ const Classificacao = () => {
       {listaClassificacao.map((configuracao: Classificao) => (
         <Link to={configuracao.path}>
           <Card>
-            <h3 key={configuracao.id}>{configuracao.descricao}</h3>
+            <p key={configuracao.id}>{configuracao.descricao}</p>
             <img src={configuracao.img} alt={configuracao.descricao}></img>
           </Card>
         </Link>

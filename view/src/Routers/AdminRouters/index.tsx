@@ -9,6 +9,8 @@ import Configuracoes from "../../Pages/Configuracao";
 import Classificacao from "../../Pages/Classificacao";
 import Elementos from "../../Pages/Elementos";
 import Subelementos from "../../Pages/Subelementos";
+import Tipos from "../../Pages/Tipos";
+import Subtipos from "../../Pages/Subtipos";
 
 const AdminRouters = () => {
   return (
@@ -18,6 +20,8 @@ const AdminRouters = () => {
       <Route path="/admin/classificacao" element={<Classificacao />} />
       <Route path="/admin/elementos" element={<Elementos />} />
       <Route path="/admin/subelementos" element={<Subelementos />} />
+      <Route path="/admin/tipos" element={<Tipos />} />
+      <Route path="/admin/subtipos" element={<Subtipos />} />
       <Route path="/admin/fluxo" element={<Fluxo />} />
       <Route path="/admin/usuarios/:id" element={<EditarUsuario />} />
       <Route path="/admin/usuarios" element={<Usuarios />} />

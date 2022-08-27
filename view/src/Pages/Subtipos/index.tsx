@@ -10,27 +10,21 @@ import urlBase from "../../services/UrlBase";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 import { setIsCarregado } from "../../Redux/actions/carregadorActions";
 
-import { setAllElementos } from "../../Redux/actions/elementosActions";
-
-import {
-  InfoElementos,
-  ElementosDados,
-} from "../../Redux/types/elementosTypes";
+import { setAllSubtipos } from "../../Redux/actions/subtiposActions";
+import { SubtiposDados,InfoSubtipos } from "../../Redux/types/subtiposTypes";
 import Card from "../../Components/Card";
 
-const Elementos = () => {
+const Subtipos = () => {
   const dispatch = useDispatch();
-  const elementos = useSelector(
-    (store: InfoElementos) => store?.elementos?.elemento
-  );
+  const subtipos = useSelector((store:InfoSubtipos) => store?.subtipos?.subtipo);
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
   useEffect(() => {
     const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/elementos");
+      const todosItems = await urlBase.get("/admin/subtipos");
       dispatch(setIsCarregado());
-      dispatch(setAllElementos(todosItems.data));
+      dispatch(setAllSubtipos(todosItems.data));
     };
     getAll();
   }, [dispatch]);
@@ -55,16 +49,16 @@ const Elementos = () => {
 
   return (
     <ContainerStyle>
-      {elementos?.map((elemento: ElementosDados) => (
-        <Card key={elemento.idelementos}>
-          <h4>{elemento.idelementos}</h4>
-          <h4>{elemento.descricao_elementos}</h4>
+      {subtipos?.map((subtipo: SubtiposDados) => (
+        <Card key={subtipo.idsubtipos}>
+          <p>{subtipo.idsubtipos}</p>
+          <p>{subtipo.descricao_subtipos}</p>
           <div>
             <DarkButton>
-              <img src="./assets/remover.svg"></img>
+              <img src="./assets/remover.svg" alt="remover"></img>
             </DarkButton>
             <PrimaryButton>
-              <img src="./assets/editar.svg"></img>
+              <img src="./assets/editar.svg" alt="editar"></img>
             </PrimaryButton>
           </div>
         </Card>
@@ -85,4 +79,4 @@ const Elementos = () => {
   );
 };
 
-export default Elementos;
+export default Subtipos;
