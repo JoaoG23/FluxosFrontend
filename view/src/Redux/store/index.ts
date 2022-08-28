@@ -8,6 +8,7 @@ import subelementosReducer from "../reducers/subelementosReducer";
 import tiposReducer from "../reducers/tiposReducer";
 import subtiposReducer from "../reducers/subtiposReducer";
 import minitiposReducer from "../reducers/minitiposReducer";
+import nanotiposReducer from "../reducers/nanotiposReducer";
 
 const allReducers = combineReducers({
   carregador: carregadorReducer,
@@ -18,7 +19,8 @@ const allReducers = combineReducers({
   subelementos:subelementosReducer,
   tipos:tiposReducer,
   subtipos:subtiposReducer,
-  minitipos:minitiposReducer
+  minitipos:minitiposReducer,
+  nanotipos:nanotiposReducer
 });
 
 const store = createStore(allReducers);
