@@ -11,7 +11,7 @@ import Elementos from "../../Pages/Elementos";
 import Subelementos from "../../Pages/Subelementos";
 import Tipos from "../../Pages/Tipos";
 import Subtipos from "../../Pages/Subtipos";
-
+import Minitipos from "../../Pages/Minitipos";
 const AdminRouters = () => {
   return (
     <Routes>
@@ -22,6 +22,8 @@ const AdminRouters = () => {
       <Route path="/admin/subelementos" element={<Subelementos />} />
       <Route path="/admin/tipos" element={<Tipos />} />
       <Route path="/admin/subtipos" element={<Subtipos />} />
+      <Route path="/admin/minitipos" element={<Minitipos />} />
+      <Route path="/admin/nanotipos" element={<Minitipos />} />
       <Route path="/admin/fluxo" element={<Fluxo />} />
       <Route path="/admin/usuarios/:id" element={<EditarUsuario />} />
       <Route path="/admin/usuarios" element={<Usuarios />} />

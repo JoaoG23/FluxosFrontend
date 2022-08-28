@@ -7,6 +7,7 @@ import elementoReducer from "../reducers/elementosReducer";
 import subelementosReducer from "../reducers/subelementosReducer";
 import tiposReducer from "../reducers/tiposReducer";
 import subtiposReducer from "../reducers/subtiposReducer";
+import minitiposReducer from "../reducers/minitiposReducer";
 
 const allReducers = combineReducers({
   carregador: carregadorReducer,
@@ -16,7 +17,8 @@ const allReducers = combineReducers({
   elementos:elementoReducer,
   subelementos:subelementosReducer,
   tipos:tiposReducer,
-  subtipos:subtiposReducer
+  subtipos:subtiposReducer,
+  minitipos:minitiposReducer
 });
 
 const store = createStore(allReducers);
