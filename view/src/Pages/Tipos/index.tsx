@@ -20,16 +20,6 @@ const Tipos = () => {
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
-  useEffect(() => {
-    const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/tipos");
-      dispatch(setIsCarregado());
-      console.info(todosItems.data);
-      dispatch(setAllTipos(todosItems.data));
-    };
-    getAll();
-  }, [dispatch]);
-
   // ---------- Deletar item
 
   // const deleteItemById = async (idItem: DadosItem) => {

@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import { HeaderStyle, ContainerStyle, TableStyle } from "./styles";
-import Modal from "../../Components/Modal";
-import InputPrimary from "../../Components/Inputs/PrimaryInput";
+
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import { InformacoesItemsStore } from "../../Redux/types/fluxoTypes";
 import { setTodosItemsFluxoCaixa } from "../../Redux/actions/fluxoActions";
@@ -14,10 +13,10 @@ import { setIsCarregado } from "../../Redux/actions/carregadorActions";
 
 
 import { DadosItem } from "./types";
+import { Link } from "react-router-dom";
 
 const Fluxo = () => {
   const dispatch = useDispatch();
-
   const dadosItems = useSelector(
     (store: InformacoesItemsStore) => store?.fluxo?.items
   );
@@ -25,13 +24,17 @@ const Fluxo = () => {
 
   useEffect(() => {
     const loadItemsFluxo = async () => {
-      const todosItems = await urlBase.get("/admin/fluxo");
-      
-      dispatch(setIsCarregado());
-      dispatch(setTodosItemsFluxoCaixa(todosItems.data));
+      try {
+        const todosItems = await urlBase.get("/admin/fluxo");
+        dispatch(setIsCarregado());
+        dispatch(setTodosItemsFluxoCaixa(todosItems.data));
+      } catch (error) {
+        console.error(error);
+      }
     };
     loadItemsFluxo();
-  }, [dispatch]);
+  }, []);
+
 
   // ---------- Deletar item
 
@@ -39,44 +42,33 @@ const Fluxo = () => {
     let idEncontrado = idItem.id_item_fluxo;
     const respostaItem = await urlBase.delete(`/admin/fluxo/${idEncontrado}`);
 
-    const filterItensConta: any = dadosItems?.filter( // Eliminar do frontend
+    const filterItensConta: any = dadosItems?.filter(
+      // Eliminar do frontend
       (dado: DadosItem) => dado.id_item_fluxo !== idItem.id_item_fluxo
     );
     dispatch(setTodosItemsFluxoCaixa(filterItensConta));
-
   };
 
   // --------- Modal ----
   const [showModaladd, setShowModaladd] = useState(false);
   const mostrarModalAdd = () => setShowModaladd(true);
-  const esconderModalAdd =() => setShowModaladd(false);
+
+  const [checked, setChecked] = useState(false);
+
+  const handleChange = () => {
+    setChecked(!checked);
+    console.log()
+  };
+
+  const esconderModalAdd = () => setShowModaladd(false);
 
   return (
     <ContainerStyle>
-      {showModaladd && (
-        <Modal>
-          <h2>Adicione um Item</h2>
-          
-          <InputPrimary type="text" descricaoPlaceholder="Ano"/>
-          <InputPrimary type="text" descricaoPlaceholder="Mês"/>
-          <InputPrimary type="text" descricaoPlaceholder="Dia"/>
-          <InputPrimary type="text" descricaoPlaceholder="Elementos" />
-          <InputPrimary type="text" descricaoPlaceholder="Subelementos" />
-          <InputPrimary type="text" descricaoPlaceholder="Tipos" />
-          <InputPrimary type="text" descricaoPlaceholder="Subtipos" />
-          <InputPrimary type="text" descricaoPlaceholder="Minitipos" />
-          <InputPrimary type="text" descricaoPlaceholder="Nanotipos" />
-          <InputPrimary type="text" descricaoPlaceholder="descricão do Item" />
-
-          <PrimaryButton>+ Adicionar</PrimaryButton>
-          <DarkButton onClick={esconderModalAdd}>X</DarkButton>
-        </Modal>
-      )}
       <HeaderStyle>
         <h2>Fluxo de Caixa</h2>
-        <div>
-          <PrimaryButton onClick={mostrarModalAdd}>+ adicionar</PrimaryButton>
-        </div>
+        <Link to={'/admin/fluxo/add'}>
+          <PrimaryButton >+ adicionar</PrimaryButton>
+        </Link>
       </HeaderStyle>
       <TableStyle>
         <thead>
@@ -135,6 +127,13 @@ const Fluxo = () => {
             </tr>
           ))}
         </tbody>
+        {/* <div>
+          <label></label>
+          <input type="checkbox"
+          checked={checked}
+          onChange={handleChange}></input>
+          <p>Permissão concedida ? {checked.toString()}</p>
+        </div> */}
       </TableStyle>
     </ContainerStyle>
   );

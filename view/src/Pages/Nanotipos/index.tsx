@@ -21,16 +21,6 @@ const Nanotipos = () => {
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
-  useEffect(() => {
-    const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/nanotipos");
-      console.info(todosItems);
-      dispatch(setIsCarregado());
-      dispatch(setAllNanotipos(todosItems.data));
-    };
-    getAll();
-  }, [dispatch]);
-
   // ---------- Deletar item
 
   // const deleteItemById = async (idItem: DadosItem) => {
@@ -54,7 +44,7 @@ const Nanotipos = () => {
       {nanotipos?.map((subtipo: NanotiposDados) => (
         <Card key={subtipo.id_nanotipos}>
           <p>{subtipo.id_nanotipos}</p>
-          <h3>{subtipo.descricao_nanotipos}</h3>
+          <p>{subtipo.descricao_nanotipos}</p>
           <div>
             <DarkButton>
               <img src="./assets/removerpequeno.svg" alt="remover"></img>

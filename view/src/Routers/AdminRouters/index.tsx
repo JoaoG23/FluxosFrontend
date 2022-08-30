@@ -13,6 +13,7 @@ import Tipos from "../../Pages/Tipos";
 import Subtipos from "../../Pages/Subtipos";
 import Minitipos from "../../Pages/Minitipos";
 import Nanotipos from "../../Pages/Nanotipos";
+import AdicionarFluxo from "../../Pages/AdicionarFluxo";
 
 const AdminRouters = () => {
   return (
@@ -27,6 +28,7 @@ const AdminRouters = () => {
       <Route path="/admin/minitipos" element={<Minitipos />} />
       <Route path="/admin/nanotipos" element={<Nanotipos />} />
       <Route path="/admin/fluxo" element={<Fluxo />} />
+      <Route path="/admin/fluxo/add" element={<AdicionarFluxo />} />
       <Route path="/admin/usuarios/:id" element={<EditarUsuario />} />
       <Route path="/admin/usuarios" element={<Usuarios />} />
       <Route path="/admin/logado" element={<UsuarioLogado />} />

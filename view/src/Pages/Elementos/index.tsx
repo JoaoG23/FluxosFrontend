@@ -26,14 +26,6 @@ const Elementos = () => {
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
-  useEffect(() => {
-    const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/elementos");
-      dispatch(setIsCarregado());
-      dispatch(setAllElementos(todosItems.data));
-    };
-    getAll();
-  }, [dispatch]);
 
   // ---------- Deletar item
 
@@ -57,8 +49,8 @@ const Elementos = () => {
     <ContainerStyle>
       {elementos?.map((elemento: ElementosDados) => (
         <Card key={elemento.idelementos}>
-          <h4>{elemento.idelementos}</h4>
-          <h4>{elemento.descricao_elementos}</h4>
+          <p>{elemento.idelementos}</p>
+          <p>{elemento.descricao_elementos}</p>
           <div>
             <DarkButton>
               <img src="./assets/remover.svg"></img>

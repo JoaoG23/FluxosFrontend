@@ -20,15 +20,7 @@ const Minitipos = () => {
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
-  useEffect(() => {
-    const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/minitipos");
-      console.info(todosItems);
-      dispatch(setIsCarregado());
-      dispatch(setAllMinitipos(todosItems.data));
-    };
-    getAll();
-  }, [dispatch]);
+
 
   // ---------- Deletar item
 
@@ -53,7 +45,7 @@ const Minitipos = () => {
       {minitipos?.map((subtipo: MinitiposDados) => (
         <Card key={subtipo.id_minitipos}>
           <p>{subtipo.id_minitipos}</p>
-          <h3>{subtipo.descricao_minitipos}</h3>
+          <p>{subtipo.descricao_minitipos}</p>
           <div>
             <DarkButton>
               <img src="./assets/remover.svg" alt="remover"></img>

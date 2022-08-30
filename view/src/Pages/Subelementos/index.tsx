@@ -19,16 +19,6 @@ const Subelementos = () => {
   const subelementos = useSelector((store: InfoSubelementos) => store?.subelementos?.subelemento);
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
-
-  useEffect(() => {
-    const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/subelementos/");
-      dispatch(setIsCarregado());
-      dispatch(setAllSubelementos(todosItems.data));
-    };
-    getAll();
-  }, [dispatch]);
-
   // ---------- Deletar item
 
   // const deleteItemById = async (idItem: DadosItem) => {

@@ -16,9 +16,18 @@ import Card from "../../Components/Card";
 import { dashStore } from "../../Redux/types/dashTypes";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 
+
+import { setAllElementos } from "../../Redux/actions/elementosActions";
+import { setAllSubelementos } from "../../Redux/actions/subelementosActions";
+import { setAllTipos } from "../../Redux/actions/tiposActions";
+import { setAllSubtipos } from "../../Redux/actions/subtiposActions";
+import { setAllMinitipos } from "../../Redux/actions/minitiposActions";
+import { setAllNanotipos } from "../../Redux/actions/nanotiposActions";
+
 const Dashboard = () => {
 
   const dispatch = useDispatch();
+  
 
   const isCarregado = useSelector((store:Carregador) => store?.carregador);
   const meuSaldo = useSelector((store: dashStore) => store?.dashboard?.saldoAtual);
@@ -26,10 +35,25 @@ const Dashboard = () => {
   const meuGanho = useSelector((store: dashStore) => store?.dashboard?.ganho);
 
   useEffect(() => {
+
+    
     const loadDash = async () => {
       const saldoAtual = await urlBase.get("/calculos/saldoatual/");
       const gasto = await urlBase.get("/calculos/mesatualgasto/");
       const ganho = await urlBase.get("/calculos/mesatualganho/");
+      const elementosAll = await urlBase.get("/admin/elementos");
+      const subelementosAll = await urlBase.get("/admin/subelementos");
+      const tiposAll = await urlBase.get("/admin/tipos");
+      const subtiposAll = await urlBase.get("/admin/subtipos");
+      const minitiposAll = await urlBase.get("/admin/minitipos");
+      const nanotiposAll = await urlBase.get("/admin/nanotipos");
+
+      dispatch(setAllElementos(elementosAll.data));
+      dispatch(setAllSubelementos(subelementosAll.data));
+      dispatch(setAllTipos(tiposAll.data));
+      dispatch(setAllSubtipos(subtiposAll.data));
+      dispatch(setAllMinitipos(minitiposAll.data));
+      dispatch(setAllNanotipos(nanotiposAll.data));
 
       dispatch(setIsCarregado());
       dispatch(setSaldoAtual(saldoAtual.data));

@@ -20,14 +20,6 @@ const Subtipos = () => {
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
-  useEffect(() => {
-    const getAll = async () => {
-      const todosItems = await urlBase.get("/admin/subtipos");
-      dispatch(setIsCarregado());
-      dispatch(setAllSubtipos(todosItems.data));
-    };
-    getAll();
-  }, [dispatch]);
 
   // ---------- Deletar item
 

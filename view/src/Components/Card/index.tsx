@@ -5,7 +5,6 @@ type ChildrensCard = {
     children?: string | JSX.Element | JSX.Element[];
   }
   
-// const [estado, setEstado] = useState();
 
 const Card :React.FC<ChildrensCard> = ({
     children,
