@@ -18,17 +18,20 @@ import { SecondaryInputStyle } from "../styles";
 
 type InputData = {
   descricaoPlaceholder?: React.HTMLInputTypeAttribute;
+  value?: string | number;
   type: React.HTMLInputTypeAttribute;
   onChange?: (e: React.ChangeEvent<HTMLInputElement>) => any;
 };
 
 const InputSecondary: React.FC<InputData> = ({
+  value,
   onChange,
   type,
   descricaoPlaceholder,
 }) => {
   return (
     <SecondaryInputStyle
+    value={value}
       onChange={onChange}
       type={type}
       placeholder={descricaoPlaceholder}

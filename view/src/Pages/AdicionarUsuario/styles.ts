@@ -39,6 +39,7 @@ export const ContainerStyle = styled.main`
     }
   }
 
+
 `;
 
 export const PerfilStyle = styled.img`

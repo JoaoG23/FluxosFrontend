@@ -3,13 +3,12 @@ import styled from "styled-components";
 export const ModalBackgroundStyle = styled.div`
   display: flex;
   position: fixed;
-  z-index: 1;
+  z-index: 2;
   top: 0;
   left: 0;
   width: 100vw;
   height: 100vh;
-  /* background-color: green; */
-  background-color: ${(props) => props.theme.color.shadow};
+  background-color: ${(props) => props.theme.color.shadowdark};
 
   align-items: center;
   justify-content: center;
@@ -46,7 +45,7 @@ export const ModalStyle = styled.div`
 
   border: none;
   border-radius: 25px;
-  box-shadow: 3px 3px 10px ${(props) => props.theme.color.secondary};
+  box-shadow: 2px 2px 5px ${(props) => props.theme.color.shadow};
 
   @media screen and (max-width:769px) {
     width:90vw;

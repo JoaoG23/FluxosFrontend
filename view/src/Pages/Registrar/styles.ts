@@ -11,30 +11,41 @@ export const Form = styled.div`
   max-width: 32vw;
 
   font-size: small;
-  height: 50vh;
-  padding: 20px;
+  height: 60vh;
+  padding: 2em;
   gap: 0.5em;
   animation: entradaSuave 1s alternate forwards;
 
-
+  div{
+    display: flex;
+    gap: 1em;
+    justify-content: center;
+  }
+  
   background-color: ${(props) => props.theme.color.dark};
-
+  
   a {
     text-decoration: none;
     color: ${(props) => props.theme.color.dark};
   }
-
+  
   a:hover {
     text-decoration: none;
     color: ${(props) => props.theme.color.light};
   }
-
+  
   border-radius: 0.2em;
   box-shadow: 3px 3px 5px ${(props) => props.theme.color.shadow};
-
+  
   @media only screen and (max-width: 769px) {
     width: 90vw;
     max-width: 90vw;
+    height: auto;
+    div{
+      display: grid;
+      gap: 0.4em;
+      justify-content:stretch;
+    }
   }
 `;
 

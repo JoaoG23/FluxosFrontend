@@ -1,21 +1,34 @@
 import { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+
+// Components
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import { HeaderStyle, ContainerStyle, TableStyle } from "./styles";
-
 import DarkButton from "../../Components/Buttons/ButtonDark";
+import AlertaDanger from "../../Components/Alerta/AlertaDanger";
+
+// Redux
 import { InformacoesItemsStore } from "../../Redux/types/fluxoTypes";
 import { setTodosItemsFluxoCaixa } from "../../Redux/actions/fluxoActions";
 import { useDispatch, useSelector } from "react-redux";
+import { setIsCarregado } from "../../Redux/actions/carregadorActions";
+import { Carregador } from "../../Redux/types/carregadorTypes";
+
+
+// Services
 import urlBase from "../../services/UrlBase";
 
-import { Carregador } from "../../Redux/types/carregadorTypes";
-import { setIsCarregado } from "../../Redux/actions/carregadorActions";
-
-
+// Types Component main
 import { DadosItem } from "./types";
-import { Link } from "react-router-dom";
 
 const Fluxo = () => {
+  const [error, setError] = useState<Error | null>(null);
+  const navigate = useNavigate();
+
+  const toEdit = (id: number | string) => {
+    navigate(`/admin/fluxo/${id}`);
+  };
+
   const dispatch = useDispatch();
   const dadosItems = useSelector(
     (store: InformacoesItemsStore) => store?.fluxo?.items
@@ -29,45 +42,49 @@ const Fluxo = () => {
         dispatch(setIsCarregado());
         dispatch(setTodosItemsFluxoCaixa(todosItems.data));
       } catch (error) {
+        setError(error as Error);
         console.error(error);
       }
     };
     loadItemsFluxo();
-  }, []);
-
+  }, [dispatch]);
 
   // ---------- Deletar item
 
   const deleteItemById = async (idItem: DadosItem) => {
-    let idEncontrado = idItem.id_item_fluxo;
-    const respostaItem = await urlBase.delete(`/admin/fluxo/${idEncontrado}`);
 
-    const filterItensConta: any = dadosItems?.filter(
-      // Eliminar do frontend
-      (dado: DadosItem) => dado.id_item_fluxo !== idItem.id_item_fluxo
-    );
-    dispatch(setTodosItemsFluxoCaixa(filterItensConta));
+    try {
+      
+      let idEncontrado = idItem.id_item_fluxo;
+      const respostaItem = await urlBase.delete(`/admin/fluxo/${idEncontrado}`);
+  
+      const filterItensConta: any = dadosItems?.filter(
+        // Eliminar do frontend
+        (dado: DadosItem) => dado.id_item_fluxo !== idItem.id_item_fluxo
+      );
+      dispatch(setTodosItemsFluxoCaixa(filterItensConta));
+    } catch (error) {
+      setError(error as Error);
+      console.error(error)
+    }
   };
 
   // --------- Modal ----
-  const [showModaladd, setShowModaladd] = useState(false);
-  const mostrarModalAdd = () => setShowModaladd(true);
+  // const [showModalDeletar, setShowModalDeletar] = useState(false);
 
-  const [checked, setChecked] = useState(false);
-
-  const handleChange = () => {
-    setChecked(!checked);
-    console.log()
-  };
-
-  const esconderModalAdd = () => setShowModaladd(false);
+  // const mostrarModalDeletar = (time: number) => {
+  //   setShowModalDeletar(true);
+  //   setTimeout(() => {
+  //     setShowModalDeletar(false);
+  //   }, time);
+  // };
 
   return (
     <ContainerStyle>
       <HeaderStyle>
         <h2>Fluxo de Caixa</h2>
-        <Link to={'/admin/fluxo/add'}>
-          <PrimaryButton >+ adicionar</PrimaryButton>
+        <Link to={"/admin/fluxo/add"}>
+          <PrimaryButton>+ adicionar</PrimaryButton>
         </Link>
       </HeaderStyle>
       <TableStyle>
@@ -111,7 +128,9 @@ const Fluxo = () => {
               <td>{item.valor_item_fluxo} R$</td>
               <td>{item.saldo_atual} R$</td>
               <td>
-                <PrimaryButton>
+                <PrimaryButton
+                  onClick={() => toEdit(item.id_item_fluxo as number)}
+                >
                   <img src="./assets/editarpequeno.svg" alt="editar"></img>
                 </PrimaryButton>
               </td>
@@ -127,14 +146,8 @@ const Fluxo = () => {
             </tr>
           ))}
         </tbody>
-        {/* <div>
-          <label></label>
-          <input type="checkbox"
-          checked={checked}
-          onChange={handleChange}></input>
-          <p>Permissão concedida ? {checked.toString()}</p>
-        </div> */}
       </TableStyle>
+      {error && <AlertaDanger>{error?.message}</AlertaDanger>}
     </ContainerStyle>
   );
 };

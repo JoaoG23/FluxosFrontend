@@ -1,16 +1,26 @@
-import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
-
-
-// Redux 
-
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Carregador } from "../../Redux/types/carregadorTypes";
-import { setIsCarregado } from "../../Redux/actions/carregadorActions";
+import { useNavigate, useParams } from "react-router-dom";
+
+// Componentes -----
+import PrimaryButton from "../../Components/Buttons/PrimaryButton";
+import { ContainerStyle, IconModal } from "./styles";
+import Modal from "../../Components/Modal";
+import SelectPrimary from "./SelectPrimary";
+
+// Services -----
+import urlBase from "../../services/UrlBase";
+import InputSecondary from "../../Components/Inputs/SecondaryInput";
+import getDataInput from "../../services/getDataInput";
+// import { useToBackUntilTime } from "../../services/toBackUntilTime";
+
+// Redux
 import {
   InfoElementos,
   ElementosDados,
 } from "../../Redux/types/elementosTypes";
+import { setIsCarregado } from "../../Redux/actions/carregadorActions";
+import { Carregador } from "../../Redux/types/carregadorTypes";
 import {
   InfoSubelementos,
   SubelementosDados,
@@ -26,32 +36,19 @@ import {
   NanotiposDados,
 } from "../../Redux/types/nanotiposTypes";
 
+// Types Components Main
 
-// Components
-
-import InputSecondary from "../../Components/Inputs/SecondaryInput";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-import { ContainerStyle, IconModal } from "./styles";
-import Modal from "../../Components/Modal";
-import SelectPrimary from "./SelectPrimary";
-
-// Services
-
-import urlBase from "../../services/UrlBase";
-import getDataInput from "../../services/getDataInput";
-// import { useToBackUntilTime } from '../../services/toBackUntilTime';
-
-// Types do Componente Main
-
-import { DadosItemFluxoCaixa } from '../../Types/DadosItemFluxoCaixa';
-import { RespostaServidor } from '../../Types/RespostaServidor';
+import { DadosItemFluxoCaixa } from "../../Types/DadosItemFluxoCaixa";
+import { IdItem } from '../../Types/IDItem'
 
 
-const AdicionarFluxo = () => {
+const EditarFluxo = () => {
+  const { id } = useParams();
 
   const [respostaServer, setRespostaServer] = useState<RespostaServidor>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
   const mostrarModalServer = () => setShowModalserver(true);
+  const esconderModaServer = () => setShowModalserver(false);
 
   const [valor, setValor] = useState<number>(0);
   const [descricao, setDescricao] = useState<string>("");
@@ -83,7 +80,49 @@ const AdicionarFluxo = () => {
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
-  const novoItem: DadosItemFluxoCaixa = {
+  type RespostaServidor = {
+    msg?: string;
+    situacao?: boolean;
+  };
+
+  useEffect(() => {
+    const buscaDadosItemFluxo = async () => {
+      try {
+        const buscarDados = await urlBase.get(`/admin/fluxo/numero/${id}`);
+        dispatch(setIsCarregado());
+
+        const {
+          cod_elementos_item_fluxo,
+          subelementos,
+          tipos,
+          subtipos,
+          minitipos,
+          nanotipos,
+          descricao_item_fluxo,
+          valor_item_fluxo,
+        } = buscarDados.data[0];
+
+        setValor(valor_item_fluxo);
+        setDescricao(descricao_item_fluxo);
+        setElememento(cod_elementos_item_fluxo);
+        setSubelemento(subelementos);
+        setTipo(tipos);
+        setSubtipo(subtipos);
+        setMinitipo(minitipos);
+        setNanotipo(nanotipos);
+
+
+      } catch (error) {
+        console.error(error);
+      }
+    };
+    buscaDadosItemFluxo();
+  }, []);
+
+type ItemEditado = DadosItemFluxoCaixa & IdItem;
+
+  const novoItem: ItemEditado = {
+    id:id,
     elemento: elemento,
     subelementos: subelemento,
     tipos: tipo,
@@ -94,18 +133,19 @@ const AdicionarFluxo = () => {
     valor: valor,
   };
 
-  const adicionarItem = async () => {
+  const atualizarItem = async () => {
     try {
-      const criarItems = await urlBase.post("/admin/fluxo", novoItem);
+      const criarItems = await urlBase.put("/admin/fluxo", novoItem);
       dispatch(setIsCarregado());
-      toBackUntilTime(1500);
-      setRespostaServer(criarItems.data);
+      toBackUntilTime(2000);
       mostrarModalServer();
-
+      setRespostaServer(criarItems.data);
+      console.log(criarItems);
     } catch (error) {
       console.error(error);
     }
   };
+
 
   const navigate = useNavigate();
   const toBackUntilTime = (timeToAction: number) => {
@@ -114,18 +154,20 @@ const AdicionarFluxo = () => {
     }, timeToAction);
   }
 
+
   return (
     <ContainerStyle>
       {showModalserver && (
         <Modal>
-          <IconModal  src="./assets/ok.svg"></IconModal>
+          <IconModal src="./assets/ok.svg"></IconModal>
           <h3>{respostaServer.msg}</h3>
         </Modal>
       )}
-      <h2>Adicione um Item</h2>
+      <h2>Editar o Item</h2>
+      <h1>{id}</h1>
       <div>
         <label>Escolha o elemento</label>
-        <SelectPrimary
+        <SelectPrimary value={elemento}
           onChange={(e: any) => {
             getDataInput(e, setElememento);
           }}
@@ -139,7 +181,7 @@ const AdicionarFluxo = () => {
       </div>
       <div>
         <label>Escolha o sublementos</label>
-        <SelectPrimary
+        <SelectPrimary value={subelemento}
           onChange={(e: any) => {
             getDataInput(e, setSubelemento);
           }}
@@ -153,7 +195,7 @@ const AdicionarFluxo = () => {
       </div>
       <div>
         <label>Escolha o tipos</label>
-        <SelectPrimary
+        <SelectPrimary value={tipos}
           onChange={(e: any) => {
             getDataInput(e, setTipo);
           }}
@@ -167,7 +209,7 @@ const AdicionarFluxo = () => {
       </div>
       <div>
         <label>Escolha o Subtipos</label>
-        <SelectPrimary
+        <SelectPrimary value={subtipo}
           onChange={(e: any) => {
             getDataInput(e, setSubtipo);
           }}
@@ -181,7 +223,7 @@ const AdicionarFluxo = () => {
       </div>
       <div>
         <label>Escolha o Minitipos</label>
-        <SelectPrimary
+        <SelectPrimary value={minitipo}
           onChange={(e: any) => {
             getDataInput(e, setMinitipo);
           }}
@@ -195,7 +237,7 @@ const AdicionarFluxo = () => {
       </div>
       <div>
         <label>Escolha o Nano</label>
-        <SelectPrimary
+        <SelectPrimary value={nanotipo}
           onChange={(e: any) => {
             getDataInput(e, setNanotipo);
           }}
@@ -208,13 +250,13 @@ const AdicionarFluxo = () => {
         </SelectPrimary>
       </div>
       <label>Descricao do Item a adicionar</label>
-      <InputSecondary
+      <InputSecondary value={descricao}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           getDataInput(e, setDescricao);
         }}
         type="text"
       />
-      <InputSecondary
+      <InputSecondary value={valor}
         onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
           getDataInput(e, setValor);
         }}
@@ -224,7 +266,7 @@ const AdicionarFluxo = () => {
 
       <PrimaryButton
         onClick={() => {
-          adicionarItem();
+          atualizarItem();
         }}
       >
         + Adicionar
@@ -233,4 +275,4 @@ const AdicionarFluxo = () => {
   );
 };
 
-export default AdicionarFluxo;
+export default EditarFluxo;
