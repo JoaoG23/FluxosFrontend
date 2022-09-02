@@ -4,7 +4,7 @@ interface IHandleValueElementHTML {
 
 const getDataInput = (event:IHandleValueElementHTML, fun:any) => {
     let text = event.target.value;
-    console.info(text);
+    // console.info(text);
     fun(text);
   };
 

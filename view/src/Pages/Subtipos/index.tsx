@@ -5,7 +5,6 @@ import Modal from "../../Components/Modal";
 import InputPrimary from "../../Components/Inputs/PrimaryInput";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import { useDispatch, useSelector } from "react-redux";
-import urlBase from "../../services/UrlBase";
 
 import { Carregador } from "../../Redux/types/carregadorTypes";
 import { setIsCarregado } from "../../Redux/actions/carregadorActions";
@@ -15,7 +14,7 @@ import { SubtiposDados,InfoSubtipos } from "../../Redux/types/subtiposTypes";
 import Card from "../../Components/Card";
 
 const Subtipos = () => {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const subtipos = useSelector((store:InfoSubtipos) => store?.subtipos?.subtipo);
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);

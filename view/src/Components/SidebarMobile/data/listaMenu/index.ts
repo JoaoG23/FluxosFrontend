@@ -5,8 +5,4 @@ const listaItensMenu = [
   { id: 3, descricao: "Configuração", path: "/admin/configuracao" },
   { id: 4, descricao: "Usuários", path: "/admin/usuarios" },
 ];
-export const comumUsuarioLIstaData = [
-  { id: 0, descricao: "Dashboard", path: "/admin/dash" },
-];
 export default listaItensMenu;
-

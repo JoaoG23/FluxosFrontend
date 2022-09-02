@@ -1,14 +1,14 @@
 import styled from "styled-components";
 
-export const SidebarStyle = styled.header`
+export const   SidebarStyle = styled.header`
 
     width: 20vw;
     position: fixed;
-    display:${ props => props.prefix ? 'flex': 'none'};
+    display:none;
     flex-direction: column;
     gap: 1em;
     
-    z-index: -1;
+    z-index: 0;
     padding: 0.5em;
 
     justify-content: space-between;
@@ -24,7 +24,7 @@ export const SidebarStyle = styled.header`
 
     @media screen and (max-width:769px) {
 
-        display: none;
+        display: flex;
         
         padding: 0vw;
         width: 100vw;
@@ -36,6 +36,12 @@ export const BoxImg = styled.div`
     padding: 7px;
     border-radius: 10px;
     background-color:${props => props.theme.color.light};
+`;
+export const BtnEsconder = styled.button`
+    background: none;
+    font-size: larger;
+    justify-content: end;
+    color:${props => props.theme.color.light};
 `;
 
 export const Logo = styled.img`

@@ -147,7 +147,7 @@ const Fluxo = () => {
           ))}
         </tbody>
       </TableStyle>
-      {error && <AlertaDanger>{error?.message}</AlertaDanger>}
+      {error && <AlertaDanger onClick={ () => setError(null)}>{error?.message}</AlertaDanger>}
     </ContainerStyle>
   );
 };

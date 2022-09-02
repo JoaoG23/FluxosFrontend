@@ -7,6 +7,8 @@ export const AlertaStyle = styled.div`
   gap:1em;
   position: fixed;
 
+
+  bottom:7vh;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -18,11 +20,11 @@ export const AlertaStyle = styled.div`
 
   @keyframes pelaLateral {
     0% {
-      transform: translateX(0%);
+      transform: translateY(0vh);
       opacity: 0;
     }
     100% {
-      transform: translateX(40%);
+      transform: translateX(10vh);
       opacity: 1;
     }
   }

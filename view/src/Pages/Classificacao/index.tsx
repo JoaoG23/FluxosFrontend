@@ -16,9 +16,9 @@ const Classificacao = () => {
   return (
     <ContainerStyle>
       {listaClassificacao.map((configuracao: Classificao) => (
-        <Link to={configuracao.path}>
+        <Link key={configuracao.id} to={configuracao.path}>
           <Card>
-            <p key={configuracao.id}>{configuracao.descricao}</p>
+            <p>{configuracao.descricao}</p>
             <img src={configuracao.img} alt={configuracao.descricao}></img>
           </Card>
         </Link>

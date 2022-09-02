@@ -37,7 +37,6 @@ const DadosUsuario:React.FC = () => {
     }, time);
   };
 
-  const [nome, setNome] = useState<string>("");
   const [login, setLogin] = useState<string>("");
   const [usuarioNome, setUsuarioNome] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
@@ -45,7 +44,7 @@ const DadosUsuario:React.FC = () => {
   const [telefone, setTelefone] = useState<string>("");
   
   const novoDadosUsuario: DadosUsuarioInsercaoSemID = {
-    nomeusuario: nome,
+    nomeusuario: usuarioNome,
     login: login,
     senha: senha,
     email: email,
@@ -83,17 +82,7 @@ const DadosUsuario:React.FC = () => {
 
       <PerfilStyle src="./assets/perfil.svg"></PerfilStyle>
       <ContainerInputStyle>
-        <label>Nome</label>
-        <InputSecondary
-          type="text"
-          value={nome}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            getDataInput(e, setNome);
-          }}
-        ></InputSecondary>
-      </ContainerInputStyle>
-      <ContainerInputStyle>
-        <label>Usuário</label>
+        <label>Seu nome</label>
         <InputSecondary
           type="text"
           value={usuarioNome}

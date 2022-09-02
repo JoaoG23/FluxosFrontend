@@ -37,7 +37,6 @@ const Minitipos = () => {
 
   // --------- Modal ----
   const [showModaladd, setShowModaladd] = useState(false);
-  const mostrarModalAdd = () => setShowModaladd(true);
   const esconderModalAdd = () => setShowModaladd(false);
 
   return (

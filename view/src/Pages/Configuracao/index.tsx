@@ -1,6 +1,4 @@
 import { Link, useNavigate } from "react-router-dom";
-import DarkButton from "../../Components/Buttons/ButtonDark";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import Card from "../../Components/Card";
 import { listaConfiguracao } from "./data/listaConfiguracao";
 import { Configuracao } from "./types/Configuracao";
@@ -16,9 +14,9 @@ const Configuracoes = () => {
   return (
     <ContainerStyle>
       {listaConfiguracao.map((configuracao: Configuracao) => (
-        <Link to={configuracao.path}>
+        <Link  key={configuracao.id} to={configuracao.path}>
           <Card>
-            <p key={configuracao.id}>{configuracao.descricao}</p>
+            <p>{configuracao.descricao}</p>
             <img src={configuracao.img} alt={configuracao.descricao}></img>
           </Card>
         </Link>

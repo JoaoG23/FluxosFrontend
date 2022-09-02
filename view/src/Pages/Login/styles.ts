@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 
-export const Form = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
 
@@ -32,6 +32,17 @@ export const Form = styled.div`
   }
 
   animation: entradaSuave 1s alternate forwards;
+
+  @keyframes entradaSuave {
+    0% {
+      transform: translateY(100vh);
+      opacity: 0;
+    }
+    100% {
+      transform: translateY(0vh);
+      opacity: 1;
+    }
+  }
   @media only screen and (max-width: 600px) {
     width: 300px;
     max-width: 300px;
