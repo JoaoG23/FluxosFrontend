@@ -6,6 +6,7 @@ export const Body = styled.div`
   display: flex;
   z-index: -2;
   overflow-x: hidden;
+  justify-content: center;
   
   top:15vh;
   width: 80vw;
@@ -13,7 +14,7 @@ export const Body = styled.div`
   @media screen and (max-width:769px) {
     left:0vw;
     right:0vw;
-    width: 98vw;
+    width: 95vw;
     margin: auto;
     justify-content: center;
   }

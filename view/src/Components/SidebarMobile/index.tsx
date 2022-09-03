@@ -1,7 +1,7 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import listaItensMenu from "./data/listaMenu";
-import { SidebarStyle, Logo, Item, BtnEsconder } from "./styles";
+import { SidebarStyle, Item, BtnEsconder } from "./styles";
 import DarkButton from "../Buttons/ButtonDark";
 import { useSelector } from "react-redux";
 import { setEsconder } from "../../Redux/actions/menuMobileAction";

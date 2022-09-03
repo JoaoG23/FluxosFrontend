@@ -15,11 +15,8 @@ import light from "./themes/light";
 
 import store from "./Redux/store";
 import { Provider } from "react-redux";
-// import PrivateRouter from './Routers/Auth/PrivateRouter';
 
 function App() {
-
-  
 
   return (
     <Provider store={store}>

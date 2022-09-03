@@ -1,9 +1,9 @@
 import {
   HeaderStyle,
   ContainerStyle,
-  BodyStyle,
-  ChatsContainerStyle,
 } from "./styles";
+
+import Estatisticas from './Estatisticas';
 
 import urlBase from "../../services/UrlBase";
 import { useEffect, useState } from "react";
@@ -105,19 +105,8 @@ const Dashboard = () => {
           </div>
         </Card>
       </HeaderStyle>
-      <BodyStyle>
-        <ChatsContainerStyle>
-          <h5>Gastos Pessoais do Mês</h5>
-        </ChatsContainerStyle>
-        <ChatsContainerStyle>
-          <h5>Ganhos pessoais do Mês</h5>
-        </ChatsContainerStyle>
-      </BodyStyle>
-      <div>
-        <ChatsContainerStyle>
-          <h4>Ganhos e Gastos ao longo do ano</h4>
-        </ChatsContainerStyle>
-      </div>
+      <Estatisticas/>
+
       { error && <AlertaDanger>
         <p>Houver algum erro na app</p>
       </AlertaDanger>}

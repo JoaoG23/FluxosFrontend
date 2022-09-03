@@ -28,6 +28,6 @@ const allReducers = combineReducers({
 });
 
 const store = createStore(allReducers);
-store.subscribe(() => { console.log(store.getState())}); // Para ver os dados do Store
+// store.subscribe(() => { console.log(store.getState())}); // Para ver os dados do Store
 
 export default store;

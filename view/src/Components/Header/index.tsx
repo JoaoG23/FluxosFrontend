@@ -1,43 +1,33 @@
+import React from "react";
 import { useNavigate } from "react-router-dom";
 
+//
 import {
   ContainerRightStyle,
   MenuMobileStyle,
   HeaderStyle,
   BoxImg,
 } from "./styles";
-import React from "react";
+
 import ButtonDefault from "../Buttons/ButtonDefault";
 import { getDataSession } from "../../services/getDataSession";
-import { useSelector } from "react-redux";
+
+// Redux ====
 
 // import { setLogin } from "../../Redux/actions/loginActions";
 // import { InfoLoginStore } from '../../Redux/types/loginTypes'
 // import { useDispatch } from "react-redux";
-import { setMostrar, setEsconder } from '../../Redux/actions/menuMobileAction'
+
+import { setMostrar } from '../../Redux/actions/menuMobileAction'
 import { useDispatch } from "react-redux";
 
 const Header: React.FC = () => {
 
-
+// Buscar todos os dados da sessao
   const dadosUsuario = getDataSession();
 
   const { nomeUsuario } = dadosUsuario;
   const dispatch = useDispatch();
-
-
-
-  // Busca dados do Login
-  // const DADOS_USUARIO:any = localStorage.getItem('dados');
-
-  // // Trasforma em objeto
-  // const dadosUsuario:object = JSON.parse(DADOS_USUARIO);
-  // console.log(dadosUsuario);
-
-  // //Colocar no estado para uso 
-  // dispatch( setLogin( dadosUsuario ));
-  
-  
   const navigate = useNavigate();
 
   const toUser = () => {
