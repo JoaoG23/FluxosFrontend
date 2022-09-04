@@ -39,7 +39,6 @@ const DadosUsuario: React.FC = () => {
   };
 
   const [nome, setNome] = useState<string>("");
-  const [login, setLogin] = useState<string>("");
   const [usuarioNome, setUsuarioNome] = useState<string>("");
   const [senha, setSenha] = useState<string>("");
   const [email, setEmail] = useState<string>("");
@@ -47,7 +46,7 @@ const DadosUsuario: React.FC = () => {
 
   const novoDadosUsuario: DadosUsuarioInsercaoSemID = {
     nomeusuario: nome,
-    login: login,
+    login: usuarioNome,
     senha: senha,
     email: email,
     telefone: telefone,
@@ -56,7 +55,7 @@ const DadosUsuario: React.FC = () => {
   const adicionar = async () => {
     try {
       const respostaAdicionar = await urlBase.post(
-        "/admin/usuario",
+        "/login/registrar",
         novoDadosUsuario
       );
       dispatch(setIsCarregado());
@@ -66,6 +65,7 @@ const DadosUsuario: React.FC = () => {
       mostrarModalServer(3000);
     } catch (error) {
       setError(error as Error);
+      desapareceDepoisTempo(setError);
       console.error(error);
     }
   };
@@ -76,6 +76,12 @@ const DadosUsuario: React.FC = () => {
       navigate(-1);
     }, timeToAction);
   };
+  function desapareceDepoisTempo(setState:any) {
+    setTimeout(() => {
+      setState(false);
+    }, 3000);
+  };
+
 
   return (
     <Container>
@@ -84,10 +90,10 @@ const DadosUsuario: React.FC = () => {
         <Title>Registrar-se aqui</Title>
 
         <>
-          <label>Nome</label>
+          <label>Nome Completo</label>
           <InputSecondary
             type="text"
-            value={nome}
+            // value={nome}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setNome);
             }}
@@ -97,19 +103,9 @@ const DadosUsuario: React.FC = () => {
           <label>Usuário</label>
           <InputSecondary
             type="text"
-            value={usuarioNome}
+            // value={usuarioNome}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setUsuarioNome);
-            }}
-          ></InputSecondary>
-        </>
-        <>
-          <label>Login</label>
-          <InputSecondary
-            type="text"
-            value={login}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-              getDataInput(e, setLogin);
             }}
           ></InputSecondary>
         </>
@@ -117,7 +113,7 @@ const DadosUsuario: React.FC = () => {
           <label>Senha</label>
           <InputSecondary
             type="password"
-            value={senha}
+            // value={senha}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setSenha);
             }}
@@ -127,7 +123,7 @@ const DadosUsuario: React.FC = () => {
           <label>Telefone</label>
           <InputSecondary
             type="text"
-            value={telefone}
+            // value={telefone}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setTelefone);
             }}
@@ -137,7 +133,7 @@ const DadosUsuario: React.FC = () => {
           <label>E-mail</label>
           <InputSecondary
             type="text"
-            value={email}
+            // value={email}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setEmail);
             }}
@@ -150,7 +146,7 @@ const DadosUsuario: React.FC = () => {
               adicionar();
             }}
           >
-            Registrar-se
+            Clique aqui para se registrar
           </PrimaryButton>
           <SecondaryButton
           

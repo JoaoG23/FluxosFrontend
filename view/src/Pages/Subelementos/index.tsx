@@ -17,7 +17,7 @@ import Card from "../../Components/Card";
 const Subelementos = () => {
   const dispatch = useDispatch();
   const subelementos = useSelector((store: InfoSubelementos) => store?.subelementos?.subelemento);
-
+  // console.log(subelementos);
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
   // ---------- Deletar item
 

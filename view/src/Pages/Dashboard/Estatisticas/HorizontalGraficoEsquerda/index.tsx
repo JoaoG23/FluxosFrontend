@@ -13,8 +13,8 @@ import { Horizontal } from "./styles";
 
 import { converterValoresStringParaNumero } from "../../services/converterValoresStringParaNumero";
 import { converterNullParaString } from "../../services/converterNullString";
-import urlBase from '../../../../services/UrlBase';
-import { Subelementos } from './types';
+import urlBase from "../../../../services/UrlBase";
+import { Subelementos } from "./types";
 
 ChartJS.register(
   CategoryScale,
@@ -26,14 +26,14 @@ ChartJS.register(
 );
 
 export const options = {
-  maintainAspectRatio:false,
+  maintainAspectRatio: false,
   indexAxis: "y" as const,
   elements: {
     bar: {
       borderWidth: 2,
     },
   },
-  responsive: true,
+  // responsive: true,
   plugins: {
     legend: {
       position: "bottom" as const,
@@ -45,38 +45,41 @@ export const options = {
   },
 };
 
+export function HorizontalGraficoEsquerda() {
+  const estoqueGanhosValores: number[] = [];
+  const estoqueDescricaoSubelemento: string[] = [];
 
-export function HorizontalGrafico() {
-  
-  const estoqueGanhosValores:number[] = [];
-  const estoqueDescricaoSubelemento:string[] = [];
-  
   const [ganho, setGanho] = useState<number[]>(estoqueGanhosValores);
-  const [labels, setDescricaoSubelemento] = useState<string[]>(estoqueDescricaoSubelemento);
+  const [labels, setDescricaoSubelemento] = useState<string[]>(
+    estoqueDescricaoSubelemento
+  );
   useEffect(() => {
     async function ganhosComSubelementos() {
-      const resposta = await urlBase.get("/calculos/ganhosubelementos");
-      const tipos = resposta.data;
+      try {
+        const resposta = await urlBase.get("/calculos/ganhosubelementos");
+        const tipos = resposta.data;
 
-      tipos.map((tipo: Subelementos) => {
-        let ganho: any = tipo?.dados?.resposta;
-        let descricao:any = tipo?.dados?.nomeCategoria;
-        
-        let descricaoConvertida = converterNullParaString(descricao);
-        let ganhoConvertido = converterValoresStringParaNumero(ganho);
-        
-        estoqueGanhosValores.push(ganhoConvertido);
-        estoqueDescricaoSubelemento.push(descricaoConvertida);
-      });
-      console.info(estoqueDescricaoSubelemento);
+        tipos.map((tipo: Subelementos) => {
+          let ganho: any = tipo?.dados?.resposta;
+          let descricao: any = tipo?.dados?.nomeCategoria;
 
-      setGanho(estoqueGanhosValores);
-      setDescricaoSubelemento(estoqueDescricaoSubelemento);
+          let descricaoConvertida = converterNullParaString(descricao);
+          let ganhoConvertido = converterValoresStringParaNumero(ganho);
+
+          estoqueGanhosValores.push(ganhoConvertido);
+          estoqueDescricaoSubelemento.push(descricaoConvertida);
+        });
+
+        setGanho(estoqueGanhosValores);
+        setDescricaoSubelemento(estoqueDescricaoSubelemento);
+      } catch (error) {
+        console.error(error);
+      }
     }
-    ganhosComSubelementos()
+    ganhosComSubelementos();
   }, []);
 
-   const data = {
+  const data = {
     labels,
     datasets: [
       {
@@ -87,7 +90,6 @@ export function HorizontalGrafico() {
       },
     ],
   };
-  
 
   return (
     <Horizontal>

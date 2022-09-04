@@ -14,10 +14,6 @@ import { getDataSession } from "../../services/getDataSession";
 
 // Redux ====
 
-// import { setLogin } from "../../Redux/actions/loginActions";
-// import { InfoLoginStore } from '../../Redux/types/loginTypes'
-// import { useDispatch } from "react-redux";
-
 import { setMostrar } from '../../Redux/actions/menuMobileAction'
 import { useDispatch } from "react-redux";
 

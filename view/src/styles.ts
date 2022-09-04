@@ -9,7 +9,7 @@ export const Body = styled.div`
   justify-content: center;
   
   top:15vh;
-  width: 80vw;
+  width:77vw;
   left:20vw;
   @media screen and (max-width:769px) {
     left:0vw;

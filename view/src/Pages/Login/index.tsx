@@ -10,41 +10,21 @@ import SecondaryButton from "../../Components/Buttons/SecondaryButton";
 import AlertaSuccess from "../../Components/Alerta/AlertaSuccess";
 import AlertaDanger from "../../Components/Alerta/AlertaDanger";
 
-// Redux
-
-// Nao sera usado por enquanto
-// import { useSelector, useDispatch } from "react-redux";
-// import { setLogin,setLogout } from '../../Redux/actions/loginActions';
-// import { InfoLoginStore } from '../../Redux/types/loginTypes'
 // Services
 import getDataInput from "../../services/getDataInput";
 import urlBase from "../../services/UrlBase";
+import { toShowUntilSomeTime } from '../../services/toShowUntilSomeTime'
+// import { ToHomeUntilTime } from '../../services/toBackUntilTime'
+import { insererDadosUsuarioNaSessao } from './services/insererDadosUsuarioNaSessao';
 
 // Tipagens
-import { DadosUsuario } from "./types";
-
-type ResponseLogin = {
-  dadosUsuario?: object;
-  situacao?: boolean;
-  msg?: string;
-  tokenUser?: string;
-};
+import { DadosUsuario, ResponseLogin } from "./types";
 
 const Login: React.FC = () => {
-  // const dispatch = useDispatch();
-
-  // const loginState = useSelector((store:InfoLoginStore) => store?.login?.logar);
-
+  const navigate = useNavigate();
   const [respostaServer, setRespostaServer] = useState<ResponseLogin>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
   const [error, setError] = useState<Error | null>(null);
-
-  const mostrarModalServer = (time: number) => {
-    setShowModalserver(true);
-    setTimeout(() => {
-      setShowModalserver(false);
-    }, time);
-  };
   const [senha, setSenha] = useState("");
   const [usuario, setUsuario] = useState("");
   const [carregamento, setCarregamento] = useState(false);
@@ -54,45 +34,34 @@ const Login: React.FC = () => {
     senha: senha,
   };
 
-  const insererDadosUsuarioNaSessao = (id:number,nome:string, admin:boolean, token:string) => {
-    localStorage.setItem("id", JSON.stringify(id) );
-    localStorage.setItem("nome", nome );
-    localStorage.setItem("admin", JSON.stringify(admin) );
-    localStorage.setItem("token", token );
-    
-  };
-
   const logar = async (e: any) => {
     setCarregamento(true);
     e.preventDefault();
     try {
       const respostaLogin = await urlBase.post("/login", dadosParaLogar);
-      
-      const dadosRequest = respostaLogin.data; 
-      setRespostaServer(dadosRequest);
+      const dadosRequest = respostaLogin.data;
+      const userData = dadosRequest.dadosUsuario;
       const tokenSessao = dadosRequest.tokenUser;
-      const idUser = dadosRequest.dadosUsuario.id;
-      const userName = dadosRequest.dadosUsuario.usuario;
-      const admin = dadosRequest.dadosUsuario.admin;
 
-      insererDadosUsuarioNaSessao( idUser, userName, admin , tokenSessao );
-      // dispatch(setLogin(dadosRequest)) // Ainda nao sera usado 
+      const {
+        id,
+        usuario,
+        admin
+      } = userData;
 
-      mostrarModalServer(3000);
-      toHomeUntilTime(2000);
+      setRespostaServer(dadosRequest);
+      insererDadosUsuarioNaSessao( id, usuario, admin , tokenSessao );
+      // Mostrar modal de sucesso
+      toShowUntilSomeTime(setShowModalserver,2000);
+      setTimeout(() => {
+        navigate('/admin/dash');
+      }, 2000);
     } catch (error) {
       setError(error as Error);
       console.error(error);
     } finally {
       setCarregamento(false);
     }
-  };
-
-  const navigate = useNavigate();
-  const toHomeUntilTime = (timeToAction: number) => {
-    setTimeout(() => {
-      navigate("/auth");
-    }, timeToAction);
   };
 
   return (

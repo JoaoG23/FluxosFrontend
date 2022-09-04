@@ -9,7 +9,6 @@ import tiposReducer from "../reducers/tiposReducer";
 import subtiposReducer from "../reducers/subtiposReducer";
 import minitiposReducer from "../reducers/minitiposReducer";
 import nanotiposReducer from "../reducers/nanotiposReducer";
-import loginReducer from '../reducers/loginReducer';
 import menuMobileReducer from '../reducers/menuMobileReducer';
 
 const allReducers = combineReducers({
@@ -23,7 +22,6 @@ const allReducers = combineReducers({
   subtipos:subtiposReducer,
   minitipos:minitiposReducer,
   nanotipos:nanotiposReducer,
-  login:loginReducer,
   menuMobile:menuMobileReducer
 });
 

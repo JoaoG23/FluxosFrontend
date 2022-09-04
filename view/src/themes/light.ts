@@ -1,14 +1,23 @@
 export default {
   title: "light",
   color: {
-    primary: "#159A9C",
-    secondary: "#159a9c5c",
-    background: "#DEEFE7",
-    dark: "#002333",
-    shadow: "#063c2f48",
-    shadowdark: "#082f27b1",
-    shadowlight:"#ffffff3e",
-    fifth: "#e1eaf3",
-    light: "#FFFFFF",
+    primary: "rgba(3, 165, 60, 1)",
+    secondary: "rgba(242, 135, 4, 1)",
+    background: "rgb(240, 255, 246)",
+    dark: "rgb(0, 52, 18)",
+    // dark: "rgb(29, 63, 67)",
+    shadow: "rgba(3, 191, 69, 0.3)",
+    shadowdark: "rgba(3, 165, 60, 0.3)",
+    shadowlight :"rgba(3, 165, 60, 0.2)",
+    fifth: "rgba(242, 182, 4, 0.2)",
+    light: "rgba(242, 242, 242, 1)",
   },
 };
+/*
+ rgba(3, 191, 69, 1)
+ rgba(3, 165, 60, 1)
+ rgba(242, 182, 4, 1)
+ rgba(242, 135, 4, 1)
+ rgba(242, 242, 242, 1)
+
+*/
