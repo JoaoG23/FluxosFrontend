@@ -1,6 +1,6 @@
  <img width='130px' align=right src="./docs/assets/logomarca.png">
- 
-# Fluxos Frontend
+
+<h1>Fluxos Frontend</h1>
 
 <img width='600px' align=center src="./docs/assets/1.gif">
 
