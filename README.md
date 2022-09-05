@@ -9,7 +9,7 @@ Estas são as tela do sistema de financas pessoais Fluxos, separei a aplicação
 <h2> Indice 🗂️</h2>
 
 <p align="center">
- <li> <a href="#edicoes">1 - 🪡edicoes</a> •</li>
+ <li> <a href="#edicoes">1 - 🪡Edições</a> •</li>
  <li> <a href="#introdução">1 - 🚪Introdução</a> •</li>
  <li> <a href="#tech">2 - ⚙️ Tech Usadas</a> • </li>
  <li> <a href="#instalar">3 - 👇🤘 Como instalar</a> • </li>
