@@ -24,7 +24,7 @@ Estas são as tela do sistema de financas pessoais Fluxos, separei a aplicação
 
 Alterações   | Data | Versão
 :---------: | :------: | :------:
-Emissão Inicial | 26/03/2022 | 1.0.0
+Emissão Inicial | 05/09/2022 | 1.0.0
 
 <h2 id='introdução' color=green ><b>Introdução🚪</b></h2>
 
