@@ -55,8 +55,9 @@ const Login: React.FC = () => {
       // Mostrar modal de sucesso
       toShowUntilSomeTime(setShowModalserver,2000);
       setTimeout(() => {
-        navigate('/auth');
-        // window.location.replace('/admin/dash')
+        // navigate('/auth');
+        // navigate('/admin/dash');
+        window.location.replace('admin/dash')
       }, 2000);
     } catch (error) {
       setError(error as Error);

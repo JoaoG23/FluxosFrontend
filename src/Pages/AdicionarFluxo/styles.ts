@@ -8,7 +8,7 @@ export const ContainerStyle = styled.main`
   margin: 2em;
   width: 40vw;
   border-radius: 1em;
-  height: 70vh;
+  height: auto;
 
   animation: entradaSuave 0.8s ease-out;
   background-color: ${(props) => props.theme.color.light};

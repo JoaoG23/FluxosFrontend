@@ -20,7 +20,6 @@ import urlBase from "../../services/UrlBase";
 
 // Types Component main
 import { DadosItem } from "./types";
-import SecondaryButton from "../../Components/Buttons/SecondaryButton";
 
 const Fluxo = () => {
   const [error, setError] = useState<Error | null>(null);
@@ -129,11 +128,11 @@ const Fluxo = () => {
               <td>{item.valor_item_fluxo} R$</td>
               <td>{item.saldo_atual} R$</td>
               <td>
-                <SecondaryButton
+                <PrimaryButton
                   onClick={() => toEdit(item.id_item_fluxo as number)}
                 >
                   <img src="./assets/editarpequeno.svg" alt="editar"></img>
-                </SecondaryButton>
+                </PrimaryButton>
               </td>
               <td>
                 <DarkButton

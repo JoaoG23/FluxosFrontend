@@ -12,6 +12,6 @@ export const Horizontal = styled.div`
     width: 300px;
   }
   @media screen and (max-width: 1230px) {
-    width: 300px;
+    width: 100%;
   }
 `;
