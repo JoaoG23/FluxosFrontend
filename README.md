@@ -58,57 +58,61 @@ Crie um usuário e senha.
 
 Na tela inicial clique e registre.
 
-<img width='600px' align=center src="./docs/assets/5.gif">
+<img width='500px' align=center src="./docs/assets/5.gif">
 
 Em seguida faça login com sua senha e usuário.
 
-<img width='600px' align=center src="./docs/assets/1.GIF">
+Explicando as telas do Sistema.🤔😁
 
-Explicando as telas do Sistema.
+#### Dashboard mostrando alguns dados.
 
-Dashboard mostrando alguns dados.
+**Mês atual** 📅
 
-- Mês atual
+Mostra dados relevante logo no inicio da aplicacão esses dados são servidos alguns com gráficos para melhor visualização destes. Eles são:
 
-1-Ganhos
+• Ganhos
+• Gastos
+• Saldo Atual
+• Ganhos por subelementos 
+• Gasto por subelementos
 
-2-Gastos
+**Subelemento** vem da minha classifição, na contabilidade existe 2 elementos chamados de **ATIVOS E PASSIVO**, assim, vendo isso eu criei a legenda subelemento que, simbolizando uma classificação abaixo dos elementos. Sendo eles, Bens de uso, bens de consumo ou lazer entre outras coisa.
 
-3-Saldo Atual
+**Do Ano**
+Demostrando os Gasto e Ganhos ao longo de 12 meses
 
-- Do Ano
+<img width='500px' align=center src="./docs/assets/1.gif">
 
-Demostrando os Gasto e Ganhos
+#### Fluxo de Caixa 💸
 
-<img width='600px' align=center src="./docs/assets/1.gif">
+Manipula os gastou e ganhos do fluxo de caixa dando, podendo adicionar, deletar, editar, e classificar, tudo bem intuitivo uso para os usuáros da aplicação 
 
-Fluxo de Caixa
+<img width='500px' align=center src="./docs/assets/2.gif">
 
-Manipula os gastou e ganhos de usuário.
+#### Configurações 🪛
 
-<img width='600px' align=center src="./docs/assets/2.gif">
+Tem algumas classifições serve para organização dos dados do fluxo de caixa com local, tipo de elemento passivo ou ativo, entre outras coisa...
 
-Configurações
+Elas serão usadas no fluxo de caixa ao adicionar um novo item.
 
-Tem algumas classifições
-usadas no fluxo de caixa.
+<img width='500px' align=center src="./docs/assets/3.gif">
 
-<img width='600px' align=center src="./docs/assets/3.gif">
+#### Usuários 🚶‍♂️
 
-Usuários
+Gerencia os usuários da aplicação. Lista todos os usuários
+Importante ressaltar que foram criados dois tipos de usuários os administradores, com acesso a todos os privilégios e comum, sendo que o comum somente tem acesso a tela inicial dashboard.
 
-Gerencia os usuários da aplicação.
+<img width='500px' align=center src="./docs/assets/4.gif">
 
-<img width='600px' align=center src="./docs/assets/4.gif">
+#### Usuário Logado 🙋🏽‍♂️
 
-Usuário Logado
 Mostra dados do usuário logado presente nesse momento.
 
-<img width='600px' align=center src="./docs/assets/6.gif">
+<img width='500px' align=center src="./docs/assets/6.gif">
 
 Os usuários podem sem **admin ou não admin**, administradores podem ver todas as telas, já usuários **comuns** somente podem ver somente o **dashboard.**
 
-<img width='600px' align=center src="./docs/assets/7.gif">
+<img width='500px' align=center src="./docs/assets/7.gif">
 
 <h2 id='consideraçoesfinais'><b>5 -🥺😭 Considerações finais</b></h2>
 Ainda tem alguns bugs que não conseguir resolver do react, mas vou trabalhar nisso.
