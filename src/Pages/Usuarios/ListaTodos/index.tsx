@@ -36,7 +36,7 @@ const ListaTodos: React.FC = () => {
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
 
   const [usuarios, setUsuario] = useState<Usuario[]>([]);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   useEffect(() => {
     const buscaTodosUsuarios = async () => {
@@ -46,7 +46,7 @@ const ListaTodos: React.FC = () => {
         console.info(todosUsuarios.data);
         setUsuario(todosUsuarios.data);
       } catch (error) {
-        setError(error as Error);
+        setError(error);
         console.error(error);
       }
     };
@@ -84,7 +84,7 @@ const ListaTodos: React.FC = () => {
 
       {usuarios?.map((usuario: Usuario) => (
         <Card key={usuario.id_login}>
-            <img  src="./assets/perfil.svg" alt="perfil"></img>
+          <img src="./assets/perfil.svg" alt="perfil"></img>
           <h4>{usuario.nome_login}</h4>
           <p>Administador : {usuario.isadmin_login ? "Sim" : "Não"}</p>
           <GroupBtnStyle>
@@ -107,7 +107,11 @@ const ListaTodos: React.FC = () => {
         </AlertaSuccess>
       )}
 
-      {error && <AlertaDanger>{error?.message}</AlertaDanger>}
+      {error && (
+        <AlertaDanger onClick={() => setError(null)}>
+          <p>{error?.response?.data?.msg}</p>
+        </AlertaDanger>
+      )}
     </ContainerStyle>
   );
 };

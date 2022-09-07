@@ -6,7 +6,6 @@ import { Form, Container, HiperLink, Title } from "./styles";
 import Input from "../../Components/Inputs/PrimaryInput";
 import PrimaryButton from "../../Components/Buttons/ButtonDark";
 import ContainerBottons from "../../Components/ContainerButtons";
-import SecondaryButton from "../../Components/Buttons/SecondaryButton";
 import AlertaSuccess from "../../Components/Alerta/AlertaSuccess";
 import AlertaDanger from "../../Components/Alerta/AlertaDanger";
 import  ButtonBackGround  from "../../Components/Buttons/BackgroundButton";
@@ -14,18 +13,15 @@ import  ButtonBackGround  from "../../Components/Buttons/BackgroundButton";
 import getDataInput from "../../services/getDataInput";
 import urlBase from "../../services/UrlBase";
 import { toShowUntilSomeTime } from '../../services/toShowUntilSomeTime'
-// import { ToHomeUntilTime } from '../../services/toBackUntilTime'
 import { insererDadosUsuarioNaSessao } from './services/insererDadosUsuarioNaSessao';
 
 // Tipagens
 import { DadosUsuario, ResponseLogin } from "./types";
-import DarkButton from "../../Components/Buttons/ButtonDark";
 
 const Login: React.FC = () => {
-  const navigate = useNavigate();
   const [respostaServer, setRespostaServer] = useState<ResponseLogin>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
   const [senha, setSenha] = useState("");
   const [usuario, setUsuario] = useState("");
   const [carregamento, setCarregamento] = useState(false);
@@ -55,12 +51,10 @@ const Login: React.FC = () => {
       // Mostrar modal de sucesso
       toShowUntilSomeTime(setShowModalserver,2000);
       setTimeout(() => {
-        // navigate('/auth');
-        // navigate('/admin/dash');
         window.location.replace('admin/dash')
       }, 2000);
     } catch (error) {
-      setError(error as Error);
+      setError(error);
       console.error(error);
     } finally {
       setCarregamento(false);
@@ -102,7 +96,7 @@ const Login: React.FC = () => {
       )}
       {error && (
         <AlertaDanger onClick={() => setError(null)}>
-          <p>{error?.message}</p>
+          <p>{error?.response?.data?.msg}</p>
         </AlertaDanger>
       )}
     </Container>

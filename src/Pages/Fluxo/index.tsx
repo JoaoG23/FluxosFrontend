@@ -14,7 +14,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { setIsCarregado } from "../../Redux/actions/carregadorActions";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 
-
 // Services
 import urlBase from "../../services/UrlBase";
 
@@ -22,7 +21,7 @@ import urlBase from "../../services/UrlBase";
 import { DadosItem } from "./types";
 
 const Fluxo = () => {
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
   const navigate = useNavigate();
 
   const toEdit = (id: number | string) => {
@@ -42,7 +41,7 @@ const Fluxo = () => {
         dispatch(setIsCarregado());
         dispatch(setTodosItemsFluxoCaixa(todosItems.data));
       } catch (error) {
-        setError(error as Error);
+        setError(error);
         console.error(error);
       }
     };
@@ -52,20 +51,18 @@ const Fluxo = () => {
   // ---------- Deletar item
 
   const deleteItemById = async (idItem: DadosItem) => {
-
     try {
-      
       let idEncontrado = idItem.id_item_fluxo;
       const respostaItem = await urlBase.delete(`/admin/fluxo/${idEncontrado}`);
-  
+
       const filterItensConta: any = dadosItems?.filter(
         // Eliminar do frontend
         (dado: DadosItem) => dado.id_item_fluxo !== idItem.id_item_fluxo
       );
       dispatch(setTodosItemsFluxoCaixa(filterItensConta));
     } catch (error) {
-      setError(error as Error);
-      console.error(error)
+      setError(error);
+      console.error(error);
     }
   };
 
@@ -147,7 +144,11 @@ const Fluxo = () => {
           ))}
         </tbody>
       </TableStyle>
-      {error && <AlertaDanger onClick={ () => setError(null)}>{error?.message}</AlertaDanger>}
+      {error && (
+        <AlertaDanger onClick={() => setError(null)}>
+          <p>{error?.response?.data?.msg}</p>
+        </AlertaDanger>
+      )}
     </ContainerStyle>
   );
 };

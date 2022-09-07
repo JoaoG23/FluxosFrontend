@@ -40,6 +40,7 @@ import {
 
 import { DadosItemFluxoCaixa } from "../../Types/DadosItemFluxoCaixa";
 import { IdItem } from '../../Types/IDItem'
+import AlertaDanger from "../../Components/Alerta/AlertaDanger";
 
 
 const EditarFluxo = () => {
@@ -48,7 +49,7 @@ const EditarFluxo = () => {
   const [respostaServer, setRespostaServer] = useState<RespostaServidor>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
   const mostrarModalServer = () => setShowModalserver(true);
-  const esconderModaServer = () => setShowModalserver(false);
+  const [error, setError] = useState<any | null>(null);
 
   const [valor, setValor] = useState<number>(0);
   const [descricao, setDescricao] = useState<string>("");
@@ -113,6 +114,7 @@ const EditarFluxo = () => {
 
 
       } catch (error) {
+        setError(error)
         console.error(error);
       }
     };
@@ -271,6 +273,11 @@ type ItemEditado = DadosItemFluxoCaixa & IdItem;
       >
         + Adicionar
       </PrimaryButton>
+      {error && (
+        <AlertaDanger onClick={() => setError(null)}>
+          <p>{error?.response?.data?.msg}</p>
+        </AlertaDanger>
+      )}
     </ContainerStyle>
   );
 };

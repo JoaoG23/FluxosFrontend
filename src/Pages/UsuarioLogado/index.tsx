@@ -23,14 +23,13 @@ import { DadosUsuarioInsercao } from "../../Types/UsuariosTipos/UsuarioInsercao"
 import { getDataSession } from "../../services/getDataSession";
 
 const UsuarioLogado = () => {
-
   const { idConvertido } = getDataSession();
   const dispatch = useDispatch();
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
   const [respostaServer, setRespostaServer] = useState<RespostaServidor>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   const mostrarModalServer = (time: number) => {
     setShowModalserver(true);
@@ -54,7 +53,9 @@ const UsuarioLogado = () => {
   useEffect(() => {
     const buscaDadosUsuario = async () => {
       try {
-        const dadosUsuario = await urlBase.get(`/admin/usuario/${idConvertido}`);
+        const dadosUsuario = await urlBase.get(
+          `/admin/usuario/${idConvertido}`
+        );
         dispatch(setIsCarregado());
 
         const {
@@ -69,12 +70,12 @@ const UsuarioLogado = () => {
         setId(id_login);
         setNome(nomeusuario_login);
         setLogin(nome_login);
-        setSenha('');
+        setSenha("");
         setEmail(email_login);
         setTelefone(tel_login);
         setAdmin(isadmin_login);
       } catch (error) {
-        setError(error as Error);
+        setError(error);
         console.error(error);
       }
     };
@@ -192,8 +193,8 @@ const UsuarioLogado = () => {
           </AlertaSuccess>
         )}
         {error && (
-          <AlertaDanger onClick={ () => setError(null)}>
-            <h3>{error?.message}</h3>
+          <AlertaDanger onClick={() => setError(null)}>
+            <p>{error?.response?.data?.msg}</p>
           </AlertaDanger>
         )}
       </div>

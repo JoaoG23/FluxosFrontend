@@ -30,7 +30,7 @@ import AlertaDanger from "../../Components/Alerta/AlertaDanger";
 
 const Dashboard = () => {
   const dispatch = useDispatch();
-  const [error, setError] = useState<Error | null >(null);
+  const [error, setError] = useState<any | null >(null);
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
   const meuSaldo = useSelector(
@@ -71,7 +71,7 @@ const Dashboard = () => {
         dispatch(setGanho(ganho.data));
       } catch (error) {
         console.log(error);
-        setError(error as Error)
+        setError(error)
       }
     };
     loadDash();
@@ -107,9 +107,11 @@ const Dashboard = () => {
       </HeaderStyle>
       <Estatisticas/>
 
-      { error && <AlertaDanger>
-        <p>Houver algum erro na app</p>
-      </AlertaDanger>}
+      {error && (
+        <AlertaDanger onClick={() => setError(null)}>
+          <p>{error?.response?.data?.msg}</p>
+        </AlertaDanger>
+      )}
     </ContainerStyle>
   );
 };

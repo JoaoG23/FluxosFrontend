@@ -1,16 +1,12 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import { ContainerStyle } from "./styles";
 import Modal from "../../Components/Modal";
 import InputPrimary from "../../Components/Inputs/PrimaryInput";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import { useDispatch, useSelector } from "react-redux";
-import urlBase from "../../services/UrlBase";
 
 import { Carregador } from "../../Redux/types/carregadorTypes";
-import { setIsCarregado } from "../../Redux/actions/carregadorActions";
-
-import { setAllElementos } from "../../Redux/actions/elementosActions";
 
 import {
   InfoElementos,

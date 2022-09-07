@@ -29,7 +29,7 @@ const DadosUsuario: React.FC = () => {
 
   const [respostaServer, setRespostaServer] = useState<RespostaServidor>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   const mostrarModalServer = (time: number) => {
     setShowModalserver(true);
@@ -64,7 +64,7 @@ const DadosUsuario: React.FC = () => {
       setRespostaServer(respostaAdicionar.data.resposta);
       mostrarModalServer(3000);
     } catch (error) {
-      setError(error as Error);
+      setError(error);
       desapareceDepoisTempo(setError);
       console.error(error);
     }
@@ -103,7 +103,6 @@ const DadosUsuario: React.FC = () => {
           <label>Usuário</label>
           <InputSecondary
             type="text"
-            // value={usuarioNome}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setUsuarioNome);
             }}
@@ -113,7 +112,6 @@ const DadosUsuario: React.FC = () => {
           <label>Senha</label>
           <InputSecondary
             type="password"
-            // value={senha}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setSenha);
             }}
@@ -123,7 +121,6 @@ const DadosUsuario: React.FC = () => {
           <label>Telefone</label>
           <InputSecondary
             type="text"
-            // value={telefone}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setTelefone);
             }}
@@ -133,7 +130,6 @@ const DadosUsuario: React.FC = () => {
           <label>E-mail</label>
           <InputSecondary
             type="text"
-            // value={email}
             onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
               getDataInput(e, setEmail);
             }}
@@ -159,11 +155,11 @@ const DadosUsuario: React.FC = () => {
               <h3>{respostaServer.msg}</h3>
             </AlertaSuccess>
           )}
-          {error && (
-            <AlertaDanger>
-              <h3>{error?.message}</h3>
-            </AlertaDanger>
-          )}
+      {error && (
+        <AlertaDanger onClick={() => setError(null)}>
+          <p>{error?.response?.data?.msg}</p>
+        </AlertaDanger>
+      )}
     </Container>
   );
 };

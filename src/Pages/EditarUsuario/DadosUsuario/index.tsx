@@ -28,7 +28,7 @@ const DadosUsuario = () => {
 
   const [respostaServer, setRespostaServer] = useState<RespostaServidor>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   const mostrarModalServer = (time: number) => {
     setShowModalserver(true);
@@ -67,7 +67,7 @@ const DadosUsuario = () => {
         setId(id_login);
         setNome(nomeusuario_login);
         setLogin(nome_login);
-        setSenha('');
+        setSenha("");
         setEmail(email_login);
         setTelefone(tel_login);
         setAdmin(isadmin_login);
@@ -101,7 +101,7 @@ const DadosUsuario = () => {
       setRespostaServer(respostaDadoAtualizado.data);
       mostrarModalServer(3000);
     } catch (error) {
-      setError(error as Error);
+      setError(error);
       console.error(error);
     }
   };
@@ -190,8 +190,8 @@ const DadosUsuario = () => {
           </AlertaSuccess>
         )}
         {error && (
-          <AlertaDanger onClick={ () => setError(null)}>
-            <h3>{error?.message}</h3>
+          <AlertaDanger onClick={() => setError(null)}>
+            <p>{error?.response?.data?.msg}</p>
           </AlertaDanger>
         )}
       </div>

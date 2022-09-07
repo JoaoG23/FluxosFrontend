@@ -1,6 +1,6 @@
-import React, {  useState } from "react";
+import React, { useState } from "react";
 // Components
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AlertaSuccess from "../../../Components/Alerta/AlertaSuccess";
 import AlertaDanger from "../../../Components/Alerta/AlertaDanger";
 
@@ -28,7 +28,7 @@ const DadosUsuario:React.FC = () => {
 
   const [respostaServer, setRespostaServer] = useState<RespostaServidor>({});
   const [showModalserver, setShowModalserver] = useState<boolean>(false);
-  const [error, setError] = useState<Error | null>(null);
+  const [error, setError] = useState<any | null>(null);
 
   const mostrarModalServer = (time: number) => {
     setShowModalserver(true);
@@ -63,7 +63,7 @@ const DadosUsuario:React.FC = () => {
       setRespostaServer(respostaAdicionar.data.resposta);
       mostrarModalServer(3000);
     } catch (error) {
-      setError(error as Error);
+      setError(error);
       console.error(error);
     }
   };
@@ -145,11 +145,11 @@ const DadosUsuario:React.FC = () => {
             <h3>{respostaServer.msg}</h3>
           </AlertaSuccess>
         )}
-        {error && (
-          <AlertaDanger onClick={ () => setError(null) }>
-            <h3>{error?.message}</h3>
-          </AlertaDanger>
-        )}
+      {error && (
+        <AlertaDanger onClick={() => setError(null)}>
+          <p>{error?.response?.data?.msg}</p>
+        </AlertaDanger>
+      )}
       </div>
     </ContainerStyle>
   );
