@@ -1,9 +1,10 @@
 import { useEffect, useState } from "react";
 // Components
-import { useNavigate, useParams } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import AlertaSuccess from "../../Components/Alerta/AlertaSuccess";
 import AlertaDanger from "../../Components/Alerta/AlertaDanger";
 
+import Switch from '../../Components/Switch';
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import InputSecondary from "../../Components/Inputs/SecondaryInput";
 import { ContainerStyle, PerfilStyle, ContainerInputStyle } from "./styles";
@@ -174,9 +175,8 @@ const UsuarioLogado = () => {
         ></InputSecondary>
       </ContainerInputStyle>
       <div>
-        <label>Permissão de Admin</label>
-        <input type="checkbox" checked={admin} onChange={handleChange}></input>
-        <p>Tem Permissao de Admin: {admin.toString()}</p>
+        <p>Permissão de admin : { admin ? 'Permitido' : 'Negado'}</p>
+        <Switch checked={admin} onChange={handleChange}></Switch>
       </div>
 
       <div>

@@ -20,6 +20,7 @@ import { Carregador } from "../../../Redux/types/carregadorTypes";
 // types component Main
 import { RespostaServidor } from "../../../Types/RespostaServidor";
 import { DadosUsuarioInsercao } from "../../../Types/UsuariosTipos/UsuarioInsercao";
+import Switch from "../../../Components/Switch";
 
 const DadosUsuario = () => {
   const dispatch = useDispatch();
@@ -171,9 +172,8 @@ const DadosUsuario = () => {
         ></InputSecondary>
       </ContainerInputStyle>
       <div>
-        <label>Permissão de Admin</label>
-        <input type="checkbox" checked={admin} onChange={handleChange}></input>
-        <p>Tem Permissao de Admin: {admin.toString()}</p>
+        <p>Permissão de admin : { admin ? 'Permitido' : 'Negado'}</p>
+        <Switch checked={admin} onChange={handleChange}></Switch>
       </div>
 
       <div>
