@@ -1,9 +1,11 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import listaItensMenu, { comumUsuarioLIstaData } from "./data/listaMenu";
-import { SidebarStyle, Logo, Item } from "./styles";
-import { getDataSession } from "../../services/getDataSession";
+import adminListaRotas, { comumListaRotas } from "../Sidebar/data/listaMenu";
+// Components
 import PrimaryButton from "../Buttons/PrimaryButton";
+import { SidebarStyle, Logo, Item } from "./styles";
+// Services 
+import { getDataSession } from "../../services/getDataSession";
 
 const Sidebar: React.FC = () => {
 
@@ -15,10 +17,10 @@ const Sidebar: React.FC = () => {
 
   const { isAdmin } = getDataSession();
 
-  let listaMenu = listaItensMenu;
+  let itemDoSidebar = adminListaRotas;
 
   if (!isAdmin) {
-    listaMenu = comumUsuarioLIstaData;
+    itemDoSidebar = comumListaRotas;
   } 
 
   return (
@@ -28,7 +30,7 @@ const Sidebar: React.FC = () => {
           <Logo src="./assets/logomarca.png" alt="logo"></Logo>
         </div>
         <ul>
-          {listaMenu.map((item) => (
+          {itemDoSidebar.map((item) => (
             <Item key={item.id}>
               <Link to={item.path}>{item.descricao}</Link>
             </Item>

@@ -39,6 +39,7 @@ export const BoxImg = styled.div`
 `;
 export const BtnEsconder = styled.button`
     background: none;
+    border: none;
     font-size: larger;
     justify-content: end;
     color:${props => props.theme.color.light};

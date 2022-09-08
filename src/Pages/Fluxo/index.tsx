@@ -124,23 +124,29 @@ const Fluxo = () => {
               <td>{item.descricao_minitipos}</td>
               <td>{item.descricao_nanotipos}</td>
               <td>{item.descricao_item_fluxo} </td>
-              <td>{item.valor_item_fluxo as number > 0 ? <GreenFont>{item.valor_item_fluxo} R$</GreenFont>:<RedFont>{item.valor_item_fluxo} R$</RedFont>}</td>
+              <td>
+                {(item.valor_item_fluxo as number) > 0 ? (
+                  <GreenFont>{item.valor_item_fluxo} R$</GreenFont>
+                ) : (
+                  <RedFont>{item.valor_item_fluxo} R$</RedFont>
+                )}
+              </td>
               <td>{item.saldo_atual} R$</td>
               <td>
-                <PrimaryButton
+                <DarkButton
                   onClick={() => toEdit(item.id_item_fluxo as number)}
                 >
                   <img src="./assets/editarpequeno.svg" alt="editar"></img>
-                </PrimaryButton>
+                </DarkButton>
               </td>
               <td>
-                <DarkButton
+                <PrimaryButton
                   onClick={() => {
                     deleteItemById(item);
                   }}
                 >
-                  X
-                </DarkButton>
+                  <img src="./assets/fechar.svg" alt="remover"></img>
+                </PrimaryButton>
               </td>
             </tr>
           ))}
