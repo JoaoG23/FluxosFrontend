@@ -1,5 +1,5 @@
 import styled from "styled-components";
 
-export const Red = styled.p`
+export const Red = styled.span`
 color: red;
 `

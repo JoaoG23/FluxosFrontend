@@ -5,6 +5,8 @@ import AlertaSuccess from "../../Components/Alerta/AlertaSuccess";
 import AlertaDanger from "../../Components/Alerta/AlertaDanger";
 
 import Switch from '../../Components/Switch';
+import GreenFont from '../../Components/GreenFont';
+import RedFont from '../../Components/RedFont';
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import InputSecondary from "../../Components/Inputs/SecondaryInput";
 import { ContainerStyle, PerfilStyle, ContainerInputStyle } from "./styles";
@@ -69,8 +71,8 @@ const UsuarioLogado = () => {
         } = dadosUsuario.data[0];
 
         setId(id_login);
-        setNome(nomeusuario_login);
-        setLogin(nome_login);
+        setNome(nome_login);
+        setLogin(nomeusuario_login);
         setSenha("");
         setEmail(email_login);
         setTelefone(tel_login);
@@ -105,7 +107,7 @@ const UsuarioLogado = () => {
       setRespostaServer(respostaDadoAtualizado.data);
       mostrarModalServer(3000);
     } catch (error) {
-      setError(error as Error);
+      setError(error);
       console.error(error);
     }
   };
@@ -175,7 +177,7 @@ const UsuarioLogado = () => {
         ></InputSecondary>
       </ContainerInputStyle>
       <div>
-        <p>Permissão de admin : { admin ? 'Permitido' : 'Negado'}</p>
+        Permissão de admin : { admin ? <GreenFont>Permitido</GreenFont>: <RedFont>Negado</RedFont>}
         <Switch checked={admin} onChange={handleChange}></Switch>
       </div>
 

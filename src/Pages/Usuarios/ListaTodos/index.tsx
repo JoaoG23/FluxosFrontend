@@ -20,6 +20,8 @@ import { Carregador } from "../../../Redux/types/carregadorTypes";
 // Types of the Component Main
 import { RespostaServidor } from "../../../Types/RespostaServidor";
 import { Usuario } from "../../../Types/UsuariosTipos/Usuario";
+import GreenFont from "../../../Components/GreenFont";
+import RedFont from "../../../Components/RedFont";
 
 const ListaTodos: React.FC = () => {
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
@@ -86,7 +88,7 @@ const ListaTodos: React.FC = () => {
         <Card key={usuario.id_login}>
           <img src="./assets/perfil.svg" alt="perfil"></img>
           <h4>{usuario.nome_login}</h4>
-          <p>Administador : {usuario.isadmin_login ? "Sim" : "Não"}</p>
+          <p>Administador : { usuario.isadmin_login ? <GreenFont>Sim</GreenFont>:<RedFont>Não</RedFont>}</p>
           <GroupBtnStyle>
             <PrimaryButton onClick={() => toEdit(usuario.id_login as number)}>
               <img src="./assets/editar.svg" alt="editar"></img>

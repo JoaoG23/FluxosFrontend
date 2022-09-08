@@ -6,6 +6,8 @@ import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import { HeaderStyle, ContainerStyle, TableStyle } from "./styles";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import AlertaDanger from "../../Components/Alerta/AlertaDanger";
+import GreenFont from "../../Components/GreenFont";
+import RedFont from "../../Components/RedFont";
 
 // Redux
 import { InformacoesItemsStore } from "../../Redux/types/fluxoTypes";
@@ -122,7 +124,7 @@ const Fluxo = () => {
               <td>{item.descricao_minitipos}</td>
               <td>{item.descricao_nanotipos}</td>
               <td>{item.descricao_item_fluxo} </td>
-              <td>{item.valor_item_fluxo} R$</td>
+              <td>{item.valor_item_fluxo as number > 0 ? <GreenFont>{item.valor_item_fluxo} R$</GreenFont>:<RedFont>{item.valor_item_fluxo} R$</RedFont>}</td>
               <td>{item.saldo_atual} R$</td>
               <td>
                 <PrimaryButton

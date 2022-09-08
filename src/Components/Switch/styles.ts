@@ -9,13 +9,13 @@ export const CheckBoxLabel = styled.label`
   left: 0;
   width: 42px;
   height: 26px;
-  border-radius: 15px;
+  border-radius: 8px;
   background: #bebebe;
   cursor: pointer;
   &::after {
     content: "";
     display: block;
-    border-radius: 50%;
+    border-radius: 30%;
     width: 18px;
     height: 18px;
     margin: 3px;
@@ -31,11 +31,11 @@ export const CheckBox = styled.input`
   width: 42px;
   height: 26px;
   &:checked + ${CheckBoxLabel} {
-    background: #4fbe79;
+    background: #18cead;
     &::after {
       content: "";
       display: block;
-      border-radius: 50%;
+      border-radius: 30%;
       width: 18px;
       height: 18px;
       margin-left: 21px;

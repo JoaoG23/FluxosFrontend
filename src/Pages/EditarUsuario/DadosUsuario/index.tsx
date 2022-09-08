@@ -21,6 +21,8 @@ import { Carregador } from "../../../Redux/types/carregadorTypes";
 import { RespostaServidor } from "../../../Types/RespostaServidor";
 import { DadosUsuarioInsercao } from "../../../Types/UsuariosTipos/UsuarioInsercao";
 import Switch from "../../../Components/Switch";
+import GreenFont from "../../../Components/GreenFont";
+import RedFont from "../../../Components/RedFont";
 
 const DadosUsuario = () => {
   const dispatch = useDispatch();
@@ -66,8 +68,8 @@ const DadosUsuario = () => {
         } = dadosUsuario.data[0];
 
         setId(id_login);
-        setNome(nomeusuario_login);
-        setLogin(nome_login);
+        setNome(nome_login);
+        setLogin(nomeusuario_login);
         setSenha("");
         setEmail(email_login);
         setTelefone(tel_login);
@@ -172,7 +174,7 @@ const DadosUsuario = () => {
         ></InputSecondary>
       </ContainerInputStyle>
       <div>
-        <p>Permissão de admin : { admin ? 'Permitido' : 'Negado'}</p>
+      Permissão de admin : { admin ? <GreenFont>Permitido</GreenFont>:<RedFont>Negado</RedFont>}
         <Switch checked={admin} onChange={handleChange}></Switch>
       </div>
 
