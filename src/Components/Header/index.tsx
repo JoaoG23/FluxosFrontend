@@ -46,7 +46,7 @@ const Header: React.FC = () => {
           <BoxImg>
             <img src="./assets/perfil.svg" alt="perfil"></img>
           </BoxImg>
-          <h4>Olá {nomeUsuario}</h4>
+          <h2>Olá {nomeUsuario}</h2>
         </ButtonDefault>
       </ContainerRightStyle>
       <ContainerRightStyle>
