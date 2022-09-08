@@ -2,14 +2,20 @@ import styled from "styled-components";
 
 export const DarkButtonStyle = styled.button`
 
+    box-shadow: 1px 1px 2px ${props => props.theme.color.shadow};
     background-color:${props => props.theme.color.dark};
     color:${props => props.theme.color.light};
     border:none;
     font-size: medium;
     display: flex;
     align-items: center;
-    border-radius: 8px;
+    border-radius: 10px;
     padding: 8px;
+
+    @media screen and (max-width: 320px) {
+        padding: 0.7em;
+        
+    }
     a{
         text-decoration: none;
         color:${props => props.theme.color.light};

@@ -6,7 +6,7 @@ export const ContainerStyle = styled.main`
   gap: 10px;
   font-size: 0.9rem;
   margin: 2em;
-  width: 40vw;
+  width: auto;
   border-radius: 1em;
   height: auto;
 

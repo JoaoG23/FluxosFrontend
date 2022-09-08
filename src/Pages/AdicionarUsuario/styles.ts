@@ -10,7 +10,7 @@ export const ContainerStyle = styled.main`
   width: 23vw;
 
   border-radius: 1em;
-  height: 70vh;
+  height: auto;
   background-color: ${(props) => props.theme.color.light};
   box-shadow: 1px 1px 4px ${(props) => props.theme.color.shadow};
 

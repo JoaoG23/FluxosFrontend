@@ -1,10 +1,9 @@
 import styled from "styled-components";
 
 export const CardStyle = styled.div`
-
-  box-shadow:1px 1px 3px ${(props) => props.theme.color.shadow};
+  box-shadow: 1px 1px 3px ${(props) => props.theme.color.shadow};
   border-radius: 1em;
-  gap:1em;
+  gap: 1em;
 
   display: flex;
   justify-content: space-between;
@@ -18,9 +17,27 @@ export const CardStyle = styled.div`
 
   section {
     display: flex;
-    gap:0.2em;
-  } 
+    gap: 0.2em;
+  }
 
+  @media screen and (max-width: 320px) {
+    font-size: medium;
+    border-radius: 1.5em;
+
+    div{
+      flex-direction: column;
+      gap: 0.2em;
+    }
+    section {
+      /* display: block; */
+      flex-direction: column;
+      gap: 0.2em;
+    }
+  }
+  @media screen and (max-width: 769px) {
+    display: flex;
+    flex-direction: column;
+  }
 
   @keyframes entradaSuave {
     0% {
@@ -33,4 +50,3 @@ export const CardStyle = styled.div`
     }
   }
 `;
-

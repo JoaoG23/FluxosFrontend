@@ -47,7 +47,7 @@ const SidebarMobile: React.FC = () => {
       {menuMobile && (
         <SidebarStyle onClick={esconderQuandoTrocaPagina}>
           <div>
-            <BtnEsconder onClick={() => esconderSidebar()}><img alt="sairMenu" src="./assets/fechar.svg"></img></BtnEsconder>
+            <BtnEsconder onClick={() => esconderSidebar()}><img alt="sairMenu" src="./assets/fecharMobile.svg"></img></BtnEsconder>
             <ul>
               {itemDoSidebar.map((item) => (
                 <Item key={item.id}>

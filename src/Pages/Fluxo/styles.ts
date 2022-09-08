@@ -20,6 +20,7 @@ export const ContainerStyle = styled.main`
 
   @media screen and (max-width: 769px) {
     width: 90vw;
+    gap:3em;
     margin-top: 1em;
   }
 `;
