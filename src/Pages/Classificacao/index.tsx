@@ -1,6 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
-import DarkButton from "../../Components/Buttons/ButtonDark";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton";
+import { Link } from "react-router-dom";
 import Card from "../../Components/Card";
 import { listaClassificacao } from "./data/listaClassificacao";
 import { Classificao } from "./types/Configuracao";

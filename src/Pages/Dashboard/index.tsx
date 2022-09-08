@@ -20,6 +20,8 @@ import Card from "../../Components/Card";
 import { dashStore } from "../../Redux/types/dashTypes";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 
+// Redux
+
 import { setAllElementos } from "../../Redux/actions/elementosActions";
 import { setAllSubelementos } from "../../Redux/actions/subelementosActions";
 import { setAllTipos } from "../../Redux/actions/tiposActions";

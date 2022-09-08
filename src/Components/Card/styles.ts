@@ -8,6 +8,7 @@ export const CardStyle = styled.div`
 
   display: flex;
   justify-content: space-between;
+  font-weight: 500;
 
   align-items: center;
   padding: 1em;

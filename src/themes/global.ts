@@ -8,7 +8,7 @@ const GlobalStyle = createGlobalStyle`
         margin:0;
         padding:0;
         box-sizing: border-box;
-        color:"#3e3d3b"
+        color:'#494949'
     }
 
     body {
@@ -35,7 +35,6 @@ const GlobalStyle = createGlobalStyle`
   background-color: ${(props) => props.theme.color.background};
   border-radius: 20px;
   border: 2px solid ${(props) => props.theme.color.shadow};
-  /* border: 3px solid orange; */
 }
 
 `;
