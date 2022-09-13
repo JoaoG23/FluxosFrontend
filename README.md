@@ -56,9 +56,22 @@ O próprio node.
 
 <h2 id='usar'><b>4- Como usar 👩‍💻</b></h2>
 
-Crie um usuário e senha.
+Entre com 
+usuario de **testedev** e
+senha : **testedev**
+esse usuário e administrador caso queria ver todas as telas.
+
+ou
+Crie o seu próprio um usuário e senha.
 
 Na tela inicial clique e registre.
+
+para entrar como usuário comum **Atenção esse usuário tem somente acesso a tela DASHBOARD**
+
+
+### 🤫Ei você quer testar essa aplicação em tempo real! então clique abaixo 👇🏽:
+<a href='https://fluxos-frontend.vercel.app'>Teste um deploy já feito agorinha 🙃!</a>
+
 
 <img width='500px' align=center src="./docs/assets/5.gif">
 
