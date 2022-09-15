@@ -43,7 +43,6 @@ const DadosUsuario = () => {
   const [getId, setId] = useState<number>(0);
   const [nome, setNome] = useState("");
   const [login, setLogin] = useState("");
-  const [senha, setSenha] = useState("");
   const [email, setEmail] = useState("");
   const [telefone, setTelefone] = useState("");
   const [admin, setAdmin] = useState(false);
@@ -70,7 +69,6 @@ const DadosUsuario = () => {
         setId(id_login);
         setNome(nome_login);
         setLogin(nomeusuario_login);
-        setSenha("");
         setEmail(email_login);
         setTelefone(tel_login);
         setAdmin(isadmin_login);
@@ -86,7 +84,6 @@ const DadosUsuario = () => {
     id: getId,
     nomeusuario: nome,
     login: login,
-    senha: senha,
     email: email,
     telefone: telefone,
     admin: admin,
@@ -140,16 +137,6 @@ const DadosUsuario = () => {
           value={login}
           onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
             getDataInput(e, setLogin);
-          }}
-        ></InputSecondary>
-      </ContainerInputStyle>
-      <ContainerInputStyle>
-        <label>Senha</label>
-        <InputSecondary
-          type="password"
-          value={senha}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            getDataInput(e, setSenha);
           }}
         ></InputSecondary>
       </ContainerInputStyle>
