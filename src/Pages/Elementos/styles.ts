@@ -4,6 +4,7 @@ export const ContainerStyle = styled.main`
   padding: 10px;
   display: grid;
   align-content:flex-start;
+  justify-content: center;
   gap: 10px;
   font-size: 0.8rem;
   margin: 2em;
@@ -18,6 +19,21 @@ export const ContainerStyle = styled.main`
   @media screen and (max-width: 769px) {
     grid-template-columns: auto;
     width: 90vw;
+    margin-top: 1em;
+    justify-content: initial;
+  }
+`;
+
+export const Div = styled.div`
+  display: grid;
+  justify-content: center;
+  
+  /* background-color: ${(props) => props.theme.color.light};
+  box-shadow:1px 1px 4px ${(props) => props.theme.color.shadow}; */
+
+  @media screen and (max-width: 769px) {
+    /* grid-template-columns: auto;
+    width: 10vw; */
     margin-top: 1em;
   }
 `;

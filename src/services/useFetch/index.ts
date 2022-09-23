@@ -13,7 +13,7 @@ import api from "../UrlBase";
   ) => {
     const [dados, setDados] = useState<T | null>(null);
     const [isCarregando, setIsCarregando] = useState(true);
-    const [error, setError] = useState<Error | null>(null);
+    const [error, setError] = useState<any | null>(null);
       api(options)
         .then((resp) => {
           setDados(resp.data);

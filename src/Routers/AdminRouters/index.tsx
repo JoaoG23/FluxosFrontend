@@ -53,7 +53,23 @@ const AdminRouters = () => {
         }
       />
       <Route
+        path="/admin/elementos/:id"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <Elementos />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/admin/subelementos"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <Subelementos />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/subelementos/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
             <Subelementos />
@@ -69,7 +85,23 @@ const AdminRouters = () => {
         }
       />
       <Route
+        path="/admin/tipos/:id"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <Tipos />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/admin/subtipos"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <Subtipos />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/subtipos/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
             <Subtipos />
@@ -85,7 +117,23 @@ const AdminRouters = () => {
         }
       />
       <Route
+        path="/admin/minitipos/:id"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <Minitipos />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/admin/nanotipos"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <Nanotipos />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/nanotipos/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
             <Nanotipos />

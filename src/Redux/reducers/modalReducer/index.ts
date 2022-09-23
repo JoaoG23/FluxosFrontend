@@ -1,7 +1,6 @@
+import { PayloadAction } from '@reduxjs/toolkit';
 
-
-import { Action } from "../../types/modalTypes";
-export default function modalReducer(state = false, action:Action) {
+export default function modalReducer(state = false, action:PayloadAction) {
   const { type } = action;
   switch (type) {
     case "VISIVEL":

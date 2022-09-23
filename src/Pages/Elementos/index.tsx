@@ -1,10 +1,10 @@
 import { useState } from "react";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-import { ContainerStyle } from "./styles";
-import Modal from "../../Components/Modal";
-import InputPrimary from "../../Components/Inputs/PrimaryInput";
+import { ContainerStyle, Div } from "./styles";
+import ModalAdd from "../../Components/ModalAdd";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 import { useDispatch, useSelector } from "react-redux";
+import { setMostrarModal } from "../../Redux/actions/modalActions";
 
 import { Carregador } from "../../Redux/types/carregadorTypes";
 
@@ -13,15 +13,16 @@ import {
   ElementosDados,
 } from "../../Redux/types/elementosTypes";
 import Card from "../../Components/Card";
-
+import { ModalStore } from "../../Redux/types/modalTypes";
 const Elementos = () => {
   const dispatch = useDispatch();
   const elementos = useSelector(
     (store: InfoElementos) => store?.elementos?.elemento
   );
 
-  const isCarregado = useSelector((store: Carregador) => store?.carregador);
+  const modalState = useSelector((store: ModalStore) => store?.modal);
 
+  const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
   // ---------- Deletar item
 
@@ -37,39 +38,29 @@ const Elementos = () => {
   // };
 
   // --------- Modal ----
-  const [showModaladd, setShowModaladd] = useState(false);
-  const mostrarModalAdd = () => setShowModaladd(true);
-  const esconderModalAdd = () => setShowModaladd(false);
+  const mostrarModalAdd = () => dispatch(setMostrarModal());
 
+  console.log(modalState);
   return (
-    <ContainerStyle>
-      {elementos?.map((elemento: ElementosDados) => (
-        <Card key={elemento.idelementos}>
-          <p>{elemento.idelementos}</p>
-          <p>{elemento.descricao_elementos}</p>
-          <section>
-            <DarkButton>
-              <img src="./assets/remover.svg"></img>
-            </DarkButton>
-            <PrimaryButton>
-              <img src="./assets/editar.svg"></img>
-            </PrimaryButton>
-          </section>
-        </Card>
-      ))}
-      {showModaladd && (
-        <Modal>
-          <h2>Adicione um Item</h2>
-
-          <InputPrimary type="text" descricaoPlaceholder="Ano" />
-          <InputPrimary type="text" descricaoPlaceholder="Mês" />
-
-          <PrimaryButton>+ Adicionar</PrimaryButton>
-          <DarkButton onClick={esconderModalAdd}>X</DarkButton>
-        </Modal>
-      )}
+      <ContainerStyle>
+        <PrimaryButton onClick={mostrarModalAdd}>+ Adicionar</PrimaryButton>
+        {elementos?.map((elemento: ElementosDados) => (
+          <Card key={elemento.idelementos}>
+            <p>{elemento.idelementos}</p>
+            <p>{elemento.descricao_elementos}</p>
+            <section>
+              <DarkButton>
+                <img src="./assets/remover.svg"></img>
+              </DarkButton>
+              <PrimaryButton>
+                <img src="./assets/editar.svg"></img>
+              </PrimaryButton>
+            </section>
+          </Card>
+        ))}
+        {modalState && <ModalAdd pathApi="/admin/elementos" nomeElemento='nome_elementos'></ModalAdd>}
         {isCarregado && <h2>Carregando ...</h2>}
-    </ContainerStyle>
+      </ContainerStyle>
   );
 };
 
