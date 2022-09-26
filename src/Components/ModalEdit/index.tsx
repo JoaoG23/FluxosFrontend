@@ -6,8 +6,8 @@ import DarkButton from "../Buttons/ButtonDark";
 import PrimaryButton from "../Buttons/PrimaryButton";
 import RedFont from "../RedFont";
 import { useSelector } from "react-redux";
-import { ModalStore } from "../../Redux/types/modalTypes";
-import { setEsconderModal } from "../../Redux/actions/modalActions";
+import { EditModalStore } from "../../Redux/types/modalTypes";
+import { setMostrarEditModal, setEsconderEditModal } from "../../Redux/actions/modalActions/editModal";
 import { useDispatch } from "react-redux";
 import GreenFont from "../GreenFont";
 
@@ -19,7 +19,7 @@ type Props = {
 };
 
 const EditModal: React.FC<Props> = ({ pathApi, nomeElemento }) => {
-  const modalState = useSelector((store: ModalStore) => store?.modal);
+  const modalState = useSelector((store: EditModalStore) => store?.editModal);
 
   const dispatch = useDispatch();
   const [error, setError] = useState<any | null>(null);
@@ -33,15 +33,16 @@ const EditModal: React.FC<Props> = ({ pathApi, nomeElemento }) => {
   } = useForm();
 
   function desapareceModal() {
-    dispatch(setEsconderModal());
+    dispatch(setEsconderEditModal());
   }
 
-  const adicionar = async (body: object) => {
+  const editar = async (body: object) => {
     setIsLoading(true);
     try {
-      const respostaAdicionar = await urlBase.post(pathApi, body);
-      setResponse(respostaAdicionar.data);
-      desapareceModal();
+      const editando = await urlBase.put(pathApi, body);
+      setResponse(editando.data);
+      console.log(editando.data);
+      // desapareceModal();
     } catch (error) {
       setError(error);
       console.error(error);
@@ -55,9 +56,10 @@ const EditModal: React.FC<Props> = ({ pathApi, nomeElemento }) => {
       {modalState && (
         <ModalBackgroundStyle>
           <ModalStyle>
+            <h3>Editar Dado</h3>
             <Form
               onSubmit={handleSubmit(
-                async (data: object) => await adicionar(data)
+                async (data: object) => await editar(data)
               )}
             >
               <b>Descricao</b>

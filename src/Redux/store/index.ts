@@ -2,7 +2,8 @@ import { createStore, combineReducers } from "redux";
 import carregadorReducer from "../reducers/carregadorReducer";
 import dashReducer from "../reducers/dashReducer";
 import fluxoReducer from "../reducers/fluxoReducer";
-import modalReducer from "../reducers/modalReducer";
+import addModalReducer from "../reducers/modalReducer/addModalReducer";
+import editModalReducer from "../reducers/modalReducer/editModalReducer";
 import elementoReducer from "../reducers/elementosReducer";
 import subelementosReducer from "../reducers/subelementosReducer";
 import tiposReducer from "../reducers/tiposReducer";
@@ -15,7 +16,8 @@ const allReducers = combineReducers({
   carregador: carregadorReducer,
   dashboard: dashReducer,
   fluxo: fluxoReducer,
-  modal: modalReducer,
+  addModal:addModalReducer ,
+  editModal:editModalReducer ,
   elementos:elementoReducer,
   subelementos:subelementosReducer,
   tipos:tiposReducer,

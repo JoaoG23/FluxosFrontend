@@ -11,8 +11,8 @@ import RedFont from "../RedFont";
 import GreenFont from "../GreenFont";
 
 // Redux 
-import { ModalStore } from "../../Redux/types/modalTypes";
-import { setEsconderModal } from "../../Redux/actions/modalActions";
+import { AddModalStore } from "../../Redux/types/modalTypes";
+import { setEsconderAddModal } from "../../Redux/actions/modalActions/addModal";
 import { useDispatch , useSelector} from "react-redux";
 
 
@@ -25,7 +25,7 @@ type Props = {
 
 
 const ModalAdd: React.FC<Props> = ({ pathApi, nomeElemento }) => {
-  const modalState = useSelector((store: ModalStore) => store?.modal);
+  const modalState = useSelector((store: AddModalStore) => store?.addModal);
   const dispatch = useDispatch();
   const [error, setError] = useState<any | null>(null);
   const [response, setResponse] = useState<any | null>(null);
@@ -40,7 +40,7 @@ const ModalAdd: React.FC<Props> = ({ pathApi, nomeElemento }) => {
 
   const navigate = useNavigate();
   function desapareceModal() {
-      dispatch(setEsconderModal());
+      dispatch(setEsconderAddModal());
   }
   
 
@@ -66,6 +66,7 @@ const ModalAdd: React.FC<Props> = ({ pathApi, nomeElemento }) => {
       {modalState && (
         <ModalBackgroundStyle>
           <ModalStyle>
+            <h2>Adicionar dado</h2>
             <Form
               onSubmit={handleSubmit(
                 async (data: object) => await adicionar(data)

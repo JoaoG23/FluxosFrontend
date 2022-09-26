@@ -1,46 +1,63 @@
-import { useState } from "react";
+import react ,{ useState }from 'react'
+// Components
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-import { ContainerStyle, Div } from "./styles";
+import { ContainerStyle } from "./styles";
 import ModalAdd from "../../Components/ModalAdd";
+import ModalEdit from '../../Components/ModalEdit';
 import DarkButton from "../../Components/Buttons/ButtonDark";
-import { useDispatch, useSelector } from "react-redux";
-import { setMostrarModal } from "../../Redux/actions/modalActions";
+import Card from "../../Components/Card";
 
-import { Carregador } from "../../Redux/types/carregadorTypes";
 
+// Services 
+import urlBase from "../../services/UrlBase";
+
+// Redux
 import {
   InfoElementos,
   ElementosDados,
 } from "../../Redux/types/elementosTypes";
-import Card from "../../Components/Card";
-import { ModalStore } from "../../Redux/types/modalTypes";
+import { useDispatch, useSelector } from "react-redux";
+import { setMostrarAddModal } from "../../Redux/actions/modalActions/addModal";
+import { Carregador } from "../../Redux/types/carregadorTypes";
+import { AddModalStore, EditModalStore } from "../../Redux/types/modalTypes";
+import { setMostrarEditModal } from "../../Redux/actions/modalActions/editModal";
+import { setAllElementos } from "../../Redux/actions/elementosActions";
+
 const Elementos = () => {
   const dispatch = useDispatch();
   const elementos = useSelector(
     (store: InfoElementos) => store?.elementos?.elemento
   );
 
-  const modalState = useSelector((store: ModalStore) => store?.modal);
+
+  const modalStateAdd = useSelector((store: AddModalStore) => store?.addModal);
+  const modalStateEdit = useSelector((store: EditModalStore) => store?.editModal);
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
-
+  
   // ---------- Deletar item
 
-  // const deleteItemById = async (idItem: DadosItem) => {
-  //   let idEncontrado = idItem.id_item_fluxo;
-  //   const respostaItem = await urlBase.delete(`/admin/fluxo/${idEncontrado}`);
+  const deleteItemById = async (idItem: any) => {
+    try {
+      
+      let idEncontrado = idItem.idelementos;
+       await urlBase.delete(`/admin/elementos/${idEncontrado}`);
+  
+      const filterItensConta: any = elementos?.filter(
+        (dado: any) => dado.idelementos !== idItem.idelementos
+      );
+      dispatch(setAllElementos(filterItensConta));
+    } catch (error) {
+      console.info(error)
+    }
 
-  //   const filterItensConta: any = dadosItems?.filter(
-  //     (dado: DadosItem) => dado.id_item_fluxo !== idItem.id_item_fluxo
-  //   );
-  //   dispatch(setTodosItemsFluxoCaixa(filterItensConta));
-
-  // };
+  };
 
   // --------- Modal ----
-  const mostrarModalAdd = () => dispatch(setMostrarModal());
+  const mostrarModalAdd = () => dispatch(setMostrarAddModal());
+  const mostrarModalEdit = () => dispatch(setMostrarEditModal());
 
-  console.log(modalState);
+  // console.log(modalState);
   return (
       <ContainerStyle>
         <PrimaryButton onClick={mostrarModalAdd}>+ Adicionar</PrimaryButton>
@@ -49,16 +66,21 @@ const Elementos = () => {
             <p>{elemento.idelementos}</p>
             <p>{elemento.descricao_elementos}</p>
             <section>
-              <DarkButton>
+              <DarkButton onClick={() => {
+                deleteItemById(elemento)
+              }}>
                 <img src="./assets/remover.svg"></img>
               </DarkButton>
-              <PrimaryButton>
+              <PrimaryButton onClick={mostrarModalEdit}>
                 <img src="./assets/editar.svg"></img>
               </PrimaryButton>
             </section>
           </Card>
         ))}
-        {modalState && <ModalAdd pathApi="/admin/elementos" nomeElemento='nome_elementos'></ModalAdd>}
+
+        
+        {modalStateAdd && <ModalAdd pathApi="/admin/elementos" nomeElemento='nome_elementos'></ModalAdd>}
+        {modalStateEdit && (<ModalEdit pathApi="/admin/elementos" nomeElemento='nome_elementos'></ModalEdit>)}
         {isCarregado && <h2>Carregando ...</h2>}
       </ContainerStyle>
   );

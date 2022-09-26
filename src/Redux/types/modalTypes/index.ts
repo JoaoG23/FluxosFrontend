@@ -2,6 +2,13 @@ export type Action = {
   type?:string;
 }
 
-export type ModalStore = {
-  modal?:boolean;
+export type AddModalStore = {
+  addModal?:boolean;
 };
+
+export type EditModalStore = {
+  editModal?:boolean;
+};
+
+
+
