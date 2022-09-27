@@ -54,7 +54,7 @@ export const ModalStyle = styled.div`
 
 export const Input = styled.input`
   border: none;
-  padding: 4px;
+  padding: 6px;
   border-radius: 8px;
   font-weight: bold;
 
@@ -64,9 +64,11 @@ export const Input = styled.input`
 
 `;
 
-
 export const Form = styled.form`
     display: grid;
     gap: 10px;
+    width: 80%;
+    text-align: left;
 
 `
+

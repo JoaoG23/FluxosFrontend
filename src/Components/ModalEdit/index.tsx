@@ -1,15 +1,20 @@
 import React, { useState } from "react";
-import { ModalStyle, ModalBackgroundStyle, Form, Input } from "./styles";
 import { useForm } from "react-hook-form";
-import urlBase from "../../services/UrlBase";
+// Components
 import DarkButton from "../Buttons/ButtonDark";
 import PrimaryButton from "../Buttons/PrimaryButton";
-import RedFont from "../RedFont";
-import { useSelector } from "react-redux";
+import GreenBadge from '../Badges/GreenBadge';
+import RedBadge from '../Badges/RedBadge';
+import { ModalStyle, ModalBackgroundStyle, Form, Input } from "./styles";
+
+// Services
+import urlBase from "../../services/UrlBase";
+
+// Redux
+import { useDispatch , useSelector } from "react-redux";
 import { EditModalStore } from "../../Redux/types/modalTypes";
-import { setMostrarEditModal, setEsconderEditModal } from "../../Redux/actions/modalActions/editModal";
-import { useDispatch } from "react-redux";
-import GreenFont from "../GreenFont";
+import { setEsconderEditModal } from "../../Redux/actions/modalActions/editModal";
+import { useNavigate } from "react-router-dom";
 
 
 type Props = {
@@ -21,6 +26,7 @@ type Props = {
 const EditModal: React.FC<Props> = ({ pathApi, nomeElemento }) => {
   const modalState = useSelector((store: EditModalStore) => store?.editModal);
 
+  const navigate = useNavigate();
   const dispatch = useDispatch();
   const [error, setError] = useState<any | null>(null);
   const [response, setResponse] = useState<any | null>(null);
@@ -41,8 +47,10 @@ const EditModal: React.FC<Props> = ({ pathApi, nomeElemento }) => {
     try {
       const editando = await urlBase.put(pathApi, body);
       setResponse(editando.data);
-      console.log(editando.data);
-      // desapareceModal();
+      setTimeout(() => {
+        desapareceModal();
+        navigate('/admin/dash');
+      },2000)
     } catch (error) {
       setError(error);
       console.error(error);
@@ -56,26 +64,26 @@ const EditModal: React.FC<Props> = ({ pathApi, nomeElemento }) => {
       {modalState && (
         <ModalBackgroundStyle>
           <ModalStyle>
-            <h3>Editar Dado</h3>
+            <h1>Editar</h1>
             <Form
               onSubmit={handleSubmit(
                 async (data: object) => await editar(data)
               )}
             >
-              <b>Descricao</b>
-              <Input
+              <b>Descrição</b>
+              <Input placeholder="Digite aqui o nome da sua classificação"
                 type="text"
                 {...register(nomeElemento, { required: true })}
               />
               {errors.nome_elementos?.type === "required" && (
-                <RedFont>Campo vazio. Por gentileza prencher-o!</RedFont>
+                <RedBadge>Campo vazio. Por gentileza prencher-o!</RedBadge>
               )}
               <DarkButton>Salvar</DarkButton>
             </Form>
-            {response && <GreenFont>{response?.msg}</GreenFont>}
+            {response && <GreenBadge>{response?.msg}</GreenBadge>}
             {isLoading && <h3>Carregando ...</h3>}
-            {error && <RedFont>{error?.response?.data?.msg}</RedFont>}
-            <PrimaryButton onClick={desapareceModal}>❌</PrimaryButton>
+            {error && <RedBadge>{error?.response?.data?.msg}</RedBadge>}
+            <PrimaryButton onClick={desapareceModal}> &#10006; </PrimaryButton>
           </ModalStyle>
         </ModalBackgroundStyle>
       )}

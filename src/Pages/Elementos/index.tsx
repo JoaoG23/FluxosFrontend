@@ -24,6 +24,7 @@ import { setMostrarEditModal } from "../../Redux/actions/modalActions/editModal"
 import { setAllElementos } from "../../Redux/actions/elementosActions";
 
 const Elementos = () => {
+  const [idParaUpdate, setIdParaUpdate] = useState<number | string>('')
   const dispatch = useDispatch();
   const elementos = useSelector(
     (store: InfoElementos) => store?.elementos?.elemento
@@ -57,7 +58,6 @@ const Elementos = () => {
   const mostrarModalAdd = () => dispatch(setMostrarAddModal());
   const mostrarModalEdit = () => dispatch(setMostrarEditModal());
 
-  // console.log(modalState);
   return (
       <ContainerStyle>
         <PrimaryButton onClick={mostrarModalAdd}>+ Adicionar</PrimaryButton>
@@ -71,7 +71,11 @@ const Elementos = () => {
               }}>
                 <img src="./assets/remover.svg"></img>
               </DarkButton>
-              <PrimaryButton onClick={mostrarModalEdit}>
+              <PrimaryButton onClick={() => {
+                let elementoSelecionado = elemento.idelementos as number;
+                setIdParaUpdate(elementoSelecionado);
+                mostrarModalEdit();
+                }}>
                 <img src="./assets/editar.svg"></img>
               </PrimaryButton>
             </section>
@@ -80,7 +84,7 @@ const Elementos = () => {
 
         
         {modalStateAdd && <ModalAdd pathApi="/admin/elementos" nomeElemento='nome_elementos'></ModalAdd>}
-        {modalStateEdit && (<ModalEdit pathApi="/admin/elementos" nomeElemento='nome_elementos'></ModalEdit>)}
+        {modalStateEdit && (<ModalEdit pathApi={`/admin/elementos/${idParaUpdate}`} nomeElemento='nome_elementos'></ModalEdit>)}
         {isCarregado && <h2>Carregando ...</h2>}
       </ContainerStyle>
   );

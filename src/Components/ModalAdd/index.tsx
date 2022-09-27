@@ -7,8 +7,8 @@ import urlBase from "../../services/UrlBase";
 import { ModalStyle, ModalBackgroundStyle, Form, Input } from "./styles";
 import DarkButton from "../Buttons/ButtonDark";
 import PrimaryButton from "../Buttons/PrimaryButton";
-import RedFont from "../RedFont";
-import GreenFont from "../GreenFont";
+import GreenBadge from '../Badges/GreenBadge';
+import RedBadge from '../Badges/RedBadge';
 
 // Redux 
 import { AddModalStore } from "../../Redux/types/modalTypes";
@@ -51,7 +51,7 @@ const ModalAdd: React.FC<Props> = ({ pathApi, nomeElemento }) => {
       setResponse(respostaAdicionar.data);
       setTimeout(() => {
         desapareceModal();
-        navigate('/admin/dash')
+        navigate('/admin/dash');
       }, 2000);
     } catch (error) {
       setError(error);
@@ -66,26 +66,26 @@ const ModalAdd: React.FC<Props> = ({ pathApi, nomeElemento }) => {
       {modalState && (
         <ModalBackgroundStyle>
           <ModalStyle>
-            <h2>Adicionar dado</h2>
+            <h1>Adicionar</h1>
             <Form
               onSubmit={handleSubmit(
                 async (data: object) => await adicionar(data)
               )}
             >
-              <b>Descricao</b>
-              <Input
+              <b>Descrição</b>
+              <Input placeholder="Digite aqui o nome da sua classificação"
                 type="text"
                 {...register(nomeElemento, { required: true })}
               />
               {errors.nome_elementos?.type === "required" && (
-                <RedFont>Campo vazio. Por gentileza prencher-o!</RedFont>
+                <RedBadge>Campo vazio. Por gentileza prencher-o!</RedBadge>
               )}
               <DarkButton>Salvar</DarkButton>
             </Form>
-            {response && <GreenFont>{response?.msg}</GreenFont>}
+            {response && <GreenBadge>{response?.msg}</GreenBadge>}
             {isLoading && <h3>Carregando ...</h3>}
-            {error && <RedFont>{error?.response?.data?.msg}</RedFont>}
-            <PrimaryButton onClick={desapareceModal}>❌</PrimaryButton>
+            {error && <RedBadge>{error?.response?.data?.msg}</RedBadge>}
+            <PrimaryButton onClick={desapareceModal}> &#10006; </PrimaryButton>
           </ModalStyle>
         </ModalBackgroundStyle>
       )}
