@@ -15,6 +15,9 @@ export const SidebarStyle = styled.header`
 
   background-color: ${(props) => props.theme.color.dark};
   height: 100vh;
+  div{
+    color: ${(props) => props.theme.color.light}; ;
+  }
 
   a {
     text-decoration: none;

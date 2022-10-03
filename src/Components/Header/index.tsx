@@ -14,12 +14,11 @@ import { getDataSession } from "../../services/getDataSession";
 
 // Redux ====
 
-import { setMostrar } from '../../Redux/actions/menuMobileAction'
+import { setMostrar } from "../../Redux/actions/menuMobileAction";
 import { useDispatch } from "react-redux";
 
 const Header: React.FC = () => {
-
-// Buscar todos os dados da sessao
+  // Buscar todos os dados da sessao
   const dadosUsuario = getDataSession();
 
   const { nomeUsuario } = dadosUsuario;
@@ -27,21 +26,24 @@ const Header: React.FC = () => {
   const navigate = useNavigate();
 
   const toUser = () => {
-    navigate('/admin/logado');
+    navigate("/admin/logado");
   };
   const toBack = () => {
     navigate(-1);
   };
 
-
   function mostrarSidebar() {
-    dispatch(setMostrar())
+    dispatch(setMostrar());
   }
 
   return (
     <HeaderStyle>
       <ContainerRightStyle>
-        <MenuMobileStyle onClick={ () => mostrarSidebar()} src="./assets/menusanduiche.svg"alt="voltar"></MenuMobileStyle>
+        <MenuMobileStyle
+          onClick={() => mostrarSidebar()}
+          src="./assets/menusanduiche.svg"
+          alt="voltar"
+        ></MenuMobileStyle>
         <ButtonDefault onClick={toUser}>
           <BoxImg>
             <img src="./assets/perfil.svg" alt="perfil"></img>
@@ -50,8 +52,8 @@ const Header: React.FC = () => {
         </ButtonDefault>
       </ContainerRightStyle>
       <ContainerRightStyle>
-        <ButtonDefault  onClick={toBack}>
-            <img src="./assets/voltarsetabranca.svg" alt="voltar"></img>
+        <ButtonDefault onClick={toBack}>
+          <img src="./assets/voltarsetabranca.svg" alt="voltar"></img>
           <p>Voltar</p>
         </ButtonDefault>
       </ContainerRightStyle>

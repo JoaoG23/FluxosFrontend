@@ -4,6 +4,7 @@ import Fluxo from "../../Pages/Fluxo";
 import Usuarios from "../../Pages/Usuarios";
 import UsuarioLogado from "../../Pages/UsuarioLogado";
 import AdicionarUsuario from "../../Pages/AdicionarUsuario";
+import AdicionarElementos from '../../Pages/AdicionarElementos';
 import EditarUsuario from "../../Pages/EditarUsuario";
 import Configuracoes from "../../Pages/Configuracao";
 import Classificacao from "../../Pages/Classificacao";
@@ -49,6 +50,14 @@ const AdminRouters = () => {
         element={
           <PrivateRoute redirectTo={"/"}>
             <Elementos />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/elementos/add"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <AdicionarElementos/>
           </PrivateRoute>
         }
       />

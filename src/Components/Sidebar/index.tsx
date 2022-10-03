@@ -1,17 +1,19 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import adminListaRotas, { comumListaRotas } from "../Sidebar/data/listaMenu";
+import adminListaRotas, {
+  comumListaRotas,
+  classificacaoes,
+} from "../Sidebar/data/listaMenu";
 // Components
 import PrimaryButton from "../Buttons/PrimaryButton";
 import { SidebarStyle, Logo, Item } from "./styles";
-// Services 
+// Services
 import { getDataSession } from "../../services/getDataSession";
 
 const Sidebar: React.FC = () => {
-
   const navigate = useNavigate();
   const exitEndLogout = () => {
-    navigate('/');
+    navigate("/");
     localStorage.clear();
   };
 
@@ -21,7 +23,7 @@ const Sidebar: React.FC = () => {
 
   if (!isAdmin) {
     itemDoSidebar = comumListaRotas;
-  } 
+  }
 
   return (
     <SidebarStyle prefix="flex">
@@ -29,6 +31,16 @@ const Sidebar: React.FC = () => {
         <div>
           <Logo src="./assets/logomarca.png" alt="logo"></Logo>
         </div>
+        <details>
+          <summary>Classificações</summary>
+          <ul>
+            {classificacaoes.map((item) => (
+              <Item key={item.id}>
+                <Link to={item.path}>{item.descricao}</Link>
+              </Item>
+            ))}
+          </ul>
+        </details>
         <ul>
           {itemDoSidebar.map((item) => (
             <Item key={item.id}>

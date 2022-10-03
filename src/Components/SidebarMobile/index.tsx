@@ -1,37 +1,35 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
-import adminListaRotas, { comumListaRotas } from "../Sidebar/data/listaMenu";
+import adminListaRotas, { comumListaRotas, classificacaoes } from "../Sidebar/data/listaMenu";
 // Components
 import { SidebarStyle, Item, BtnEsconder } from "./styles";
 import DarkButton from "../Buttons/ButtonDark";
 
-// Services 
+// Services
 import { getDataSession } from "../../services/getDataSession";
 
 // Redux
-import { useSelector,useDispatch } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { setEsconder } from "../../Redux/actions/menuMobileAction";
 
 const SidebarMobile: React.FC = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const exitEndLogout = () => {
-    navigate('/');
+    navigate("/");
     localStorage.clear();
   };
 
   function esconderSidebar() {
-    dispatch(setEsconder())
+    dispatch(setEsconder());
   }
 
-  function esconderQuandoTrocaPagina(elem:any) {
+  function esconderQuandoTrocaPagina(elem: any) {
     let isClicked = elem.target as HTMLElement | null;
     if (isClicked) {
       esconderSidebar();
     }
-
-}
-
+  }
 
   const { isAdmin } = getDataSession();
 
@@ -39,7 +37,7 @@ const SidebarMobile: React.FC = () => {
 
   if (!isAdmin) {
     itemDoSidebar = comumListaRotas;
-  } 
+  }
 
   const menuMobile = useSelector((store: any) => store?.menuMobile);
   return (
@@ -47,7 +45,9 @@ const SidebarMobile: React.FC = () => {
       {menuMobile && (
         <SidebarStyle onClick={esconderQuandoTrocaPagina}>
           <div>
-            <BtnEsconder onClick={() => esconderSidebar()}><img alt="sairMenu" src="./assets/fecharMobile.svg"></img></BtnEsconder>
+            <BtnEsconder onClick={() => esconderSidebar()}>
+              <img alt="sairMenu" src="./assets/fecharMobile.svg"></img>
+            </BtnEsconder>
             <ul>
               {itemDoSidebar.map((item) => (
                 <Item key={item.id}>
@@ -55,6 +55,16 @@ const SidebarMobile: React.FC = () => {
                 </Item>
               ))}
             </ul>
+            <details>
+              <summary>Classificações</summary>
+              <ul>
+                {classificacaoes.map((item) => (
+                  <Item key={item.id}>
+                    <Link to={item.path}>{item.descricao}</Link>
+                  </Item>
+                ))}
+              </ul>
+            </details>
           </div>
           <DarkButton onClick={exitEndLogout}>Sair</DarkButton>
         </SidebarStyle>

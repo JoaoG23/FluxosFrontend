@@ -17,6 +17,7 @@ export const HeaderStyle = styled.header`
     
     text-align: center;
     color:${props => props.theme.color.light};
+    
 
     
     section{

@@ -41,6 +41,7 @@ build/Release
 # Dependency directories
 **/node_modules
 node_modules/
+*node_modules/
 /node_modules
 jspm_packages/
 
@@ -105,3 +106,4 @@ dist
 
 # TernJS port file
 .tern-port
+.vercel
