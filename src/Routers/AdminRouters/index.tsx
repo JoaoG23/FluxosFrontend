@@ -9,6 +9,7 @@ import EditarUsuario from "../../Pages/EditarUsuario";
 import Configuracoes from "../../Pages/Configuracao";
 import Classificacao from "../../Pages/Classificacao";
 import Elementos from "../../Pages/Elementos";
+import EditarElementos from '../../Pages/EditarElementos';
 import Subelementos from "../../Pages/Subelementos";
 import Tipos from "../../Pages/Tipos";
 import Subtipos from "../../Pages/Subtipos";
@@ -65,7 +66,7 @@ const AdminRouters = () => {
         path="/admin/elementos/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
-            <Elementos />
+            <EditarElementos />
           </PrivateRoute>
         }
       />

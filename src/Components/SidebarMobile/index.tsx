@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import adminListaRotas, { comumListaRotas, classificacaoes } from "../Sidebar/data/listaMenu";
 // Components
-import { SidebarStyle, Item, BtnEsconder } from "./styles";
+import { SidebarStyle, Item, BtnEsconder, ButtonExit } from "./styles";
 import DarkButton from "../Buttons/ButtonDark";
 
 // Services
@@ -66,7 +66,7 @@ const SidebarMobile: React.FC = () => {
               </ul>
             </details>
           </div>
-          <DarkButton onClick={exitEndLogout}>Sair</DarkButton>
+          <ButtonExit onClick={exitEndLogout}>Sair</ButtonExit>
         </SidebarStyle>
       )}
     </>

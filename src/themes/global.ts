@@ -21,6 +21,17 @@ const GlobalStyle = createGlobalStyle`
         monospace;
     }
 
+    summary{
+      padding:4px;
+    list-style-type: '+';
+    
+}
+    
+
+    details[open] summary{
+        list-style-type: '-';
+    }
+
 *::-webkit-scrollbar {
   width: 15px;
   border-radius: 10px;
@@ -35,6 +46,7 @@ const GlobalStyle = createGlobalStyle`
   border-radius: 20px;
   border: 2px solid ${(props) => props.theme.color.shadow};
 }
+
 
 `;
 

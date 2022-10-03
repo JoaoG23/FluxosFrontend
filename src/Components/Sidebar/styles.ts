@@ -32,6 +32,8 @@ export const SidebarStyle = styled.header`
   }
 `;
 
+
+
 export const BoxImg = styled.div`
   padding: 7px;
   border-radius: 10px;
@@ -54,3 +56,25 @@ export const Item = styled.li`
     background-color: #ffffff32;
   }
 `;
+ 
+export const ButtonExit = styled.button`
+  list-style: none;
+  padding: 0.5em;
+  display: flex;
+
+  border: none;
+
+  animation: entradaSuave 0.5s forwards;
+  border-radius: 0.6em;
+  
+  
+  background-color: #ffffff32;
+  color: ${(props) => props.theme.color.light};
+  :hover {
+    animation: entradaSuave 0.5s forwards;
+    border-radius:3em;
+    transition: 0.2s ease-in-out;
+    background-color: none;
+  }
+`;
+ 

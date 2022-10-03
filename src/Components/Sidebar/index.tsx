@@ -5,10 +5,10 @@ import adminListaRotas, {
   classificacaoes,
 } from "../Sidebar/data/listaMenu";
 // Components
-import PrimaryButton from "../Buttons/PrimaryButton";
-import { SidebarStyle, Logo, Item } from "./styles";
+import { SidebarStyle, Logo, Item , ButtonExit } from "./styles";
 // Services
 import { getDataSession } from "../../services/getDataSession";
+import ButtonBackGround from "../Buttons/BackgroundButton";
 
 const Sidebar: React.FC = () => {
   const navigate = useNavigate();
@@ -31,6 +31,13 @@ const Sidebar: React.FC = () => {
         <div>
           <Logo src="./assets/logomarca.png" alt="logo"></Logo>
         </div>
+        <ul>
+          {itemDoSidebar.map((item) => (
+            <Item key={item.id}>
+              <Link to={item.path}>{item.descricao}</Link>
+            </Item>
+          ))}
+        </ul>
         <details>
           <summary>Classificações</summary>
           <ul>
@@ -41,15 +48,8 @@ const Sidebar: React.FC = () => {
             ))}
           </ul>
         </details>
-        <ul>
-          {itemDoSidebar.map((item) => (
-            <Item key={item.id}>
-              <Link to={item.path}>{item.descricao}</Link>
-            </Item>
-          ))}
-        </ul>
       </div>
-      <PrimaryButton onClick={exitEndLogout}>Sair</PrimaryButton>
+      <ButtonExit onClick={exitEndLogout}>Sair</ButtonExit>
     </SidebarStyle>
   );
 };

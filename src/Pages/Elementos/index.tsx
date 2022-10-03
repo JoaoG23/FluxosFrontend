@@ -17,10 +17,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { Carregador } from "../../Redux/types/carregadorTypes";
 import { AddModalStore, EditModalStore } from "../../Redux/types/modalTypes";
 import { setAllElementos } from "../../Redux/actions/elementosActions";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import Title from "../../Components/Title";
 
 const Elementos = () => {
+  const navigate = useNavigate()
 
   const dispatch = useDispatch();
   const elementos = useSelector(
@@ -74,7 +75,10 @@ const Elementos = () => {
                 <img src="./assets/remover.svg"></img>
               </DarkButton>
               <PrimaryButton>
+                <Link to={`/admin/elementos/${elemento.idelementos as Number}`}>
+
                 <img src="./assets/editar.svg"></img>
+                </Link>
               </PrimaryButton>
             </section>
           </Card>
