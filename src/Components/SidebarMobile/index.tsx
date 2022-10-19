@@ -55,8 +55,8 @@ const SidebarMobile: React.FC = () => {
                 </Item>
               ))}
             </ul>
-            <details>
-              <summary>Classificações</summary>
+                <p>Classificações</p>
+                <hr/> 
               <ul>
                 {classificacaoes.map((item) => (
                   <Item key={item.id}>
@@ -64,7 +64,6 @@ const SidebarMobile: React.FC = () => {
                   </Item>
                 ))}
               </ul>
-            </details>
           </div>
           <ButtonExit onClick={exitEndLogout}>Sair</ButtonExit>
         </SidebarStyle>

@@ -17,26 +17,24 @@ export const ContainerStyle = styled.main`
     justify-content: initial;
   }
 `;
-export const ContainerCards = styled.main`
 
-display: grid;
-gap: 10px;
-grid-template-columns: auto auto;
-  @media screen and (max-width: 769px) {
-    grid-template-columns: auto;
-    width: 90vw;
-    margin-top: 1em;
-    justify-content: initial;
-  }
-`;
+export const Form = styled.form`
+    display: grid;
+    gap: 10px;
+    width: 80%;
+    text-align: left;
 
-export const Div = styled.div`
-  display: grid;
-  justify-content: center;
+`
+export const Input = styled.input`
+  border: none;
+  padding: 6px;
+  border-radius: 8px;
+  font-weight: bold;
 
-  @media screen and (max-width: 769px) {
-    margin-top: 1em;
-  }
+  box-shadow: 1px 1px 5px ${(props) => props.theme.color.shadow};
+
+  background-color: ${(props) => props.theme.color.light};
+
 `;
 
 

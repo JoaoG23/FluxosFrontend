@@ -1,24 +1,22 @@
-import react, { useState } from "react";
+import React from "react";
+import { useState } from "react";
 import { useForm } from "react-hook-form";
+import { useNavigate } from "react-router-dom";
 // Components
 import RedBadge from "../../Components/Badges/RedBadge";
 import GreenBadge from "../../Components/Badges/GreenBadge";
 import { ContainerStyle, Form, Input } from "./styles";
 import Card from "../../Components/Card";
+import ModalCarregando from "../../Components/ModalCarregando";
+import PrimaryButton from "../../Components/Buttons/PrimaryButton";
+import Title from "../../Components/Title";
 
 // Services
 import urlBase from "../../services/UrlBase";
-import Title from "../../Components/Title";
 
 // Redux
-import { InfoElementos } from "../../Redux/types/elementosTypes";
-import { useDispatch, useSelector } from "react-redux";
-import { Carregador } from "../../Redux/types/carregadorTypes";
-import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-import { useNavigate } from "react-router-dom";
-import React from "react";
 
-const AdicionarElementos:React.FC = () => {
+const AdicionarTipos:React.FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<any | null>(null);
   const [response, setResponse] = useState<any | null>(null);
@@ -32,7 +30,7 @@ const AdicionarElementos:React.FC = () => {
   const adicionar = async (body: object) => {
     setIsLoading(true);
     try {
-      const respostaAdicionar = await urlBase.post("/admin/elementos", body);
+      const respostaAdicionar = await urlBase.post("/admin/tipos", body);
       setResponse(respostaAdicionar.data);
       setTimeout(() => {
         navigate("/admin/dash");
@@ -44,36 +42,32 @@ const AdicionarElementos:React.FC = () => {
       setIsLoading(false);
     }
   };
-  const dispatch = useDispatch();
-  const elementos = useSelector(
-    (store: InfoElementos) => store?.elementos?.elemento
-  );
 
-  const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
   return (
     <ContainerStyle>
       <Card>
         <Title>
-          <>Adicionar Elementos</>
+          <>Adicionar Tipos</>
         </Title>
       </Card>
       <Card>
         <Form
+
           onSubmit={handleSubmit(async (data: object) => await adicionar(data))}
         >
           <h2>Descrição</h2>
           <Input
             placeholder="Digite aqui o nome da sua classificação"
             type="text"
-            {...register("nome_elementos", { required: true })}
+            {...register("nome_tipos", { required: true })}
           />
-          {errors.nome_elementos?.type === "required" && (
+          {errors.nome_tipos?.type === "required" && (
             <RedBadge>Campo vazio. Por gentileza prencher-o!</RedBadge>
           )}
           <PrimaryButton>Salvar</PrimaryButton>
           {response && <GreenBadge>{response?.msg}</GreenBadge>}
-          {isLoading && <h3>Carregando ...</h3>}
+          {isLoading && <ModalCarregando></ModalCarregando>}
           {error && <RedBadge>{error?.response?.data?.msg}</RedBadge>}
         </Form>
       </Card>
@@ -81,4 +75,4 @@ const AdicionarElementos:React.FC = () => {
   );
 };
 
-export default AdicionarElementos;
+export default AdicionarTipos;

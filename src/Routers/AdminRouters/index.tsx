@@ -5,7 +5,12 @@ import Usuarios from "../../Pages/Usuarios";
 import UsuarioLogado from "../../Pages/UsuarioLogado";
 import AdicionarUsuario from "../../Pages/AdicionarUsuario";
 import AdicionarElementos from '../../Pages/AdicionarElementos';
+import AdicionarSubelementos from '../../Pages/AdicionarSubelementos';
+import AdicionarTipos from '../../Pages/AdicionarTipos'
+
 import EditarUsuario from "../../Pages/EditarUsuario";
+import EditarSubelementos from "../../Pages/EditarSubelementos";
+
 import Configuracoes from "../../Pages/Configuracao";
 import Classificacao from "../../Pages/Classificacao";
 import Elementos from "../../Pages/Elementos";
@@ -79,10 +84,26 @@ const AdminRouters = () => {
         }
       />
       <Route
+        path="/admin/subelementos/add"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <AdicionarSubelementos />
+          </PrivateRoute>
+        }
+      />
+      <Route
         path="/admin/subelementos/:id"
         element={
           <PrivateRoute redirectTo={"/"}>
-            <Subelementos />
+            <EditarSubelementos />
+          </PrivateRoute>
+        }
+      />
+      <Route
+        path="/admin/tipos/add"
+        element={
+          <PrivateRoute redirectTo={"/"}>
+            <AdicionarTipos />
           </PrivateRoute>
         }
       />

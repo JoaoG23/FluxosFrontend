@@ -1,6 +1,7 @@
 import react, { useState } from "react";
 import { useForm } from "react-hook-form";
 // Components
+import DarkButton from "../../Components/Buttons/ButtonDark";
 import RedBadge from "../../Components/Badges/RedBadge";
 import GreenBadge from "../../Components/Badges/GreenBadge";
 import { ContainerStyle, Form, Input } from "./styles";
@@ -17,8 +18,9 @@ import { Carregador } from "../../Redux/types/carregadorTypes";
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
 import { useNavigate } from "react-router-dom";
 import React from "react";
+import ModalCarregando from "../../Components/ModalCarregando";
 
-const AdicionarElementos:React.FC = () => {
+const AdicionarSublementos:React.FC = () => {
   const navigate = useNavigate();
   const [error, setError] = useState<any | null>(null);
   const [response, setResponse] = useState<any | null>(null);
@@ -32,8 +34,8 @@ const AdicionarElementos:React.FC = () => {
   const adicionar = async (body: object) => {
     setIsLoading(true);
     try {
-      const respostaAdicionar = await urlBase.post("/admin/elementos", body);
-      setResponse(respostaAdicionar.data);
+      const respostaAdicionar = await urlBase.post("/admin/subelementos", body);
+      setResponse(respostaAdicionar.data.inserirRegistro);
       setTimeout(() => {
         navigate("/admin/dash");
       }, 2000);
@@ -44,10 +46,6 @@ const AdicionarElementos:React.FC = () => {
       setIsLoading(false);
     }
   };
-  const dispatch = useDispatch();
-  const elementos = useSelector(
-    (store: InfoElementos) => store?.elementos?.elemento
-  );
 
   const isCarregado = useSelector((store: Carregador) => store?.carregador);
 
@@ -55,25 +53,26 @@ const AdicionarElementos:React.FC = () => {
     <ContainerStyle>
       <Card>
         <Title>
-          <>Adicionar Elementos</>
+          <>Adicionar Subelementos</>
         </Title>
       </Card>
       <Card>
         <Form
+
           onSubmit={handleSubmit(async (data: object) => await adicionar(data))}
         >
           <h2>Descrição</h2>
           <Input
             placeholder="Digite aqui o nome da sua classificação"
             type="text"
-            {...register("nome_elementos", { required: true })}
+            {...register("nome_subelemento", { required: true })}
           />
-          {errors.nome_elementos?.type === "required" && (
+          {errors.nome_subelemento?.type === "required" && (
             <RedBadge>Campo vazio. Por gentileza prencher-o!</RedBadge>
           )}
           <PrimaryButton>Salvar</PrimaryButton>
           {response && <GreenBadge>{response?.msg}</GreenBadge>}
-          {isLoading && <h3>Carregando ...</h3>}
+          {isLoading && <ModalCarregando></ModalCarregando>}
           {error && <RedBadge>{error?.response?.data?.msg}</RedBadge>}
         </Form>
       </Card>
@@ -81,4 +80,4 @@ const AdicionarElementos:React.FC = () => {
   );
 };
 
-export default AdicionarElementos;
+export default AdicionarSublementos;

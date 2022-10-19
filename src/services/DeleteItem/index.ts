@@ -18,15 +18,12 @@ import { DadosItem } from "../../Pages/Fluxo/types";
 export interface ConfigsRequest {
   path?: string;
   dadosItems?: DadosItem[];
-  dispatch(calkback: any): void;
+  dispatch(callback: any): void;
   setStateOfData(filterData: any): void;
 }
 
 export const deleteItemById = async (objectItem: any, configs: ConfigsRequest) => {
-  // const path = configs.path;
   const { path, dadosItems, dispatch, setStateOfData } = configs;
-  // const dadosItems = configs.dadosItems;
-  // const dispatch = configs.dispatch;
 
   let idEncontrado: number = objectItem.id_item_fluxo;
   await urlBase.delete(`${path}${idEncontrado}`);

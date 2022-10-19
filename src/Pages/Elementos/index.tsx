@@ -76,7 +76,6 @@ const Elementos = () => {
               </DarkButton>
               <PrimaryButton>
                 <Link to={`/admin/elementos/${elemento.idelementos as Number}`}>
-
                 <img src="./assets/editar.svg"></img>
                 </Link>
               </PrimaryButton>

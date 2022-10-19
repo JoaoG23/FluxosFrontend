@@ -43,7 +43,7 @@ export const BoxImg = styled.div`
 export const BtnEsconder = styled.button`
   background: none;
   border: none;
-  font-size: larger;
+  font-size: medium;
   justify-content: end;
   color: ${(props) => props.theme.color.light};
 `;
@@ -54,7 +54,7 @@ export const Logo = styled.img`
 export const Item = styled.li`
   list-style: none;
   padding: 0.6em;
-  font-size: 20px;
+  font-size: medium;
 
   animation: entradaSuave 0.5s forwards;
 
@@ -62,7 +62,7 @@ export const Item = styled.li`
   :hover {
     transition: 0.2s ease-in-out;
     border-radius: 0.5em;
-    background-color: #ffffff32;
+    background-color: #ffffff16;
   }
 `;
 

@@ -3,25 +3,29 @@ import { useEffect, useState } from "react";
 // Components
 
 import PrimaryButton from "../../Components/Buttons/PrimaryButton";
-import { ContainerStyle , ContainerCards } from "./styles";
+import { ContainerStyle, ContainerCards } from "./styles";
 import Card from "../../Components/Card";
 import DarkButton from "../../Components/Buttons/ButtonDark";
 
-// Services 
+// Services
 import urlBase from "../../services/UrlBase";
 
 // Redux
 import { Carregador } from "../../Redux/types/carregadorTypes";
 import { useDispatch, useSelector } from "react-redux";
-import { setIsCarregado } from "../../Redux/actions/carregadorActions";
 import { setAllSubelementos } from "../../Redux/actions/subelementosActions";
 import {
   SubelementosDados,
   InfoSubelementos,
 } from "../../Redux/types/subelementosTypes";
+import Title from "../../Components/Title";
+import { Link } from "react-router-dom";
+import ModalSucesso from "../../Components/ModalSucesso";
+import ModalCarregando from "../../Components/ModalCarregando";
 
 const Subelementos = () => {
 
+  const [isSuccess, setIsSuccess] = useState<boolean>(false);
   const dispatch = useDispatch();
   const subelementos = useSelector(
     (store: InfoSubelementos) => store?.subelementos?.subelemento
@@ -39,52 +43,24 @@ const Subelementos = () => {
         (dado: any) => dado.idsubelementos !== idItem.idsubelementos
       );
       dispatch(setAllSubelementos(filterItensConta));
+      setIsSuccess(true)
+      setTimeout(() => {
+        setIsSuccess(false)
+      },1600)
     } catch (error) {
       console.info(error);
     }
   };
-
-  // // --------- Modal ----
-  // const [showModaladd, setShowModaladd] = useState(false);
-  // const mostrarModalAdd = () => setShowModaladd(true);
-  // const esconderModalAdd = () => setShowModaladd(false);
-
-  // return (
-  //   <ContainerStyle>
-  //     {subelementos?.map((elemento: SubelementosDados) => (
-  //       <Card key={elemento.idsubelementos}>
-  //         <p>{elemento.idsubelementos}</p>
-  //         <p>{elemento.descricao_subelementos}</p>
-  //         <section>
-  //           <DarkButton>
-  //             <img src="./assets/remover.svg" alt="remover"></img>
-  //           </DarkButton>
-  //           <PrimaryButton>
-  //             <img src="./assets/editar.svg" alt="editar"></img>
-  //           </PrimaryButton>
-  //         </section>
-  //       </Card>
-  //     ))}
-  //     {showModaladd && (
-  //       <Modal>
-  //         <h2>Adicione um Item</h2>
-
-  //         <InputPrimary type="text" descricaoPlaceholder="Ano" />
-  //         <InputPrimary type="text" descricaoPlaceholder="Mês" />
-
-  //         <PrimaryButton>+ Adicionar</PrimaryButton>
-  //         <DarkButton onClick={esconderModalAdd}>X</DarkButton>
-  //       </Modal>
-  //     )}
-  //     {isCarregado && <h2>Carregando ...</h2>}
-  //   </ContainerStyle>
-  // );
   return (
     <ContainerStyle>
-        <h1>Sublementos de Classificação</h1>
       <div>
-        <PrimaryButton >+ Adicionar</PrimaryButton>
+        <PrimaryButton>
+          <Link to={"/admin/subelementos/add"}>+ Adicionar</Link>
+        </PrimaryButton>
       </div>
+      <Card>
+        <Title>Subelementos de Classificação</Title>
+      </Card>
       <ContainerCards>
         {subelementos?.map((subelemento: SubelementosDados) => (
           <Card key={subelemento.idsubelementos}>
@@ -92,19 +68,27 @@ const Subelementos = () => {
             <p>{subelemento.descricao_subelementos}</p>
             <section>
               <DarkButton
+                onClick={() => {
+                  deleteItemById(subelemento);
+                }}
               >
                 <img src="./assets/remover.svg"></img>
               </DarkButton>
-              <PrimaryButton
-
-              >
-                <img src="./assets/editar.svg"></img>
+              <PrimaryButton>
+                <Link
+                  to={`/admin/subelementos/${
+                    subelemento.idsubelementos as Number
+                  }`}
+                >
+                  <img src="./assets/editar.svg"></img>
+                </Link>
               </PrimaryButton>
             </section>
           </Card>
         ))}
       </ContainerCards>
-      {isCarregado && <h2>Carregando ...</h2>}
+      {isSuccess && <ModalSucesso></ModalSucesso>}
+      {isCarregado && <ModalCarregando></ModalCarregando>}
     </ContainerStyle>
   );
 };
