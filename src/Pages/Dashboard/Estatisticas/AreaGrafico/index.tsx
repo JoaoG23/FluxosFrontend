@@ -17,7 +17,7 @@ import { Area } from "./styles";
 
 import { options } from "./DadosGrafico/options";
 import urlBase from "../../../../services/UrlBase";
-import {converterValoresStringParaNumero} from '../../services/converterValoresStringParaNumero';
+import { converterValoresStringParaNumero } from '../../services/converterValoresStringParaNumero';
 
 import { labels } from './DadosGrafico/labels';
 // Types ---
